@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Каркасная времянка и баня: модульный дом 4×4 до 8×8, баня 6×4. 3D-модель, чертежи, смета по этапам.">
+<meta name="description" content="Каркасная времянка и баня: модульный дом 4×4 до 8×8, баня 6×4 и 5×4 эконом. 3D-модель, чертежи, смета по этапам.">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Времянка 6×4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -250,13 +250,13 @@ html{scroll-behavior:smooth}
 <header class="hero">
   <div class="hero-lead">
     <div class="eyebrow">Каркас · круглый год · строим сами · Екатеринбург</div>
-    <h1><span data-v="house">Времянка <span class="szName">6×4</span></span><span data-v="bath" hidden>Баня 6×4</span></h1>
+    <h1><span data-v="house">Времянка <span class="szName">6×4</span></span><span data-v="bath bstd" hidden>Баня 6×4</span><span data-v="bath beco" hidden>Баня 5×4 · эконом</span></h1>
     <p data-v="house">Вход посередине: слева спальня с панорамным окном, прямо санузел, справа кухня-гостиная с печью-камином. Крыша односкатная, 15°.</p>
-    <p data-v="bath" hidden>Каркасная баня 6×4 в 8 м от дома, каркас как у дома 6×4. Парная 2,96×2,26 м: пятеро сидят, или один лежит, трое сидят и один парит стоя. Печь в дальнем углу, до нижнего полка 1,26 м. Моечная с трапом, предбанник 10 м² на пятерых за столом, стол в 1,9 м от топки.</p>
+    <p data-v="bath beco" hidden>Бюджетная баня 5×4 до 150 тыс. ₽ вместе с отделкой. Отдельной моечной нет: моются в парной у двери, там трап и лавка под тазы. Её место отдано предбаннику, он 10,6 м² буквой Г, стол на пятерых. Парная 2,96×2,26 м, как в 6×4. Печь сварить самим, фасад из горбыля.</p><p data-v="bath bstd" hidden>Каркасная баня 6×4 в 8 м от дома, каркас как у дома 6×4. Парная 2,96×2,26 м: пятеро сидят, или один лежит, трое сидят и один парит стоя. Печь в дальнем углу, до нижнего полка 1,26 м. Моечная с трапом, предбанник 10 м² на пятерых за столом, стол в 1,9 м от топки.</p>
   </div>
   <div class="facts" aria-label="Ключевые цифры">
     <div class="fact hot"><b id="hS1">—</b><span>этап 1: коробка</span></div>
-    <div class="fact hot"><b id="hS12">—</b><span>этапы 1 и 2: можно зимовать</span></div>
+    <div class="fact hot"><b id="hS12">—</b><span>этапы 1 и 2: <span data-v="house">можно зимовать</span><span data-v="bath" hidden>можно париться</span></span></div>
     <div class="fact"><b id="hAll">—</b><span>всё с резервом 10%</span></div>
     <div class="fact"><b id="hIn">—</b><span>площадь внутри · по каркасу <span id="hOut">—</span> · <span data-v="house">санузел</span><span data-v="bath" hidden>парная</span> <span id="hBath">—</span></span></div>
   </div>
@@ -264,7 +264,7 @@ html{scroll-behavior:smooth}
 
 <nav class="toc" aria-label="Разделы">
   <a href="#model">3D</a><a href="#plan">Чертежи</a><a href="#layers">Слои</a><a href="#estimate">Смета</a><a href="#tips">Советы по этапам</a>
-  <div class="fsw" role="group" aria-label="Объект"><span>Объект</span><button type="button" data-o="house" aria-pressed="true">дом</button><button type="button" data-o="bath" aria-pressed="false">баня</button></div><div class="fsw" data-v="house" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="house s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" data-v="house" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
+  <div class="fsw" role="group" aria-label="Объект"><span>Объект</span><button type="button" data-o="house" aria-pressed="true">дом</button><button type="button" data-o="bath" aria-pressed="false">баня</button></div><div class="fsw" data-v="bath" hidden role="group" aria-label="Вариант бани"><span>Вариант</span><button type="button" data-bv="std" aria-pressed="true">6×4</button><button type="button" data-bv="eco" aria-pressed="false">5×4 эконом</button></div><div class="fsw" data-v="house" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="house s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" data-v="house" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
 </nav>
 
 <section class="sec" id="model">
@@ -276,7 +276,7 @@ html{scroll-behavior:smooth}
         <button type="button" id="m-frame" aria-pressed="false">Каркас</button>
         <button type="button" id="m-int" aria-pressed="false">Внутри</button>
       </div>
-      <div class="fsw" role="group" aria-label="Объект"><span>Объект</span><button type="button" data-o="house" aria-pressed="true">дом</button><button type="button" data-o="bath" aria-pressed="false">баня</button></div><div class="fsw" data-v="house" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="house s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" data-v="house" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
+      <div class="fsw" role="group" aria-label="Объект"><span>Объект</span><button type="button" data-o="house" aria-pressed="true">дом</button><button type="button" data-o="bath" aria-pressed="false">баня</button></div><div class="fsw" data-v="bath" hidden role="group" aria-label="Вариант бани"><span>Вариант</span><button type="button" data-bv="std" aria-pressed="true">6×4</button><button type="button" data-bv="eco" aria-pressed="false">5×4 эконом</button></div><div class="fsw" data-v="house" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="house s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" data-v="house" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
     </div>
     <div class="vfoot">
       <div class="swatches" role="group" aria-label="Цвет фасада"><span>Фасад</span>
@@ -288,7 +288,7 @@ html{scroll-behavior:smooth}
       <div class="hint" id="vhint">ЛКМ — вращать · колесо — масштаб</div>
     </div>
   </div>
-  <div class="specline" data-v="bath" hidden><span class="chip">баня 6×4, тот же каркас, что дом 6×4</span><span class="chip">парная 2,96×2,26 · потолок 2,2 м</span><span class="chip">полки 2200: 600 на 1,0 м и 400 на 0,5 м</span><span class="chip">печь на 12–18 м³, бак 30 л</span><span class="chip">от печи до полка 1,26 м</span><span class="chip">8 м от дома</span></div>
+  <div class="specline" data-v="bath bstd" hidden><span class="chip">баня 6×4, тот же каркас, что дом 6×4</span><span class="chip">парная 2,96×2,26 · потолок 2,2 м</span><span class="chip">полки 2200: 600 на 1,0 м и 400 на 0,5 м</span><span class="chip">печь на 12–18 м³, бак 30 л</span><span class="chip">от печи до полка 1,26 м</span><span class="chip">8 м от дома</span></div><div class="specline" data-v="bath beco" hidden><span class="chip">баня 5×4, каркас как у дома</span><span class="chip">парная 2,96×2,26 с помывкой у двери</span><span class="chip">предбанник 10,6 м²</span><span class="chip">печь сварить самим</span><span class="chip">фасад из горбыля, без OSB</span><span class="chip">от печи до полка 1,26 м</span></div>
   <div class="specline" data-v="house">
     <span class="chip" id="szChip">6,0 × 4,0 м по каркасу</span>
     <span class="chip">скат 15°, свесы 600 / 500 / 300</span>
@@ -369,7 +369,7 @@ html{scroll-behavior:smooth}
     </table>
   </div>
   <div class="est-actions">
-    <div class="fsw" role="group" aria-label="Объект"><span>Объект</span><button type="button" data-o="house" aria-pressed="true">дом</button><button type="button" data-o="bath" aria-pressed="false">баня</button></div><div class="fsw" data-v="house" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="house s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" data-v="house" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
+    <div class="fsw" role="group" aria-label="Объект"><span>Объект</span><button type="button" data-o="house" aria-pressed="true">дом</button><button type="button" data-o="bath" aria-pressed="false">баня</button></div><div class="fsw" data-v="bath" hidden role="group" aria-label="Вариант бани"><span>Вариант</span><button type="button" data-bv="std" aria-pressed="true">6×4</button><button type="button" data-bv="eco" aria-pressed="false">5×4 эконом</button></div><div class="fsw" data-v="house" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="house s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" data-v="house" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
     <button type="button" class="btn" id="estReset">Вернуть исходные цифры</button>
     <span class="muted" id="estSaved">Цифры можно править, итог пересчитается.</span>
   </div>
@@ -455,7 +455,7 @@ html{scroll-behavior:smooth}
         <li>Вода: бак с насосом. Гильзы в полу уже стоят, под домом трубы сведите в утеплённый короб с греющим кабелем.</li>
       </ul>
     </div>
-        <div class="card" data-v="bath" hidden>
+        <div class="card" data-v="bath bstd" hidden>
       <div class="tip-head"><span class="n">Баня · этап 1</span><b>коробка</b></div>
       <ul>
         <li>Фундамент такой же, как у дома, плюс 2 отдельные опоры под печь и камни.</li>
@@ -464,7 +464,7 @@ html{scroll-behavior:smooth}
         <li>Двери в парную глухие, деревянные, с уплотнителем. Открываются наружу.</li>
       </ul>
     </div>
-    <div class="card" data-v="bath" hidden>
+    <div class="card" data-v="bath bstd" hidden>
       <div class="tip-head"><span class="n">Баня · этап 2</span><b>можно париться</b></div>
       <ul>
         <li>В стенах парной: Изба Стандарт 100, фольга внутрь, стыки на фольгированный скотч, рейка 20 мм для зазора, вагонка из осины.</li>
@@ -475,13 +475,43 @@ html{scroll-behavior:smooth}
         <li>Свет только через УЗО. В парной светильник, рассчитанный на 120 °C, выключатели снаружи. Датчик угарного газа в предбаннике.</li>
       </ul>
     </div>
-    <div class="card" data-v="bath" hidden>
+    <div class="card" data-v="bath bstd" hidden>
       <div class="tip-head"><span class="n">Баня · этап 3</span><b>отделка</b></div>
       <ul>
         <li>Предбанник и моечную обшейте недорогой вагонкой из хвои, предбанник покройте пропиткой.</li>
         <li>Стол 1,5×0,7, лавку на троих, 2 табурета и вешалку соберите из доски 40×210.</li>
         <li>Фасад той же доской с нащельником, что у дома, тогда баня и дом будут смотреться как один комплект.</li>
         <li>От бани до дома 8 м, от бани до забора соседа не меньше 3 м по нормам застройки.</li>
+      </ul>
+    </div>
+    <div class="card" data-v="bath beco" hidden>
+      <div class="tip-head"><span class="n">Эконом · этап 1</span><b>коробка</b></div>
+      <ul>
+        <li>Фундамент на шинах: 12 столбов и 2 под печь. На сваях этот вариант выходит дороже примерно на 28 тыс. и в 150 уже не влезает.</li>
+        <li>Доску и горбыль берите на одной пилораме и везите одной машиной. С горбыля снимите кору: под ней живут жуки.</li>
+        <li>OSB нет, поэтому жёсткость стенам дают укосины 40×120, врезанные в стойки у углов каждой стены. Поверх каркаса ветрозащита и горбыль внахлёст.</li>
+        <li>Перегородка буквой Г отделяет парную. В ней стойка под прогон, проём под топку и дверь в парную. Вокруг топки кирпичная разделка 250 мм.</li>
+        <li>Пол в предбаннике утеплённый. В парной пол протекающий: доски с зазором 5 мм, под ними поддон из С8 с уклоном к трапу.</li>
+      </ul>
+    </div>
+    <div class="card" data-v="bath beco" hidden>
+      <div class="tip-head"><span class="n">Эконом · этап 2</span><b>можно париться</b></div>
+      <ul>
+        <li>Печь сварите в гараже: труба 530 или лист 6–8 мм, выносная топка в предбанник, сверху каменка на 40 кг. Швы сплошные, дверца и колосник чугунные.</li>
+        <li>Дымоход экономить нельзя: через потолок и кровлю только заводской сэндвич. Проходные узлы можно сделать самим из листа нержавейки и базальтового картона.</li>
+        <li>Помывка в парной у двери: трап, лавка под тазы, горячая вода из бака на трубе. Сначала моются, потом парятся, и пар не уходит в другую комнату.</li>
+        <li>Стены парной: Изба Лайт 100, фольга внутрь, рейка 20 мм для зазора, вагонка из осины. Потолок на 2,2 м, утеплитель 150 мм.</li>
+        <li>Окошки в парной и предбаннике открываются. После бани откройте их и дверь, чтобы всё просохло.</li>
+        <li>Свет через дифавтомат, в парной светильник на 120 °C. Датчик угарного газа в предбаннике обязателен, особенно с самодельной печью.</li>
+      </ul>
+    </div>
+    <div class="card" data-v="bath beco" hidden>
+      <div class="tip-head"><span class="n">Эконом · этап 3</span><b>отделка</b></div>
+      <ul>
+        <li>Предбанник обшейте ДВП и покрасьте. Когда появятся деньги, поверх можно поставить вагонку.</li>
+        <li>Горбыль снаружи покройте антисептиком с тоном, тогда он не посереет.</li>
+        <li>Стол, лавки, вешалку и крыльцо соберите из обрезков доски и горбыля.</li>
+        <li>От бани до дома 8 м, от бани до забора соседа не меньше 3 м.</li>
       </ul>
     </div>
 <div class="card" data-v="house s4">
@@ -822,27 +852,49 @@ function wallModSVG(){
   return svg(`-70 -50 ${Ln*100+120} 440`,s,'Каркас высокой стены');
 }
 
-/* ===================== Баня 6×4 ===================== */
+/* ===================== Баня: 6×4 и 5×4 эконом ===================== */
 // Локальные координаты как у модуля: u вдоль фасада (0..BL), w вглубь от высокой стены. На участке баня стоит на 8 м правее дома.
 let OBJ='house';try{const o=localStorage.getItem('vremyanka-obj');if(o==='house'||o==='bath')OBJ=o;}catch(e){}
-const BATH=(()=>{
-  const BL=6.0,P=2.80; // P — левая грань перегородки П1
-  const B={BL,P,SX:3.37,SZ:3.325,CEIL:2.2,
-    walls:{high:{ops:[{id:'Д1',a:1.6,b:2.4,bot:0.04,top:2.21,kind:'door'},{id:'О2',a:4.0,b:4.5,bot:1.4,top:1.9,kind:'win'}]},
-      low:{ops:[{id:'О3',a:4.3,b:4.7,bot:1.4,top:1.8,kind:'win'}]},left:{ops:[{id:'О1',a:0.4,b:1.4,bot:0.95,top:1.95,kind:'win'}]},right:{ops:[]}},
-    // П1: предбанник | моечная и парная (поперёк бани, со стойкой под прогон), П2: моечная | парная
-    parts:[{x0:P,x1:P+0.12,z0:0.12,z1:3.88,gapsZ:[[0.40,1.00]]},{x0:P+0.12,x1:BL-0.12,z0:1.50,z1:1.62,gaps:[[3.35,3.95]]}],
-    rooms:[{n:'Предбанник',u:2.0,w:2.65,a:2.68*3.76},{n:'Моечная',u:3.7,w:0.42,a:2.96*1.38},{n:'Парная',u:4.36,w:2.25,a:2.96*2.26}],
-    supports:[],stoveSup:[[3.12,3.3],[3.7,3.3]],porch:{u0:1.25,u1:2.75,sup:[[1.3,-1.1],[2.7,-1.1]]}};
-  for(const u of [0.1,2.0,4.0,5.9])for(const w of [0.04,2.0,3.96])B.supports.push([u,w]);
+let BV='std';try{const v=localStorage.getItem('vremyanka-bv');if(v==='std'||v==='eco')BV=v;}catch(e){}
+// std: 6×4, предбанник | моечная | парная. eco: 5×4, моечной нет, моются в парной у двери, предбанник буквой Г.
+function makeBath(v){
+  const eco=v==='eco',BL=eco?5.0:6.0,P=eco?1.80:2.80,Q=P+0.12,SX=P+0.57,SZ=3.325;
+  const D=eco?[3.0,3.8]:[1.6,2.4],O3c=(SX+0.47+BL-1.12)/2;
+  const B={v,eco,BL,P,Q,SX,SZ,CEIL:2.2,name:eco?'5×4 эконом':'6×4',
+    walls:{high:{ops:[{id:'Д1',a:D[0],b:D[1],bot:0.04,top:2.21,kind:'door'},{id:'О2',a:eco?4.05:Q+1.08,b:eco?4.55:Q+1.58,bot:1.4,top:1.9,kind:'win'}]},
+      low:{ops:[{id:'О3',a:O3c-0.2,b:O3c+0.2,bot:1.4,top:1.8,kind:'win'}]},left:{ops:[{id:'О1',a:0.4,b:1.4,bot:0.95,top:1.95,kind:'win'}]},right:{ops:[]}},
+    // П1 поперёк бани (стойка под прогон, проём топки), П2 вдоль: отделяет парную
+    parts:eco?[{x0:P,x1:Q,z0:1.50,z1:3.88,gapsZ:[]},{x0:P,x1:BL-0.12,z0:1.50,z1:1.62,gaps:[[Q+0.43,Q+1.03]]}]
+             :[{x0:P,x1:Q,z0:0.12,z1:3.88,gapsZ:[[0.40,1.00]]},{x0:Q,x1:BL-0.12,z0:1.50,z1:1.62,gaps:[[Q+0.43,Q+1.03]]}],
+    parA:(BL-0.24-P)*2.26,
+    supports:[],stoveSup:[[SX-0.25,3.3],[SX+0.33,3.3]],
+    porch:{u0:D[0]-0.35,u1:D[1]+0.35,steps:[D[0]-0.2,D[1]+0.2]},
+    trap:eco?[3.35,2.05]:[Q+1.48,0.9]};
+  B.porch.sup=[[B.porch.u0+0.05,-1.1],[B.porch.u1-0.05,-1.1]];
+  B.px=eco?[0.1,1.7,3.3,4.9]:[0.1,2.0,4.0,5.9];
+  for(const u of B.px)for(const w of [0.04,2.0,3.96])B.supports.push([u,w]);
+  const predA=eco?(P-0.12)*3.76+(BL-0.12-P)*1.38:(P-0.12)*3.76;
+  B.rooms=eco?[{n:'Предбанник',u:1.1,w:2.6,a:predA},{n:'Парная',u:2.7,w:2.25,a:B.parA}]
+             :[{n:'Предбанник',u:P-0.65,w:2.65,a:predA},{n:'Моечная',u:Q+0.78,w:0.42,a:(BL-0.12-Q)*1.38},{n:'Парная',u:(Q+BL-1.12)/2,w:2.25,a:B.parA}];
   B.inner=B.rooms.reduce((a,r)=>a+r.a,0);
+  // мебель: [u0,u1,w0,w1,подпись,класс,вид для 3D]
+  B.furn=[[0.14,0.5,0.2,1.9,'','furn','bench'],[0.6,1.3,0.3,1.8,'стол','furn','table'],[0.79,1.11,1.9,2.22,'','furn','stool'],[1.4,1.72,1.3,1.62,'','furn','stool'],
+    eco?[Q+1.13,Q+1.93,1.24,1.48,'вешалка','furn','hanger']:[P-0.26,P-0.02,1.2,2.0,'','furn','hanger'],
+    eco?[0.14,0.45,2.6,3.86,'','furn','logs']:[0.14,0.7,3.3,3.86,'дрова','furn','logs'],
+    [BL-0.70,BL-0.14,0.2,1.45,'лавка','furn','lavka'],
+    [BL-0.72,BL-0.12,1.65,3.86,'','wood','up'],[BL-1.12,BL-0.72,1.65,3.86,'','furn','low']];
+  if(eco)B.furn.push([Q+1.08,BL-1.17,1.65,2.0,'тазы','furn','tazy']);
   const H={high:()=>HF,low:()=>HB,left:u=>HF-S*(0.12+u),right:u=>HF-S*(0.12+u)};
   B.FR={};
   for(const k of ['high','low','left','right']){const Lw=k==='high'||k==='low'?BL:3.76;
     B.FR[k]=frameMembers(Lw,B.walls[k].ops.map(o=>({a:o.a,b:o.b,bot:o.bot,top:o.top})),H[k]);}
-  B.FR.p1=frameMembers(3.76,[{a:0.28,b:0.88,bot:0.04,top:2.21},{a:2.98,b:3.43,bot:0.15,top:0.75}],u=>HF-S*(0.12+u));
-  B.FR.p2=frameMembers(BL-0.12-(P+0.12),[{a:0.43,b:1.03,bot:0.04,top:2.21}],()=>HF-S*1.56);
-  return B;})();
+  B.p1z=eco?1.50:0.12;
+  B.FR.p1=eco?frameMembers(3.88-1.50,[{a:1.60,b:2.05,bot:0.15,top:0.75}],u=>HF-S*(1.50+u))
+             :frameMembers(3.76,[{a:0.28,b:0.88,bot:0.04,top:2.21},{a:2.98,b:3.43,bot:0.15,top:0.75}],u=>HF-S*(0.12+u));
+  const p2x=eco?P:Q;B.p2x=p2x;
+  B.FR.p2=frameMembers(BL-0.12-p2x,[{a:Q+0.43-p2x,b:Q+1.03-p2x,bot:0.04,top:2.21}],()=>HF-S*1.56);
+  return B;}
+let BATH=makeBath(BV);
 
 function bathWallsSVG(X,Y,k){const BL=BATH.BL;let s='';const ext=[
   {r:[-OUT,BL+OUT,-OUT,0.12],ax:'x',ops:BATH.walls.high.ops},{r:[-OUT,BL+OUT,3.88,4+OUT],ax:'x',ops:BATH.walls.low.ops,back:true},
@@ -858,7 +910,7 @@ function bathWallsSVG(X,Y,k){const BL=BATH.BL;let s='';const ext=[
     if(p.gaps){let x=p.x0;for(const [g0,g1] of p.gaps){s+=R(X(x),Y(p.z1),X(g0)-X(x),Y(p.z0)-Y(p.z1),'part');x=g1;}s+=R(X(x),Y(p.z1),X(p.x1)-X(x),Y(p.z0)-Y(p.z1),'part');}
     else{let z=p.z0;for(const [g0,g1] of p.gapsZ){s+=R(X(p.x0),Y(g0),X(p.x1)-X(p.x0),Y(z)-Y(g0),'part');z=g1;}s+=R(X(p.x0),Y(p.z1),X(p.x1)-X(p.x0),Y(z)-Y(p.z1),'part');}}
   return s;}
-function bathStovePlan(X,Y){const {SX,SZ,P}=BATH,Q=P+0.12;
+function bathStovePlan(X,Y){const {SX,SZ,P,Q}=BATH;
   return R(X(Q),Y(3.82),12,Y(2.9)-Y(3.82),'brick')+R(X(Q+0.12),Y(3.82),86,12,'brick')
     +R(X(P-0.04),Y(SZ+0.15),X(SX-0.15)-X(P-0.04),30,'stove')
     +R(X(SX-0.25),Y(SZ+0.225),50,45,'stove')+`<circle cx="${X(SX)}" cy="${Y(SZ)}" r="10" class="metal"/>`
@@ -866,64 +918,63 @@ function bathStovePlan(X,Y){const {SX,SZ,P}=BATH,Q=P+0.12;
     +R(X(P-0.5),Y(3.65),50,70,'thin')+T(X(P-0.25),Y(SZ)+4,'лист','sm')
     +R(X(P-1.29),Y(3.70),X(P-0.5)-X(P-1.29),Y(2.95)-Y(3.70),'dash')+T(X(P-0.9),Y(3.33)+4,'1250 свободно','sm')
     +T(X(SX),Y(2.72)+4,'печь','sm')+T(X(SX+0.5),Y(2.72)+4,'ограждение','sm','start');}
-function bathFurn(){ // [u0,u1,w0,w1,подпись,класс]
-  const BL=BATH.BL,P=BATH.P;return [
-    [0.14,0.5,0.2,1.9,'','furn'],[0.6,1.3,0.3,1.8,'стол','furn'],[0.79,1.11,1.9,2.22,'','furn'],[1.4,1.72,1.3,1.62,'','furn'],
-    [P-0.26,P-0.02,1.2,2.0,'','furn'],[0.14,0.7,3.3,3.86,'дрова','furn'],
-    [BL-0.70,BL-0.14,0.2,1.45,'лавка','furn'],
-    [BL-0.72,BL-0.12,1.65,3.86,'','wood'],[BL-1.12,BL-0.72,1.65,3.86,'','furn']];}
 function bathPlanSVG(){
-  const BL=BATH.BL,P=BATH.P,k=100,X=x=>x*k,Y=z=>(4-z)*k;let s='';
+  const B=BATH,BL=B.BL,P=B.P,Q=B.Q,k=100,X=x=>x*k,Y=z=>(4-z)*k;let s='';
   const F=(x0,x1,z0,z1,t,c='furn')=>R(X(x0),Y(z1),(x1-x0)*k,(z1-z0)*k,c)+(t?T(X((x0+x1)/2),Y((z0+z1)/2)+4,t,'sm'):'');
-  const PO=BATH.porch;s+=R(X(PO.u0),Y(-0.07),(PO.u1-PO.u0)*k,Y(-1.2)-Y(-0.07),'wood');for(let i=0;i<3;i++)s+=R(X(1.4),Y(-1.2-i*0.28),120,28,'furn');
-  s+=T(X(2.9),Y(-0.6),'крыльцо','lbl','start');s+=L(X(-0.3),Y(-0.6),X(BL+0.3),Y(-0.6),'dash');
+  const PO=B.porch;s+=R(X(PO.u0),Y(-0.07),(PO.u1-PO.u0)*k,Y(-1.2)-Y(-0.07),'wood');for(let i=0;i<3;i++)s+=R(X(PO.steps[0]),Y(-1.2-i*0.28),(PO.steps[1]-PO.steps[0])*k,28,'furn');
+  s+=T(X(PO.u1+0.15),Y(-0.6),'крыльцо','lbl','start');s+=L(X(-0.3),Y(-0.6),X(BL+0.3),Y(-0.6),'dash');
   s+=bathWallsSVG(X,Y,k);
-  s+=L(X(P),Y(1.00),X(P-0.6),Y(1.00),'ln')+`<path d="M${X(P-0.6)} ${Y(1.00)} A60 60 0 0 1 ${X(P)} ${Y(0.40)}" class="thin"/>`;
-  s+=L(X(3.95),Y(1.50),X(3.95),Y(0.90),'ln')+`<path d="M${X(3.95)} ${Y(0.90)} A60 60 0 0 1 ${X(3.35)} ${Y(1.50)}" class="thin"/>`;
-  for(const [u0,u1,w0,w1,t,c] of bathFurn())s+=F(u0,u1,w0,w1,t,c);
+  if(!B.eco)s+=L(X(P),Y(1.00),X(P-0.6),Y(1.00),'ln')+`<path d="M${X(P-0.6)} ${Y(1.00)} A60 60 0 0 1 ${X(P)} ${Y(0.40)}" class="thin"/>`;
+  s+=L(X(Q+1.03),Y(1.50),X(Q+1.03),Y(0.90),'ln')+`<path d="M${X(Q+1.03)} ${Y(0.90)} A60 60 0 0 1 ${X(Q+0.43)} ${Y(1.50)}" class="thin"/>`;
+  for(const [u0,u1,w0,w1,t,c] of B.furn)s+=F(u0,u1,w0,w1,t,c);
   s+=T(X(0.32),Y(1.05),'лавка','sm','middle',`transform="rotate(-90 ${X(0.32)} ${Y(1.05)})"`);
-  s+=T(X(P-0.14),Y(1.6),'вешалка','sm','middle',`transform="rotate(-90 ${X(P-0.14)} ${Y(1.6)})"`);
+  if(!B.eco)s+=T(X(P-0.14),Y(1.6),'вешалка','sm','middle',`transform="rotate(-90 ${X(P-0.14)} ${Y(1.6)})"`);
+  else s+=T(X(0.3),Y(3.23),'дрова','sm','middle',`transform="rotate(-90 ${X(0.3)} ${Y(3.23)})"`);
   s+=T(X(BL-0.42),Y(2.75),'верхний полок 2200','sm','middle',`transform="rotate(-90 ${X(BL-0.42)} ${Y(2.75)})"`);
   s+=T(X(BL-0.92),Y(2.75),'нижний','sm','middle',`transform="rotate(-90 ${X(BL-0.92)} ${Y(2.75)})"`);
-  s+=`<rect x="${X(4.4)}" y="${Y(1.1)}" width="20" height="20" class="metal"/>`+T(X(4.5),Y(0.75),'трап','sm');
+  s+=`<rect x="${X(B.trap[0])}" y="${Y(B.trap[1]+0.2)}" width="20" height="20" class="metal"/>`+(B.eco?T(X(B.trap[0]-0.05),Y(B.trap[1]+0.1)+4,'трап','sm','end'):T(X(B.trap[0]+0.1),Y(B.trap[1])+16,'трап','sm'));
   s+=bathStovePlan(X,Y);
-  for(const r of BATH.rooms)s+=T(X(r.u),Y(r.w),r.n,'room')+T(X(r.u),Y(r.w)+18,fmtA(r.a),'area');
-  s+=L(X(BATH.SX),Y(4.45),X(BATH.SX),Y(4.2),'ln')+L(X(BATH.SX),Y(-0.15),X(BATH.SX),Y(-0.4),'ln')+T(X(BATH.SX)+10,Y(4.3),'1','lbl','start');
+  for(const r of B.rooms)s+=T(X(r.u),Y(r.w),r.n,'room')+T(X(r.u),Y(r.w)+18,fmtA(r.a),'area');
+  s+=L(X(B.SX),Y(4.45),X(B.SX),Y(4.2),'ln')+L(X(B.SX),Y(-0.15),X(B.SX),Y(-0.4),'ln')+T(X(B.SX)+10,Y(4.3),'1','lbl','start');
   s+=dimH(X(0),X(BL),Y(4.62),f1(BL*1000),Y(4.07))+dimV(Y(4),Y(0),X(BL+0.75),'4000',X(BL+0.07));
-  s+=dimH(X(P+0.12),X(BL-0.12),Y(4.32),f1((BL-P-0.24)*1000)+' парная')+dimV(Y(3.88),Y(1.62),X(BL+0.4),'2260')+dimV(Y(1.50),Y(0.12),X(BL+0.4),'1380');
-  s+=dimH(X(BATH.SX+0.25),X(BL-1.12),Y(2.45),f1((BL-1.12-BATH.SX-0.25)*1000));
-  const ch=[0,1.6,2.4,4.0,4.5,BL];for(let i=0;i<ch.length-1;i++)s+=dimH(X(ch[i]),X(ch[i+1]),Y(-2.3),f1((ch[i+1]-ch[i])*1000));
+  s+=dimH(X(Q),X(BL-0.12),Y(4.32),f1((BL-P-0.24)*1000)+' парная')+dimV(Y(3.88),Y(1.62),X(BL+0.4),'2260')+dimV(Y(1.50),Y(0.12),X(BL+0.4),'1380');
+  s+=dimH(X(B.SX+0.25),X(BL-1.12),Y(2.45),f1((BL-1.12-B.SX-0.25)*1000));
+  const D=B.walls.high.ops,ch=[0,D[0].a,D[0].b,D[1].a,D[1].b,BL];for(let i=0;i<ch.length-1;i++)s+=dimH(X(ch[i]),X(ch[i+1]),Y(-2.3),f1((ch[i+1]-ch[i])*1000));
   return svg(`-190 -80 ${(BL+3.8)*100} 720`,s,'План бани');
 }
 function bathSeatSVG(){
-  const BL=BATH.BL,Q=BATH.P+0.12,k=110,W=(BL-0.12-Q)*k;let s='';
+  const B=BATH,BL=B.BL,Q=B.Q,k=110,W=(BL-0.12-Q)*k;let s='';
   const panel=(ox,title,people)=>{const X=u=>ox+(u-Q)*k,Y=w=>(3.95-w)*k+34;let r='';
     r+=R(X(Q),Y(3.88),W,(3.88-1.62)*k,'thin');
     r+=R(X(BL-0.72),Y(3.86),0.6*k,2.21*k,'wood')+R(X(BL-1.12),Y(3.86),0.4*k,2.21*k,'furn');
-    r+=R(X(BATH.SX-0.25),Y(BATH.SZ+0.225),0.5*k,0.45*k,'stove')+L(X(BATH.SX+0.47),Y(3.70),X(BATH.SX+0.47),Y(2.90),'ln')+L(X(Q+0.12),Y(2.90),X(BATH.SX+0.47),Y(2.90),'ln');
-    r+=R(X(3.35),Y(1.62)-3,0.6*k,6,'cut')+T(X(3.65),Y(1.62)+16,'дверь','sm');
+    if(B.eco)r+=R(X(Q+1.08),Y(2.0),(BL-1.17-Q-1.08)*k,0.35*k,'furn')+T(X((Q+1.08+BL-1.17)/2),Y(1.82)+4,'тазы','sm');
+    r+=R(X(B.SX-0.25),Y(B.SZ+0.225),0.5*k,0.45*k,'stove')+L(X(B.SX+0.47),Y(3.70),X(B.SX+0.47),Y(2.90),'ln')+L(X(Q+0.12),Y(2.90),X(B.SX+0.47),Y(2.90),'ln');
+    r+=R(X(Q+0.43),Y(1.62)-3,0.6*k,6,'cut')+T(X(Q+0.73),Y(1.62)+16,'дверь','sm');
     for(const p of people){if(p.t==='s')r+=`<circle cx="${X(p.u)}" cy="${Y(p.w)}" r="16" class="metal" opacity=".85"/>`;
       if(p.t==='l')r+=`<rect x="${X(p.u)-15}" y="${Y(p.w)}" width="30" height="${1.85*k}" rx="15" class="metal" opacity=".85"/>`;
       if(p.t==='st')r+=`<circle cx="${X(p.u)}" cy="${Y(p.w)}" r="18" class="fire" opacity=".9"/>`;}
     r+=T(ox+W/2,16,title,'lbl','middle');return r;};
+  const ox2=W+44;
   s+=panel(10,'Вариант 1: сидят 5',[{t:'s',u:BL-0.42,w:1.95},{t:'s',u:BL-0.42,w:2.5},{t:'s',u:BL-0.42,w:3.05},{t:'s',u:BL-0.42,w:3.6},{t:'s',u:BL-0.92,w:2.75}]);
-  s+=panel(370,'Вариант 2: лежит, 3 сидят, парит',[{t:'l',u:BL-0.42,w:3.7},{t:'s',u:BL-0.92,w:1.95},{t:'s',u:BL-0.92,w:2.6},{t:'s',u:BL-0.92,w:3.25},{t:'st',u:4.35,w:2.55}]);
+  s+=panel(ox2,'Вариант 2: лежит, 3 сидят, парит',[{t:'l',u:BL-0.42,w:3.7},{t:'s',u:BL-0.92,w:1.95},{t:'s',u:BL-0.92,w:2.6},{t:'s',u:BL-0.92,w:3.25},{t:'st',u:(B.SX+0.47+BL-1.12)/2,w:2.55}]);
   s+=`<circle cx="30" cy="318" r="9" class="metal"/>`+T(46,322,'сидит','sm','start')+`<circle cx="120" cy="318" r="9" class="fire"/>`+T(136,322,'парит стоя','sm','start')
     +R(230,309,40,18,'metal','rx="9"')+T(278,322,'лежит на верхнем полке 2200','sm','start');
-  return svg('0 0 720 340',s,'Рассадка в парной');
+  return svg(`0 0 ${Math.round(ox2+W+20)} 340`,s,'Рассадка в парной');
 }
 const bathChimTop=()=>yR(BATH.SZ)+ROOF_OFF/COS+1.0;
-function bathSectionSVG(){ // разрез по печи: моечная и парная
-  const X=z=>z*100,Y=y=>(5.6-y)*100,C=BATH.CEIL,SZ=BATH.SZ,CT=bathChimTop();let s='';
+function bathSectionSVG(){ // разрез по печи
+  const B=BATH,X=z=>z*100,Y=y=>(5.6-y)*100,C=B.CEIL,SZ=B.SZ,CT=bathChimTop();let s='';
   s+=`<rect x="${X(-1.4)}" y="${Y(0)}" width="${X(5.3)-X(-1.4)}" height="80" fill="url(#earth)"/>`+L(X(-1.4),Y(0),X(5.3),Y(0),'ground');
   const col=FOUND==='piles'
     ?z=>R(X(z)-3.65,Y(0.14),7.3,Y(-0.75)-Y(0.14),'metal')+R(X(z)-4.45,Y(0.28),8.9,15,'metal')+R(X(z)-10,Y(0.295),20,1.5,'stove')
     :z=>{let r=R(X(z-0.4),Y(-0.2),80,20,'grav');for(const [y0,y1] of [[-0.2,0.0],[0.0,0.2]]){r+=R(X(z-0.33),Y(y1),13,20,'tire','rx="5"')+R(X(z+0.2),Y(y1),13,20,'tire','rx="5"')+R(X(z-0.2),Y(y1),40,20,'grav');}return r+R(X(z-0.22),Y(0.29),44,9,'conc');};
   for(const z of [0.04,2.0,3.3,3.96])s+=col(z);
   for(const z of [0.04,2.0,3.96])s+=R(X(z-0.04),Y(0.51),8,21,'wood2');
-  s+=`<polyline points="${X(0.12)},${Y(0.58)} ${X(1.0)},${Y(0.55)} ${X(3.88)},${Y(0.63)}" class="roof" style="stroke-width:2.5"/>`;
-  for(let z=0.15;z<3.88;z+=0.1)s+=R(X(z),Y(0.75),8,3,'wood');
-  s+=T(X(2.3),Y(0.45),'поддон из С8 с уклоном к трапу','sm');
+  const w0=B.eco?1.62:0.12;
+  if(B.eco)s+=R(X(0.04),Y(0.71),X(1.50)-X(0.04),20,'ins')+R(X(0),Y(0.75),150,3,'wood');
+  s+=`<polyline points="${X(w0)},${Y(0.58)} ${X(w0+0.88)},${Y(0.55)} ${X(3.88)},${Y(0.63)}" class="roof" style="stroke-width:2.5"/>`;
+  for(let z=w0+0.03;z<3.88;z+=0.1)s+=R(X(z),Y(0.75),8,3,'wood');
+  s+=T(X(2.6),Y(0.45),'поддон из С8 с уклоном к трапу','sm');
   for(const [z0,top] of [[0,TOPF],[3.88,TOPB]])s+=R(X(z0),Y(top),12,Y(0.79)-Y(top),'ins')+R(X(z0),Y(0.79),12,4,'wood2');
   s+=R(X(1.50),Y(TOPF-S*1.56),12,Y(0.75)-Y(TOPF-S*1.56),'part');
   s+=R(X(1.62),Y(FL+C+0.18),X(3.88)-X(1.62),15,'ins')+R(X(1.62),Y(FL+C+0.03),X(3.88)-X(1.62),3,'wood');
@@ -939,46 +990,48 @@ function bathSectionSVG(){ // разрез по печи: моечная и па
   const fm=v=>(v>=0?'+':'')+v.toFixed(3).replace('.',',');
   const lvl=(y,t)=>{const x=X(-1.0);return `<path d="M${x-7} ${Y(y)-10} L${x+7} ${Y(y)-10} L${x} ${Y(y)} Z" class="dot"/>`+L(x-60,Y(y),x+12,Y(y),'ln')+T(x-12,Y(y)-5,t,'','end')};
   s+=lvl(0,'±0,000')+lvl(FL,fm(FL))+lvl(FL+C,fm(FL+C))+lvl(TOPF,fm(TOPF))+lvl(CT,fm(CT));
-  s+=T(X(0.8),Y(2.2),'моечная','lbl')+T(X(2.4),Y(2.6),'парная','lbl');
+  s+=T(X(0.8),Y(2.2),B.eco?'предбанник':'моечная','lbl')+T(X(2.4),Y(2.6),'парная','lbl');
   s+=dimV(Y(FL+C),Y(FL),X(2.0),f1(C*1000));
   const ld=leadF(X,Y,X(5.15));
   s+=ld(2.9,FL+C+0.1,4.3,['Потолок парной на '+f1(C*1000)+': вагонка, зазор,','фольга, Изба 150, балки 40×120']);
   s+=ld(2.2,FL+1.0,3.4,['Полки у правой стены, за печью по разрезу:','верхний 600 на 1,0 м, нижний 400 на 0,5 м']);
-  s+=ld(SZ,FL+1.6,2.5,['Печь в дальнем углу, бак на трубе,','камни 60 кг, топка из предбанника']);
-  s+=ld(3.94,2.0,1.8,['Стена парной: вагонка, зазор 20,','фольга, Изба Стандарт 100, OSB']);
-  s+=ld(1.0,0.6,0.9,['Протекающий пол: доска с зазором 5 мм,','поддон из С8, трап, дренаж']);
+  s+=ld(SZ,FL+1.6,2.5,B.eco?['Печь своими руками, бак на трубе,','камни 40 кг, топка из предбанника']:['Печь в дальнем углу, бак на трубе,','камни 60 кг, топка из предбанника']);
+  s+=ld(3.94,2.0,1.8,B.eco?['Стена парной: вагонка, зазор 20, фольга,','Изба Лайт 100, ветрозащита, горбыль']:['Стена парной: вагонка, зазор 20,','фольга, Изба Стандарт 100, OSB']);
+  s+=ld(B.eco?2.6:1.0,0.6,0.9,['Протекающий пол: доска с зазором 5 мм,','поддон из С8, трап, дренаж']);
   return svg('-190 -10 1180 640',s,'Разрез бани');
 }
 function bathPilesSVG(){
-  const BL=BATH.BL,X=x=>x*100,Y=z=>(4-z)*100;let s='';
+  const B=BATH,BL=B.BL,X=x=>x*100,Y=z=>(4-z)*100;let s='';
   for(const z of [0.04,2.0,3.96])s+=R(X(0),Y(z+0.04),BL*100,8,'wood2');
   for(const x of rafGrid(BL))s+=L(X(x),Y(3.96),X(x),Y(0.04),'dash');
   const tire=FOUND==='piles'?(x,z)=>`<rect x="${X(x)-10}" y="${Y(z)-10}" width="20" height="20" class="metal" opacity=".55"/><circle cx="${X(x)}" cy="${Y(z)}" r="5" class="stove"/>`
     :(x,z)=>`<circle cx="${X(x)}" cy="${Y(z)}" r="31" class="tire" opacity=".85"/><circle cx="${X(x)}" cy="${Y(z)}" r="19" class="grav"/>`;
-  for(const [u,w] of BATH.supports.concat(BATH.stoveSup,BATH.porch.sup))s+=tire(u,w);
-  s+=T(X(3.41),Y(3.3)+50,'под печь','sm');
-  const xs=[0.1,2.0,4.0,5.9];for(let i=0;i<3;i++)s+=dimH(X(xs[i]),X(xs[i+1]),-45,f1((xs[i+1]-xs[i])*1000));
+  for(const [u,w] of B.supports.concat(B.stoveSup,B.porch.sup))s+=tire(u,w);
+  s+=T(X(B.SX+0.04),Y(3.3)+50,'под печь','sm');
+  const xs=B.px;for(let i=0;i<3;i++)s+=dimH(X(xs[i]),X(xs[i+1]),-45,f1((xs[i+1]-xs[i])*1000));
   s+=dimH(X(0),X(BL),-72,f1(BL*1000))+dimV(Y(4),Y(0),-72,'4000');
   return svg(`-105 -100 ${(BL+1.6)*100} 660`,s,'Опоры бани');
 }
 function bathWallSVG(){
-  const BL=BATH.BL,X=u=>u*100,Y=v=>(3.45-v)*100;let s='';
-  for(const m of BATH.FR.high){const c=m.t==='header'?'hdr':(m.t==='plate'?'wood2':'wood');s+=R(X(m.u0),Y(m.v1),(m.u1-m.u0)*100,(m.v1-m.v0)*100,c);}
-  for(const o of BATH.walls.high.ops)s+=T(X((o.a+o.b)/2),Y((o.bot+o.top)/2)+4,o.id,'lbl');
+  const B=BATH,BL=B.BL,X=u=>u*100,Y=v=>(3.45-v)*100;let s='';
+  for(const m of B.FR.high){const c=m.t==='header'?'hdr':(m.t==='plate'?'wood2':'wood');s+=R(X(m.u0),Y(m.v1),(m.u1-m.u0)*100,(m.v1-m.v0)*100,c);}
+  for(const o of B.walls.high.ops)s+=T(X((o.a+o.b)/2),Y((o.bot+o.top)/2)+4,o.id,'lbl');
+  if(B.eco){const d=B.walls.high.ops[0].a-0.1;s+=`<path d="M${X(0.12)} ${Y(0.08)} L${X(d/2)} ${Y(2.6)} L${X(d)} ${Y(0.08)}" class="roof" style="fill:none;stroke-width:5"/>`
+    +T(X(d/2),Y(2.75),'укосины 40×120 вместо OSB','sm');}
   s+=dimH(X(0),X(BL),Y(-0.28),f1(BL*1000))+dimV(Y(3.35),Y(0),-30,'3350');
   return svg(`-70 -50 ${BL*100+160} 440`,s,'Каркас фасада бани');
 }
 function bathCommsSVG(){
-  const BL=BATH.BL,k=100,X=x=>x*k,Y=z=>(4-z)*k;let s=bathWallsSVG(X,Y,k);
+  const B=BATH,BL=B.BL,Q=B.Q,k=100,X=x=>x*k,Y=z=>(4-z)*k;let s=bathWallsSVG(X,Y,k);
   const g=(x,y,t,a='start')=>T(x,y,t,'elt',a);
   const lamp=(x,z,t)=>{const cx=X(x),cy=Y(z);return `<circle cx="${cx}" cy="${cy}" r="10" class="elc"/><path d="M${cx-7} ${cy-7}L${cx+7} ${cy+7}M${cx+7} ${cy-7}L${cx-7} ${cy+7}" class="elc"/>`+g(cx+13,cy-8,t);};
   const sl=(x,z,t,a='start')=>`<circle cx="${X(x)}" cy="${Y(z)}" r="8" class="plc"/>`+T(X(x)+(a==='end'?-12:12),Y(z)+4,t,'plt',a);
   s+=R(X(0.3),Y(0.18),35,9,'elc')+T(X(0.47),Y(0.18)+22,'ЩР + УЗО','elt','middle');
   s+=`<path d="M${X(-0.95)} ${Y(0.4)} H${X(-0.07)}" class="elc" style="fill:none;stroke-dasharray:6 3"/>`+g(X(-0.95),Y(0.4)-8,'кабель от дома','start');
-  s+=lamp(1.2,2.6,'свет')+lamp(3.5,0.8,'IP54')+lamp(4.2,2.3,'IP54, 120 °C');
+  s+=lamp(1.0,2.6,'свет')+lamp(Q+0.6,0.8,B.eco?'свет':'IP54')+lamp((Q+BL-1.12)/2,2.3,'IP54, 120 °C');
   s+=`<path d="M${X(0.8)} ${Y(0.2)} A7 7 0 0 1 ${X(0.94)} ${Y(0.2)}Z" class="elc"/>`+g(X(0.97),Y(0.2)+4,'розетка');
-  s+=sl(4.5,1.0,'трап → дренаж','end')+sl(3.1,2.9,'приток у печи','start')+sl(BL-0.3,1.75,'вытяжка вверху','end');
-  s+=T(X(1.4),Y(1.4),'Предбанник','room');
+  s+=sl(B.trap[0]+0.1,B.trap[1]+0.1,'трап → дренаж','end')+sl(B.SX-0.27,2.9,'приток у печи','start')+sl(BL-0.3,1.75,'вытяжка вверху','end');
+  s+=T(X(B.eco?2.0:1.4),Y(B.eco?0.75:1.4),'Предбанник','room');
   return svg(`-190 -80 ${(BL+3.8)*100} 560`,s,'Электрика и вентиляция бани');
 }
 function renderBath(){
@@ -1419,7 +1472,7 @@ function renderAllSVG(){
 function renderLayers(){
   const C={board:'var(--pine-soft)',gap:'var(--surface)',memb:'var(--blue)',osb:'var(--wool)',wool:'#C9B37A',vap:'var(--muted)',metal:'var(--ink)'};
   const A=OBJ==='bath'?[
-    {t:'Стена парной',d:['парная','улица'],l:[['Вагонка осина 14','board',14],['Зазор на рейке 20','gap',20],['Фольгированная пароизоляция','vap',2],['Каркас 40×120 + Изба Стандарт 100','wool',120],['OSB-3','osb',9],['Мембрана A, фасад','memb',30]],tot:'фольгой внутрь, стыки на фольгированный скотч'},
+    {t:'Стена парной',d:['парная','улица'],l:BV==='eco'?[['Вагонка осина 14','board',14],['Зазор на рейке 20','gap',20],['Фольга на крафт-бумаге','vap',2],['Каркас 40×120 + Изба Лайт 100','wool',120],['Ветрозащита','memb',2],['Горбыль внахлёст','board',25]]:[['Вагонка осина 14','board',14],['Зазор на рейке 20','gap',20],['Фольгированная пароизоляция','vap',2],['Каркас 40×120 + Изба Стандарт 100','wool',120],['OSB-3','osb',9],['Мембрана A, фасад','memb',30]],tot:'фольгой внутрь, стыки на фольгированный скотч'},
     {t:'Потолок парной',d:['парная','чердак'],l:[['Вагонка осина 14','board',14],['Зазор 20','gap',20],['Фольга','vap',2],['Балки 40×120 + Изба 150','wool',150]],tot:'потолок на 2,2 м: парная быстрее прогревается'},
     {t:'Пол моечной и парной',d:['пол','земля'],l:[['Доска 30 с зазором 5 мм','board',30],['Лаги 40×210, проветриваемый зазор','gap',150],['Поддон из профнастила С8 с уклоном к трапу','metal',8],['Подполье, вентиляция','gap',60]],tot:'протекающий пол: вода уходит в трап, доски сохнут'}
   ]:[
@@ -1658,8 +1711,53 @@ const EST_B=[
   ['bx3','Фасад: доска 2700×30×210, мембрана, краска','',1,'компл',32000],['bx4','Пропитка для предбанника','',1,'банка',1500],
   ['bx5','Крыльцо: брус, доски, 2 опоры','',1,'компл',3200]]}
 ];
+// Эконом 5×4: без моечной, без OSB, печь своими руками. Цель: всё вместе с резервом до 150 тыс.
+const EST_E=[
+ {st:1,id:'zf',v:'tires',name:'Баня: фундамент из шин, 14 столбов',items:[
+  ['zf1','Шины б/у по 2 на столб','12 под баню и 2 под печь',28,'шт',0,2],['zf2','Бетонный бой, битый кирпич на засыпку','',1,'компл',0,2],
+  ['zf3','Щебень 20–40','',1,'т',2000],['zf4','Цемент М500','',4,'меш',450],['zf5','Рубероид','',1,'рул',600],['zf6','Анкеры, перфолента','',1,'компл',600]]},
+ {st:1,id:'zp',v:'piles',name:'Баня: винтовые сваи 73×2500',items:[
+  ['zp1','Свая 73×2500, лопасть 200','12 под баню и 2 под печь',14,'шт',1820,1],['zp2','Труба НКТ 89 на стаканы','',3,'м',580,1],['zp3','Обрезь листа на пластины','',20,'кг',60],
+  ['zp4','Болты М12','',14,'шт',50],['zp5','Электроды, диски, цемент, мастика','',1,'компл',2200],['zp6','Рубероид','',1,'рул',600],['zp7','Доставка свай','',1,'рейс',1500]]},
+ {st:1,id:'zl',name:'Баня: пиломатериал и горбыль с одной пилорамы',items:[
+  ['zl1','Доска 3400×40×120','стойки, обвязка, перегородки, укосины, балки потолка парной, каркас полков',72,'шт',150,1],
+  ['zl2','Доска 2700×40×210','обвязка, лаги, стропила, прогон, перемычки',60,'шт',150,1],
+  ['zl3','Доска 2700×30×210','чистовой пол, двери',45,'шт',140,1],
+  ['zl4','Горбыль деловой','фасад внахлёст, обрешётка кровли, черновой пол предбанника',3.5,'м³',2000,1],
+  ['zl5','Доставка одной машиной','',1,'рейс',2500,1]]},
+ {st:1,id:'zo',name:'Баня: кровля, пол, плёнки',items:[
+  ['zo1','Профнастил С8 некондиция 1,2×1,5','кровля 20 + поддон под пол парной 5',25,'лист',410,1],
+  ['zo2','Бутиловая лента, саморезы, планки','',1,'компл',2700],['zo3','Изба Лайт 100 мм','пол предбанника, 1 слой',3,'уп',390,1],
+  ['zo4','Ветрозащита на стены под горбыль, пароизоляция, лента','',1,'компл',3000]]},
+ {st:1,id:'zw',name:'Баня: окна и двери',items:[
+  ['zw1','Окно б/у ~1000×1000','предбанник; при замене окон старые часто отдают даром',1,'шт',500,1],['zw2','Окошко ПВХ б/у ~500×500, открывается','предбанник',1,'шт',500,1],
+  ['zw3','Окошко 400×400: стеклопакет из старого окна в своей раме','парная, открывается',1,'шт',500],['zw4','Монтажная пена','',2,'балл',450],
+  ['zw5','Входная дверь своими руками','',1,'компл',1500],['zw6','Дверь в парную своими руками','глухая, с уплотнителем',1,'компл',800]]},
+ {st:1,id:'zk',name:'Баня: крепёж и защита',items:[['zk1','Гвозди, перфопластины, уголки','',1,'компл',3500],['zk2','Антисептик-концентрат','',1,'кан',1500]]},
+ {st:2,id:'zu',name:'Баня: утепление',items:[
+  ['zu1','Изба Лайт 100 мм','стены',11,'уп',390,1],['zu2','Изба Лайт 100 мм','крыша над предбанником, 1 слой',3,'уп',390,1],
+  ['zu3','Изба Лайт 100 + 50 мм','потолок парной, 150 мм',3,'уп',390,1],
+  ['zu4','Фольга на крафт-бумаге, рулон 30 м²','парная: стены и потолок, фольгой внутрь',2,'рул',1200],['zu5','Фольгированный скотч','',1,'шт',400],
+  ['zu6','Пароизоляция СПАНЭЛ B','предбанник',1,'рул',700,1]]},
+ {st:2,id:'zh',name:'Баня: печь своими руками, бак, дымоход',items:[
+  ['zh1','Печь сварить самим: труба 530 или лист 6–8 мм, выносная топка','металл со скупки, дверца и колосник чугунные',1,'компл',5000,1],
+  ['zh2','Бак из нержавейки б/у на трубу','горячая вода для помывки',1,'шт',2000,1],['zh3','Камни габбро-диабаз, 20 кг','',2,'короб',1000],
+  ['zh4','Сэндвич 115/200 нержавейка, 1 м','через потолок и кровлю, только заводской',2,'шт',2200],['zh5','Труба одностенная 1 м','',1,'шт',600],
+  ['zh6','Проходные узлы своими руками','лист нержавейки, базальтовый картон',1,'компл',1500],['zh7','Кирпич б/у','экран и разделка у топки',200,'шт',0,2],
+  ['zh8','Глина, лист б/у 500×700 перед топкой','',1,'компл',1500],['zh9','Датчик угарного газа, огнетушитель','в предбанник',1,'компл',2500]]},
+ {st:2,id:'zv',name:'Баня: обшивка парной и полки',items:[
+  ['zv1','Вагонка осина, класс C, остатки с Авито','парная: стены и потолок',30,'м²',500,1],['zv2','Доска осина на полки, лавку под тазы и ограждение','каркас из доски 40×120',1,'компл',3500]]},
+ {st:2,id:'zm',name:'Баня: трап, вентиляция, свет',items:[
+  ['zm1','Трап, труба 110 и фитинги','',1,'компл',1000],['zm2','Дренажная яма из бочки или шин','',1,'компл',500],
+  ['zm3','Решётки с задвижками','приток у печи внизу, вытяжка напротив вверху',2,'шт',300],
+  ['zm4','Кабель от дома в гофре в земле','~20 м',20,'м',120],['zm5','Щиток с дифавтоматом','',1,'компл',1500],
+  ['zm6','Светильники: термостойкий в парную, 2 в предбанник','',3,'шт',500],['zm7','Розетка, выключатели снаружи парной','',1,'компл',600]]},
+ {st:3,id:'zx',name:'Баня: отделка',items:[
+  ['zx1','ДВП 2745×1700','предбанник: стены и скат потолка, потом можно заменить на вагонку',9,'лист',400],['zx2','Краска для ДВП','',1,'банка',1500],
+  ['zx3','Антисептик с тоном для горбыля','',1,'кан',2500],['zx4','Стол, лавки, вешалка, крыльцо из остатков','саморезы, петли',1,'компл',1500]]}
+];
 const STN_B={1:'Баня · этап 1 · коробка',2:'Баня · этап 2 · можно париться',3:'Баня · этап 3 · отделка'};
-const curEst=()=>OBJ==='bath'?EST_B:EST;
+const curEst=()=>OBJ==='bath'?(BV==='eco'?EST_E:EST_B):EST;
 
 for(const g of EST)if(g.st>=1&&g.st<=3){g.mod=1;g.ph=['','box','warm','fin'][g.st];}
 const STN={1:'Этап 1 · коробка',2:'Этап 2 · до морозов',3:'Этап 3 · потом, по деньгам',4:'Этап 4 · пристройка модуля 2',5:'Этап 5 · модуль 3, буква Г',6:'Этап 6 · модуль 4, квадрат 8×8',0:'По ситуации'};
@@ -1675,7 +1773,7 @@ const SI=()=>SIZE==='8'?1:0;
 const pickQ=(id,v)=>SIZE==='4'&&Q4[id]!==undefined?Q4[id]:(Array.isArray(v)?v[SI()]:v);
 const pickW=(id,v)=>SIZE==='4'&&W4[id]!==undefined?W4[id]:(Array.isArray(v)?v[SI()]:v);
 const qKey=(id,q)=>(Array.isArray(q)||Q4[id]!==undefined)?id+'@'+SIZE:id;
-const tokOK=(x,f)=>!x||x.split(' ').every(t=>t===f||t===ENT||t===OBJ||t==='s'+SIZE||(t[0]==='g'&&SIZE==='4'&&+MOD>=+t[1])||(t[0]==='n'&&(SIZE!=='4'||+MOD<+t[1])));
+const tokOK=(x,f)=>!x||x.split(' ').every(t=>t===f||t===ENT||t===OBJ||t==='b'+BV||t==='s'+SIZE||(t[0]==='g'&&SIZE==='4'&&+MOD>=+t[1])||(t[0]==='n'&&(SIZE!=='4'||+MOD<+t[1])));
 const vis=(x)=>tokOK(x,FOUND);
 function buildEst(){
   const tbl=document.getElementById('estTable');tbl.querySelectorAll('tbody').forEach(b=>b.remove());
@@ -1752,7 +1850,7 @@ function renderModTable(){
 }
 const tblEl=document.getElementById('estTable');
 tblEl.addEventListener('input',e=>{const t=e.target;if(t.type!=='number')return;
-  const k=t.id[0],id=t.id.slice(2),item=EST.concat(EST_B).flatMap(g=>g.items).find(i=>i[0]===id);if(!item)return;
+  const k=t.id[0],id=t.id.slice(2),item=EST.concat(EST_B,EST_E).flatMap(g=>g.items).find(i=>i[0]===id);if(!item)return;
   const v=t.value===''?0:+t.value;
   if(k==='q'){ST.q[qKey(id,item[3])]=v;t.classList.toggle('changed',v!==pickQ(id,item[3]));}else{ST.p[id]=v;t.classList.toggle('changed',v!==item[5]);}
   calc();save();});
@@ -1764,18 +1862,20 @@ tblEl.addEventListener('change',e=>{const t=e.target;if(t.type!=='checkbox')retu
 document.getElementById('estReset').addEventListener('click',()=>{ST={q:{},p:{},g:{}};try{localStorage.removeItem(KEY)}catch(e){};buildEst();document.getElementById('estSaved').textContent='Исходные цифры восстановлены';});
 
 let sizeDirty=false;
-function applyState(){applyLayout();ENT=(SIZE==='4'&&MOD==='4')?'porch':ENTRY;try{localStorage.setItem('vremyanka-obj',OBJ);localStorage.setItem('vremyanka-found',FOUND);localStorage.setItem('vremyanka-entry',ENTRY);localStorage.setItem('vremyanka-mod',MOD);localStorage.setItem('vremyanka-size',SIZE)}catch(e){}
+function applyState(){applyLayout();ENT=(SIZE==='4'&&MOD==='4')?'porch':ENTRY;try{localStorage.setItem('vremyanka-obj',OBJ);localStorage.setItem('vremyanka-bv',BV);localStorage.setItem('vremyanka-found',FOUND);localStorage.setItem('vremyanka-entry',ENTRY);localStorage.setItem('vremyanka-mod',MOD);localStorage.setItem('vremyanka-size',SIZE)}catch(e){}
   document.querySelectorAll('.fsw button[data-f]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.f===FOUND?'true':'false'));
   document.querySelectorAll('.fsw button[data-e]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.e===ENTRY?'true':'false'));
   document.querySelectorAll('.fsw button[data-m]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===MOD?'true':'false'));
   document.querySelectorAll('.fsw button[data-s]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===SIZE?'true':'false'));
   document.querySelectorAll('.fsw button[data-o]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.o===OBJ?'true':'false'));
-  if(OBJ==='bath'){const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};set('hIn',fmtA(BATH.inner));set('hOut',fmtA(BATH.BL*4));set('hBath',fmtA(BATH.rooms[2].a));document.getElementById('studCount').textContent='баня 6×4, стоек: '+Object.values(BATH.FR).flat().filter(m=>m.t==='stud'||m.t==='jack').length;}
+  document.querySelectorAll('.fsw button[data-bv]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.bv===BV?'true':'false'));
+  if(OBJ==='bath'){const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};set('hIn',fmtA(BATH.inner));set('hOut',fmtA(BATH.BL*4));set('hBath',fmtA(BATH.parA));document.getElementById('studCount').textContent='баня '+BATH.name+', стоек: '+Object.values(BATH.FR).flat().filter(m=>m.t==='stud'||m.t==='jack').length;}
   document.querySelectorAll('[data-v]').forEach(e=>e.hidden=!vis(e.dataset.v));
   renderAllSVG();buildEst();
   if(sizeDirty&&window.__rebuild3D){sizeDirty=false;window.__rebuild3D();}
   else if(window.__state3D)window.__state3D();}
 document.querySelectorAll('.fsw button[data-f]').forEach(b=>b.addEventListener('click',()=>{FOUND=b.dataset.f;applyState();}));
+document.querySelectorAll('.fsw button[data-bv]').forEach(b=>b.addEventListener('click',()=>{if(BV===b.dataset.bv)return;BV=b.dataset.bv;BATH=makeBath(BV);sizeDirty=true;applyState();if(window.__focus3D)window.__focus3D();}));
 document.querySelectorAll('.fsw button[data-o]').forEach(b=>b.addEventListener('click',()=>{if(OBJ===b.dataset.o)return;OBJ=b.dataset.o;applyState();if(window.__focus3D)window.__focus3D();}));
 document.querySelectorAll('.fsw button[data-e]').forEach(b=>b.addEventListener('click',()=>{ENTRY=b.dataset.e;const was=ENT;ENT=(SIZE==='4'&&MOD==='4')?'porch':ENTRY;if(was!==ENT&&LY.modular){}applyState();}));
 document.querySelectorAll('.fsw button[data-m]').forEach(b=>b.addEventListener('click',()=>{if(MOD===b.dataset.m)return;MOD=b.dataset.m;applyLayout();sizeDirty=true;applyState();}));
@@ -2192,10 +2292,10 @@ applyState();
     // каркас
     const place={high:(a,b,y0,y1)=>[a,b,y0,y1,0,0.12],low:(a,b,y0,y1)=>[a,b,y0,y1,3.88,4.0],
       left:(a,b,y0,y1)=>[0,0.12,y0,y1,0.12+a,0.12+b],right:(a,b,y0,y1)=>[BL-0.12,BL,y0,y1,0.12+a,0.12+b],
-      p1:(a,b,y0,y1)=>[P,Q,y0,y1,0.12+a,0.12+b],p2:(a,b,y0,y1)=>[Q+a,Q+b,y0,y1,1.50,1.62]};
+      p1:(a,b,y0,y1)=>[P,Q,y0,y1,B.p1z+a,B.p1z+b],p2:(a,b,y0,y1)=>[B.p2x+a,B.p2x+b,y0,y1,1.50,1.62]};
     for(const k in B.FR)for(const mm of B.FR[k]){
       if(mm.t==='tplate'){const xs=place[k](0,0,0,0),Lp=mm.L/Math.cos(ANG);
-        const b=new THREE.Mesh(new THREE.BoxGeometry(xs[1]-xs[0],0.04,Lp),mat.wood);b.position.set((xs[0]+xs[1])/2,FL+(mm.h0+mm.h1)/2-0.02,0.12+mm.L/2);b.rotation.x=ANG;fr.add(b);continue;}
+        const b=new THREE.Mesh(new THREE.BoxGeometry(xs[1]-xs[0],0.04,Lp),mat.wood);b.position.set((xs[0]+xs[1])/2,FL+(mm.h0+mm.h1)/2-0.02,(k==='p1'?B.p1z:0.12)+mm.L/2);b.rotation.x=ANG;fr.add(b);continue;}
       box(fr,...place[k](mm.u0,mm.u1,FL+mm.v0,FL+mm.v1),mm.t==='header'?mat.woodDark:mat.wood);}
     for(const x of [0.06,P+0.06,BL-0.06])box(fr,x-0.04,x+0.04,FL+0.04,PURL_BOT,PZ-0.06,PZ+0.06,mat.woodDark);
     box(rf,0,BL,PURL_BOT,PURL_TOP,PZ-0.04,PZ+0.04,mat.woodDark);
@@ -2230,21 +2330,25 @@ applyState();
     // интерьер
     const PH=FL+2.4,asp=mat.aspen,F=(x0,x1,h0,h1,z0,z1,m)=>box(it,x0,x1,FL+h0,FL+h1,z0,z1,m);
     box(it,0.12,BL-0.12,FL+0.001,FL+0.003,0.12,3.88,mat.floor);
-    box(it,0.12,P,FL,PH,0.12,0.125,mat.lining);box(it,Q,BL-0.12,FL,PH,0.12,0.125,mat.lining);box(it,0.12,0.125,FL,PH,0.12,3.88,mat.lining);
+    if(B.eco)box(it,0.12,BL-0.12,FL,PH,0.12,0.125,mat.lining);else{box(it,0.12,P,FL,PH,0.12,0.125,mat.lining);box(it,Q,BL-0.12,FL,PH,0.12,0.125,mat.lining);}box(it,0.12,0.125,FL,PH,0.12,3.88,mat.lining);
     box(it,0.12,P,FL,PH,3.875,3.88,mat.lining);box(it,Q,BL-0.12,FL,FL+C,3.875,3.88,asp);
     box(it,BL-0.125,BL-0.12,FL,PH,0.12,1.50,mat.lining);box(it,BL-0.125,BL-0.12,FL,FL+C,1.62,3.88,asp);
-    // П1: дверь в моечную и проём топки
-    box(it,P,Q,FL,PH,0.12,0.40,mat.part);box(it,P,Q,FL+2.21,PH,0.40,1.00,mat.part);box(it,P+0.04,Q-0.04,FL,FL+2.05,0.42,0.98,mat.woodDark);
-    box(it,P,Q,FL,PH,1.00,3.10,mat.part);box(it,P,Q,FL,FL+0.15,3.10,3.55,mat.part);box(it,P,Q,FL+0.75,PH,3.10,3.55,mat.part);box(it,P,Q,FL,PH,3.55,3.88,mat.part);
+    // П1: проём топки (в 6×4 ещё дверь в моечную)
+    if(!B.eco){box(it,P,Q,FL,PH,0.12,0.40,mat.part);box(it,P,Q,FL+2.21,PH,0.40,1.00,mat.part);box(it,P+0.04,Q-0.04,FL,FL+2.05,0.42,0.98,mat.woodDark);}
+    box(it,P,Q,FL,PH,B.eco?1.50:1.00,3.10,mat.part);box(it,P,Q,FL,FL+0.15,3.10,3.55,mat.part);box(it,P,Q,FL+0.75,PH,3.10,3.55,mat.part);box(it,P,Q,FL,PH,3.55,3.88,mat.part);
     // П2: дверь в парную
-    box(it,Q,3.35,FL,PH,1.50,1.62,mat.part);box(it,3.35,3.95,FL+2.21,PH,1.50,1.62,mat.part);box(it,3.37,3.93,FL,FL+2.05,1.54,1.58,mat.woodDark);box(it,3.95,BL-0.12,FL,PH,1.50,1.62,mat.part);
+    {const d0=Q+0.43,d1=Q+1.03;box(it,B.p2x,d0,FL,PH,1.50,1.62,mat.part);box(it,d0,d1,FL+2.21,PH,1.50,1.62,mat.part);box(it,d0+0.02,d1-0.02,FL,FL+2.05,1.54,1.58,mat.woodDark);box(it,d1,BL-0.12,FL,PH,1.50,1.62,mat.part);}
     box(it,Q,BL-0.12,FL+C,FL+C+0.03,1.62,3.88,asp);
     // предбанник: лавка, стол, табуреты, вешалка, дрова
-    F(0.14,0.5,0,0.45,0.2,1.9,mat.wood);F(0.6,1.3,0.72,0.75,0.3,1.8,mat.wood);F(0.9,1.0,0,0.72,1.0,1.1,mat.dark);
-    F(0.79,1.11,0,0.45,1.9,2.22,mat.woodDark);F(1.4,1.72,0,0.45,1.3,1.62,mat.woodDark);F(P-0.06,P-0.02,1.4,1.8,1.2,2.0,mat.woodDark);
-    for(let i=0;i<9;i++){const c=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,0.5,8),mat.woodDark);c.rotation.x=Math.PI/2;c.position.set(0.22+(i%3)*0.17,FL+0.07+Math.floor(i/3)*0.12,3.6);it.add(c);}
-    // моечная
-    F(BL-0.70,BL-0.14,0,0.45,0.2,1.45,asp);F(4.4,4.6,0.002,0.006,0.9,1.1,mat.steel);
+    for(const [u0,u1,w0,w1,,,kind] of B.furn){
+      if(kind==='bench')F(u0,u1,0,0.45,w0,w1,mat.wood);
+      else if(kind==='table'){F(u0,u1,0.72,0.75,w0,w1,mat.wood);F((u0+u1)/2-0.05,(u0+u1)/2+0.05,0,0.72,(w0+w1)/2-0.05,(w0+w1)/2+0.05,mat.dark);}
+      else if(kind==='stool')F(u0,u1,0,0.45,w0,w1,mat.woodDark);
+      else if(kind==='hanger'){if(u1-u0<w1-w0)F(u1-0.04,u1,1.4,1.8,w0,w1,mat.woodDark);else F(u0,u1,1.4,1.8,w1-0.04,w1,mat.woodDark);}
+      else if(kind==='lavka'||kind==='tazy')F(u0,u1,0,0.45,w0,w1,asp);
+      else if(kind==='logs'){const n=Math.max(1,Math.floor((u1-u0)/0.17)),zs=w1-w0>1.1?[w0+0.3,w1-0.3]:[(w0+w1)/2];
+        for(const zc of zs)for(let i=0;i<n*3;i++){const c=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,0.5,8),mat.woodDark);c.rotation.x=Math.PI/2;c.position.set(u0+0.08+(i%n)*0.17,FL+0.07+Math.floor(i/n)*0.12,zc);it.add(c);}}}
+    F(B.trap[0],B.trap[0]+0.2,0.002,0.006,B.trap[1],B.trap[1]+0.2,mat.steel);
     // парная: полки вдоль правой стены
     F(BL-0.72,BL-0.12,0.96,1.0,1.65,3.86,asp);F(BL-1.12,BL-0.72,0.46,0.5,1.65,3.86,asp);
     for(const z of [1.75,2.75,3.76]){F(BL-0.74,BL-0.70,0,0.96,z-0.02,z+0.02,mat.woodDark);F(BL-1.10,BL-1.06,0,0.46,z-0.02,z+0.02,mat.woodDark);}
@@ -2260,7 +2364,7 @@ applyState();
      const cone=new THREE.Mesh(new THREE.ConeGeometry(0.2,0.14,20),mat.steel);cone.position.set(SX,top+0.1,SZ);st.add(cone);}
     // крыльцо
     const PO=B.porch;box(f,PO.u0,PO.u1,0.55,0.69,-1.2,-0.07,mat.woodDark);box(f,PO.u0,PO.u1,0.69,0.72,-1.2,-0.07,mat.wood);
-    for(let i=1;i<=3;i++)box(f,1.4,2.6,0,0.72-i*0.18,-1.2-i*0.28,-1.2-(i-1)*0.28,mat.wood);
+    for(let i=1;i<=3;i++)box(f,PO.steps[0],PO.steps[1],0,0.72-i*0.18,-1.2-i*0.28,-1.2-(i-1)*0.28,mat.wood);
   }
   window.__state3D=()=>{if(!H.gColT)return;const p=FOUND==='piles',t=ENT==='terrace';
     H.gColT.visible=!p;H.gColP.visible=p;H.gPorch.visible=!t;H.gPorchT.visible=!t&&!p;H.gPorchP.visible=!t&&p;
