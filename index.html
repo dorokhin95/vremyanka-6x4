@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Каркасная времянка: 4×4 с пристройкой модулей до 8×8, 6×4 или 8,1×4. 3D-модель, чертежи, смета по этапам.">
+<meta name="description" content="Каркасная времянка и баня: модульный дом 4×4 до 8×8, баня 4×4. 3D-модель, чертежи, смета по этапам.">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Времянка 6×4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -252,20 +252,21 @@ html{scroll-behavior:smooth}
 <header class="hero">
   <div class="hero-lead">
     <div class="eyebrow">Каркас · круглый год · строим сами · Екатеринбург</div>
-    <h1>Времянка <span class="szName">6×4</span></h1>
-    <p>Вход посередине: слева спальня с панорамным окном, прямо санузел, справа кухня-гостиная с печью-камином. Крыша односкатная, 15°.</p>
+    <h1><span data-v="house">Времянка <span class="szName">6×4</span></span><span data-v="bath" hidden>Баня 4×4</span></h1>
+    <p data-v="house">Вход посередине: слева спальня с панорамным окном, прямо санузел, справа кухня-гостиная с печью-камином. Крыша односкатная, 15°.</p>
+    <p data-v="bath" hidden>Каркасная баня 4×4 в 8 м от дома. Парная 2,46×1,81 м: пятеро сидят, или один лежит, трое сидят и один парит стоя. Моечная с трапом и предбанник на пятерых за столом. Печь с выносной топкой из предбанника.</p>
   </div>
   <div class="facts" aria-label="Ключевые цифры">
     <div class="fact hot"><b id="hS1">—</b><span>этап 1: коробка</span></div>
     <div class="fact hot"><b id="hS12">—</b><span>этапы 1 и 2: можно зимовать</span></div>
     <div class="fact"><b id="hAll">—</b><span>всё с резервом 10%</span></div>
-    <div class="fact"><b id="hIn">—</b><span>площадь внутри · по каркасу <span id="hOut">—</span> · санузел <span id="hBath">—</span></span></div>
+    <div class="fact"><b id="hIn">—</b><span>площадь внутри · по каркасу <span id="hOut">—</span> · <span data-v="house">санузел</span><span data-v="bath" hidden>парная</span> <span id="hBath">—</span></span></div>
   </div>
 </header>
 
 <nav class="toc" aria-label="Разделы">
   <a href="#model">3D</a><a href="#plan">Чертежи</a><a href="#layers">Слои</a><a href="#estimate">Смета</a><a href="#tips">Советы по этапам</a>
-  <div class="fsw" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
+  <div class="fsw" role="group" aria-label="Объект"><span>Объект</span><button type="button" data-o="house" aria-pressed="true">дом</button><button type="button" data-o="bath" aria-pressed="false">баня</button></div><div class="fsw" data-v="house" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="house s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" data-v="house" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
 </nav>
 
 <section class="sec" id="model">
@@ -277,7 +278,7 @@ html{scroll-behavior:smooth}
         <button type="button" id="m-frame" aria-pressed="false">Каркас</button>
         <button type="button" id="m-int" aria-pressed="false">Внутри</button>
       </div>
-      <div class="fsw" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
+      <div class="fsw" role="group" aria-label="Объект"><span>Объект</span><button type="button" data-o="house" aria-pressed="true">дом</button><button type="button" data-o="bath" aria-pressed="false">баня</button></div><div class="fsw" data-v="house" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="house s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" data-v="house" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
     </div>
     <div class="vfoot">
       <div class="swatches" role="group" aria-label="Цвет фасада"><span>Фасад</span>
@@ -289,7 +290,8 @@ html{scroll-behavior:smooth}
       <div class="hint" id="vhint">ЛКМ — вращать · колесо — масштаб</div>
     </div>
   </div>
-  <div class="specline">
+  <div class="specline" data-v="bath" hidden><span class="chip">баня 4×4, тот же каркас, что модуль дома</span><span class="chip">парная 2,46×1,81 · потолок 2,2 м</span><span class="chip">полки 600 на 1,0 м и 400 на 0,5 м</span><span class="chip">печь на 8–12 м³, бак 30 л</span><span class="chip">8 м от дома</span></div>
+  <div class="specline" data-v="house">
     <span class="chip" id="szChip">6,0 × 4,0 м по каркасу</span>
     <span class="chip">скат 15°, свесы 600 / 500 / 300</span>
     <span class="chip">стены 3,35 и 2,30 м</span>
@@ -324,9 +326,9 @@ html{scroll-behavior:smooth}
     </figure>
     <figure class="sheet">
       <div class="paper" id="svgStove"></div>
-      <div class="stamp"><div class="no">Лист 6</div><div>Печной угол, вид сверху</div><div class="sc">М 1:20</div></div>
+      <div class="stamp"><div class="no">Лист 6</div><div><span data-v="house">Печной угол, вид сверху</span><span data-v="bath" hidden>Парная: 2 варианта рассадки</span></div><div class="sc">М 1:20</div></div>
     </figure>
-    <div class="card">
+    <div class="card" data-v="house">
       <h3>Группы в щитке</h3>
       <div class="groups">
         <div><b>гр.1</b><span>Свет, 6 точек и фонарь над входом</span><span>3×1,5 · 10 А</span></div>
@@ -361,13 +363,15 @@ html{scroll-behavior:smooth}
     <div class="grand"><b id="tGrand">—</b><span>итого с резервом 10%</span></div>
   </div>
   <div class="vcompare"><span>Этап 1 с шинами: <b id="vT">—</b></span><span>со сваями: <b id="vP">—</b></span><span class="muted">разница <b id="vD">—</b></span></div>
+  <h3 data-v="house s4" hidden>Сводка по модулям, тыс. ₽: шины / сваи</h3>
+  <div class="tablebox" data-v="house s4" hidden><div id="modTable"></div></div>
   <div class="tablebox">
     <table class="est" id="estTable">
       <thead><tr><th>Позиция</th><th class="num">Кол-во</th><th>Ед.</th><th class="num">Цена, ₽</th><th class="num">Сумма</th></tr></thead>
     </table>
   </div>
   <div class="est-actions">
-    <div class="fsw" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
+    <div class="fsw" role="group" aria-label="Объект"><span>Объект</span><button type="button" data-o="house" aria-pressed="true">дом</button><button type="button" data-o="bath" aria-pressed="false">баня</button></div><div class="fsw" data-v="house" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="house s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" data-v="house" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
     <button type="button" class="btn" id="estReset">Вернуть исходные цифры</button>
     <span class="muted" id="estSaved">Цифры можно править, итог пересчитается.</span>
   </div>
@@ -376,7 +380,7 @@ html{scroll-behavior:smooth}
 <section class="sec" id="tips">
   <h2>Советы по этапам</h2>
   <div class="tips">
-    <div class="card">
+    <div class="card" data-v="house">
       <div class="tip-head"><span class="n">Этап 1 · коробка</span><b id="cS1">—</b></div>
       <h4>До стройки</h4>
       <ul>
@@ -410,7 +414,7 @@ html{scroll-behavior:smooth}
         <li>Кровля: мембрана A, контррейка, обрешётка с шагом 350. С8 укладывается в 4 ряда с нахлёстом 200 на бутиловой ленте.</li>
       </ul>
     </div>
-    <div class="card">
+    <div class="card" data-v="house">
       <div class="tip-head"><span class="n">Этап 2 · до морозов</span><b id="cS2">—</b></div>
       <h4>Проводка, до пароизоляции</h4>
       <ul>
@@ -437,7 +441,7 @@ html{scroll-behavior:smooth}
         <li data-v="s4" hidden>В 4×4 печь стоит у входа, а кровать в дальнем углу вдоль панорамного окна. На ночь закрывайте окно плотной шторой, а подушки кладите к задней стене.</li>
       </ul>
     </div>
-    <div class="card">
+    <div class="card" data-v="house">
       <div class="tip-head"><span class="n">Этап 3 · потом</span><b id="cS3">—</b></div>
       <ul>
         <li>Изнутри обшейте ДВП, крепёж с шагом 150 мм. Возле печи вместо ДВП базальтовый картон.</li>
@@ -453,7 +457,36 @@ html{scroll-behavior:smooth}
         <li>Вода: бак с насосом. Гильзы в полу уже стоят, под домом трубы сведите в утеплённый короб с греющим кабелем.</li>
       </ul>
     </div>
-    <div class="card" data-v="s4">
+        <div class="card" data-v="bath" hidden>
+      <div class="tip-head"><span class="n">Баня · этап 1</span><b>коробка</b></div>
+      <ul>
+        <li>Фундамент такой же, как у дома, плюс 2 отдельные опоры под печь и камни.</li>
+        <li>Пол в предбаннике утеплённый. В моечной и парной пол протекающий: доски с зазором 5 мм, под ними поддон из обрезков С8 с уклоном 2–3% к трапу, подполье с продухами.</li>
+        <li>Перегородка между предбанником и парной стоит под прогоном. В ней 2 двери и проём под топку, вокруг топки кирпичная разделка шириной 250 мм.</li>
+        <li>Двери в парную глухие, деревянные, с уплотнителем. Открываются наружу.</li>
+      </ul>
+    </div>
+    <div class="card" data-v="bath" hidden>
+      <div class="tip-head"><span class="n">Баня · этап 2</span><b>можно париться</b></div>
+      <ul>
+        <li>В стенах парной: Изба Стандарт 100, фольга внутрь, стыки на фольгированный скотч, рейка 20 мм для зазора, вагонка из осины.</li>
+        <li>Потолок парной на высоте 2,2 м, утеплитель 150 мм. Так парная быстрее прогревается и тратит меньше дров.</li>
+        <li>Печь б/у с выносной топкой на 8–12 м³. Проверьте швы и колосник. Вокруг печи поставьте кирпичный экран и деревянное ограждение перед полками.</li>
+        <li>Полки из осины, без гвоздей сверху: крепёж только снизу. Верхний 600 мм на высоте 1,0 м, нижний 400 мм на 0,5 м. Не красить и не лакировать.</li>
+        <li>Вентиляция: приток у печи внизу, вытяжка по диагонали под потолком, обе с задвижками.</li>
+        <li>Свет только через УЗО. В парной светильник, рассчитанный на 120 °C, выключатели снаружи. Датчик угарного газа в предбаннике.</li>
+      </ul>
+    </div>
+    <div class="card" data-v="bath" hidden>
+      <div class="tip-head"><span class="n">Баня · этап 3</span><b>отделка</b></div>
+      <ul>
+        <li>Предбанник и моечную обшейте недорогой вагонкой из хвои, предбанник покройте пропиткой.</li>
+        <li>Стол 1,4×0,7, лавку на троих и 2 табурета соберите из доски 40×210.</li>
+        <li>Фасад той же доской с нащельником, что у дома, тогда баня и дом будут смотреться как один комплект.</li>
+        <li>От бани до дома 8 м, от бани до забора соседа не меньше 3 м по нормам застройки.</li>
+      </ul>
+    </div>
+<div class="card" data-v="house s4">
       <div class="tip-head"><span class="n">Модульный дом</span><b>4×4 → 8×8</b></div>
       <h4>Сразу в модуле 1</h4>
       <ul>
@@ -789,6 +822,175 @@ function wallModSVG(){
   const Ln=ms.length*4;
   s+=dimV(Y(3.35),Y(0),-30,'3350');
   return svg(`-70 -50 ${Ln*100+120} 440`,s,'Каркас высокой стены');
+}
+
+/* ===================== Баня 4×4 ===================== */
+// Локальные координаты как у модуля: u вдоль фасада, w вглубь от высокой стены. На участке баня стоит на 8 м правее дома.
+let OBJ='house';try{const o=localStorage.getItem('vremyanka-obj');if(o==='house'||o==='bath')OBJ=o;}catch(e){}
+const BATH=(()=>{
+  const B={SX:2.1,SZ:2.35,DC:3.3,
+    walls:{high:{ops:[{id:'Д1',a:2.85,b:3.75,bot:0.04,top:2.21,kind:'door'},{id:'О1',a:0.6,b:1.6,bot:0.95,top:1.95,kind:'win'}]},
+      low:{ops:[]},left:{ops:[{id:'О2',a:2.58,b:3.08,bot:1.4,top:1.9,kind:'win'}]},right:{ops:[]}},
+    parts:[{x0:0.12,x1:3.88,z0:1.95,z1:2.07,gaps:[[0.35,0.95],[2.65,3.25]]},{x0:1.30,x1:1.42,z0:2.07,z1:3.88}],
+    rooms:[{n:'Предбанник',u:2.0,w:1.0,a:3.76*1.83},{n:'Моечная',u:0.71,w:2.75,a:1.18*1.81},{n:'Парная',u:2.65,w:2.45,a:2.46*1.81}],
+    supports:[]};
+  for(const u of [0.1,2.0,3.9])for(const w of [0.04,2.0,3.96])B.supports.push([u,w]);
+  B.stoveSup=[[1.85,2.5],[2.35,2.5]];
+  B.inner=B.rooms.reduce((a,r)=>a+r.a,0);
+  const H={high:()=>HF,low:()=>HB,left:u=>HF-S*(0.12+u),right:u=>HF-S*(0.12+u)};
+  B.FR={};
+  for(const k of ['high','low','left','right']){const Lw=k==='high'||k==='low'?4:3.76;
+    B.FR[k]=frameMembers(Lw,B.walls[k].ops.map(o=>({a:o.a,b:o.b,bot:o.bot,top:o.top})),H[k]);}
+  B.FR.p1=frameMembers(3.76,[{a:0.23,b:0.83,bot:0.04,top:2.21},{a:1.83,b:2.23,bot:0.15,top:0.75},{a:2.53,b:3.13,bot:0.04,top:2.21}],()=>PURL_BOT-FL);
+  B.FR.p2=frameMembers(1.81,[],u=>HF-S*(2.07+u));
+  return B;})();
+
+function bathWallsSVG(X,Y,k){let s='';const ext=[
+  {r:[-OUT,4+OUT,-OUT,0.12],ax:'x',ops:BATH.walls.high.ops,side:'high'},{r:[-OUT,4+OUT,3.88,4+OUT],ax:'x',ops:[],side:'low'},
+  {r:[-OUT,0.12,0.12,3.88],ax:'z',ops:BATH.walls.left.ops,side:'left'},{r:[3.88,4+OUT,0.12,3.88],ax:'z',ops:[],side:'right'}];
+  for(const w of ext){const [x0,x1,z0,z1]=w.r;s+=R(X(x0),Y(z1),(x1-x0)*k,(z1-z0)*k,'wall');
+    for(const o of w.ops){
+      if(w.ax==='x'){s+=R(X(o.a),Y(z1)-0.7,(o.b-o.a)*k,(z1-z0)*k+1.4,'cut')+L(X(o.a),Y(z0),X(o.a),Y(z1),'ln')+L(X(o.b),Y(z0),X(o.b),Y(z1),'ln');
+        if(o.kind==='win')s+=L(X(o.a),Y(0.0),X(o.b),Y(0.0),'glass')+L(X(o.a),Y(0.05),X(o.b),Y(0.05),'glass')+T(X((o.a+o.b)/2),Y(-0.3),o.id+' ~1000×1000','sm');
+        else{s+=L(X(o.b-0.02),Y(-0.07),X(o.b-0.02),Y(-0.95),'ln')+`<path d="M${X(o.b-0.02)} ${Y(-0.95)} A88 88 0 0 0 ${X(o.a)} ${Y(-0.07)}" class="thin"/>`+T(X((o.a+o.b)/2),Y(-0.3),o.id,'sm');}}
+      else{const za=0.12+o.a,zb=0.12+o.b;s+=R(X(x0)-0.7,Y(zb),(x1-x0)*k+1.4,(zb-za)*k,'cut')+L(X(x0),Y(za),X(x1),Y(za),'ln')+L(X(x0),Y(zb),X(x1),Y(zb),'ln')
+        +L(X(0.01),Y(za),X(0.01),Y(zb),'glass')+L(X(0.06),Y(za),X(0.06),Y(zb),'glass')+T(X(-0.2),Y((za+zb)/2)+4,o.id+' 500×500','sm','end');}}}
+  for(const p of BATH.parts){if(p.gaps){let x=p.x0;for(const [g0,g1] of p.gaps){s+=R(X(x),Y(p.z1),X(g0)-X(x),Y(p.z0)-Y(p.z1),'part');x=g1;}s+=R(X(x),Y(p.z1),X(p.x1)-X(x),Y(p.z0)-Y(p.z1),'part');}
+    else s+=R(X(p.x0),Y(p.z1),X(p.x1)-X(p.x0),Y(p.z0)-Y(p.z1),'part');}
+  return s;}
+function bathStovePlan(X,Y,k){const {SX}=BATH;return R(X(1.5),Y(2.7),12,60,'brick')+R(X(SX-0.35),Y(2.15),70,8,'brick')
+  +R(X(SX-0.25),Y(2.55),50,40,'stove')+`<circle cx="${X(SX)}" cy="${Y(2.35)}" r="10" class="metal"/>`+R(X(SX-0.15),Y(2.07),30,12,'stove')
+  +R(X(SX-0.35),Y(1.95),70,50,'thin')+L(X(SX-0.32),Y(2.72),X(SX+0.32),Y(2.72),'ln')+T(X(SX),Y(1.62),'топка','sm')+T(X(SX+0.42),Y(2.38),'печь','sm','start');}
+function bathPlanSVG(){
+  const k=100,X=x=>x*k,Y=z=>(4-z)*k;let s='';
+  const F=(x0,x1,z0,z1,t,c='furn')=>R(X(x0),Y(z1),(x1-x0)*k,(z1-z0)*k,c)+(t?T(X((x0+x1)/2),Y((z0+z1)/2)+4,t,'sm'):'');
+  s+=R(X(2.35),Y(-0.07),165,Y(-1.2)-Y(-0.07),'wood');for(let i=0;i<3;i++)s+=R(X(2.7),Y(-1.2-i*0.28),120,28,'furn');
+  s+=T(X(4.2),Y(-0.6),'крыльцо','lbl','start');
+  s+=L(X(-0.3),Y(-0.6),X(4.3),Y(-0.6),'dash');
+  s+=bathWallsSVG(X,Y,k);
+  // двери внутри
+  s+=L(X(0.95),Y(1.95),X(0.95),Y(1.35),'ln')+`<path d="M${X(0.95)} ${Y(1.35)} A60 60 0 0 1 ${X(0.35)} ${Y(1.95)}" class="thin"/>`;
+  s+=L(X(3.25),Y(1.95),X(3.25),Y(1.35),'ln')+`<path d="M${X(3.25)} ${Y(1.35)} A60 60 0 0 1 ${X(2.65)} ${Y(1.95)}" class="thin"/>`;
+  // предбанник
+  s+=F(0.14,0.5,0.2,1.8,'')+T(X(0.32),Y(1.0),'лавка','sm','middle',`transform="rotate(-90 ${X(0.32)} ${Y(1.0)})"`);
+  s+=F(0.6,1.3,0.3,1.7,'стол');s+=F(1.4,1.72,0.55,0.87,'')+F(1.4,1.72,1.1,1.42,'');
+  s+=F(3.6,3.86,0.5,1.6,'')+T(X(3.73),Y(1.05),'вешалка','sm','middle',`transform="rotate(-90 ${X(3.73)} ${Y(1.05)})"`);
+  s+=F(2.45,2.85,1.5,1.9,'дрова');
+  // моечная
+  s+=F(0.2,1.22,3.3,3.86,'лавка для тазов');s+=`<rect x="${X(0.61)}" y="${Y(2.8)}" width="20" height="20" class="metal"/>`+T(X(0.71),Y(2.55),'трап','sm');
+  // парная
+  s+=F(1.42,3.88,3.28,3.88,'верхний полок 2460','wood')+F(1.42,3.88,2.88,3.28,'нижняя ступень','furn')+F(3.28,3.88,2.07,2.88,'','wood');
+  s+=T(X(3.58),Y(2.48),'бок.','sm');
+  s+=bathStovePlan(X,Y,k);
+  for(const r of BATH.rooms)s+=T(X(r.u),Y(r.w),r.n,'room')+T(X(r.u),Y(r.w)+18,fmtA(r.a),'area');
+  s+=L(X(BATH.SX),Y(4.45),X(BATH.SX),Y(4.2),'ln')+L(X(BATH.SX),Y(-0.15),X(BATH.SX),Y(-0.4),'ln')+T(X(BATH.SX)+10,Y(4.3),'1','lbl','start');
+  s+=dimH(X(0),X(4),Y(4.62),'4000',Y(4.07))+dimV(Y(4),Y(0),X(4.75),'4000',X(4.07));
+  s+=dimH(X(1.42),X(3.88),Y(4.32),'2460 парная')+dimV(Y(3.88),Y(2.07),X(-0.6),'1810',X(-0.07))+dimV(Y(1.95),Y(0.12),X(-0.6),'1830',X(-0.07));
+  const ch=[0,0.6,1.6,2.85,3.75,4.0];for(let i=0;i<ch.length-1;i++)s+=dimH(X(ch[i]),X(ch[i+1]),Y(-2.3),f1((ch[i+1]-ch[i])*1000));
+  return svg('-190 -80 790 720',s,'План бани');
+}
+function bathSeatSVG(){ // две схемы рассадки в парной
+  const k=120;let s='';
+  const panel=(ox,title,people)=>{const X=u=>ox+(u-1.42)*k,Y=w=>(3.95-w)*k+30;let r='';
+    r+=R(X(1.42),Y(3.88),(3.88-1.42)*k,(3.88-2.07)*k,'cut')+R(X(1.42),Y(3.88),(3.88-1.42)*k,(3.88-2.07)*k,'thin');
+    r+=R(X(1.42),Y(3.88),(3.88-1.42)*k,0.6*k,'wood')+R(X(1.42),Y(3.28),(3.88-1.42)*k,0.4*k,'furn')+R(X(3.28),Y(2.88),0.6*k,0.81*k,'wood');
+    r+=R(X(1.85),Y(2.55),0.5*k,0.4*k,'stove')+L(X(1.8),Y(2.7),X(2.4),Y(2.7),'ln');
+    r+=R(X(2.65),Y(2.07)-3,0.6*k,6,'cut')+T(X(2.95),Y(2.07)+16,'дверь','sm');
+    for(const p of people){if(p.t==='s')r+=`<circle cx="${X(p.u)}" cy="${Y(p.w)}" r="17" class="metal" opacity=".85"/>`;
+      if(p.t==='l')r+=`<rect x="${X(p.u)}" y="${Y(p.w)-15}" width="${1.85*k}" height="30" rx="15" class="metal" opacity=".85"/>`;
+      if(p.t==='st')r+=`<circle cx="${X(p.u)}" cy="${Y(p.w)}" r="19" class="fire" opacity=".9"/>`;}
+    r+=T(ox+((3.88-1.42)*k)/2,14,title,'lbl','middle');return r;};
+  s+=panel(10,'Вариант 1: сидят 5',[{t:'s',u:1.75,w:3.58},{t:'s',u:2.35,w:3.58},{t:'s',u:2.95,w:3.58},{t:'s',u:3.55,w:3.58},{t:'s',u:3.58,w:2.45}]);
+  s+=panel(360,'Вариант 2: лежит, 3 сидят, парит',[{t:'l',u:1.55,w:3.58},{t:'s',u:3.58,w:2.3},{t:'s',u:3.58,w:2.75},{t:'s',u:2.0,w:3.08},{t:'st',u:2.75,w:2.6}]);
+  s+=`<circle cx="30" cy="290" r="9" class="metal"/>`+T(46,294,'сидит','sm','start')+`<circle cx="120" cy="290" r="9" class="fire"/>`+T(136,294,'парит стоя','sm','start')
+    +R(230,281,40,18,'metal','rx="9"')+T(278,294,'лежит на верхнем полке 2460','sm','start');
+  return svg('0 0 680 310',s,'Рассадка в парной');
+}
+function bathSectionSVG(){
+  const X=z=>z*100,Y=y=>(5.6-y)*100;let s='';
+  s+=`<rect x="${X(-1.4)}" y="${Y(0)}" width="${X(5.3)-X(-1.4)}" height="80" fill="url(#earth)"/>`+L(X(-1.4),Y(0),X(5.3),Y(0),'ground');
+  const col=FOUND==='piles'
+    ?z=>R(X(z)-3.65,Y(0.14),7.3,Y(-0.75)-Y(0.14),'metal')+R(X(z)-4.45,Y(0.28),8.9,15,'metal')+R(X(z)-10,Y(0.295),20,1.5,'stove')
+    :z=>{let r=R(X(z-0.4),Y(-0.2),80,20,'grav');for(const [y0,y1] of [[-0.2,0.0],[0.0,0.2]]){r+=R(X(z-0.33),Y(y1),13,20,'tire','rx="5"')+R(X(z+0.2),Y(y1),13,20,'tire','rx="5"')+R(X(z-0.2),Y(y1),40,20,'grav');}return r+R(X(z-0.22),Y(0.29),44,9,'conc');};
+  for(const z of [0.04,2.0,2.5,3.96])s+=col(z);
+  for(const z of [0.04,2.0,3.96])s+=R(X(z-0.04),Y(0.51),8,21,'wood2');
+  // пол: предбанник утеплён, моечная и парная — протекающий на поддоне
+  s+=R(X(0.04),Y(0.71),X(1.95)-X(0.04),20,'ins')+R(X(0),Y(0.75),195,3,'wood');
+  s+=`<polyline points="${X(2.07)},${Y(0.56)} ${X(3.9)},${Y(0.62)}" class="roof" style="stroke-width:2.5"/>`;
+  for(let z=2.1;z<3.88;z+=0.1)s+=R(X(z),Y(0.75),8,3,'wood');
+  s+=T(X(3.0),Y(0.45),'поддон из С8 с уклоном к трапу','sm');
+  // стены и перегородка
+  for(const [z0,top] of [[0,TOPF],[3.88,TOPB]])s+=R(X(z0),Y(top),12,Y(0.79)-Y(top),'ins')+R(X(z0),Y(0.79),12,4,'wood2');
+  s+=R(X(1.95),Y(PURL_BOT),12,Y(0.75)-Y(PURL_BOT),'part');
+  s+=R(X(1.95),Y(FL+0.75),12,60,'stove');
+  // потолок парной 2,2 м
+  s+=R(X(2.07),Y(FL+2.38),X(3.88)-X(2.07),15,'ins')+R(X(2.07),Y(FL+2.23),X(3.88)-X(2.07),3,'wood');
+  // полки
+  s+=R(X(3.28),Y(FL+1.0),60,4,'wood2')+R(X(2.88),Y(FL+0.5),40,4,'wood2')+L(X(3.32),Y(FL+1.0),X(3.32),Y(FL),'ln')+L(X(2.92),Y(FL+0.5),X(2.92),Y(FL),'ln');
+  // печь и труба
+  s+=R(X(2.15),Y(FL+0.8),40,80,'stove')+R(X(2.15),Y(FL+1.05),40,25,'grav')+R(X(2.07),Y(FL+0.75),8,60,'stove');
+  s+=R(X(BATH.SZ-0.0575),Y(FL+2.2),11.5,(2.2-1.05)*100,'stove');
+  s+=R(X(BATH.SZ-0.1),Y(5.1),20,(5.1-FL-2.2)*100,'metal')+R(X(BATH.SZ-0.15),Y(FL+1.9),30,40,'metal');
+  // крыша
+  const n=RAF/COS,pts=(zs,f)=>zs.map(z=>`${X(z)},${Y(f(z))}`).join(' ');
+  s+=`<polygon points="${pts([-OVF,4+OVB],yR)} ${pts([4+OVB,-OVF],z=>yR(z)+n)}" class="dash"/>`;
+  s+=`<polygon points="${pts([0.12,3.88],z=>yR(z)+0.005)} ${pts([3.88,0.12],z=>yR(z)+0.2/COS)}" class="ins"/>`;
+  s+=`<polyline points="${pts([-OVF,4+OVB],z=>yR(z)+ROOF_OFF/COS)}" class="roof"/>`;
+  s+=R(X(PZ-0.04),Y(PURL_TOP),8,21,'wood2');
+  const fm=v=>(v>=0?'+':'')+v.toFixed(3).replace('.',',');
+  const lvl=(y,t)=>{const x=X(-1.0);return `<path d="M${x-7} ${Y(y)-10} L${x+7} ${Y(y)-10} L${x} ${Y(y)} Z" class="dot"/>`+L(x-60,Y(y),x+12,Y(y),'ln')+T(x-12,Y(y)-5,t,'','end')};
+  s+=lvl(0,'±0,000')+lvl(FL,fm(FL))+lvl(FL+2.2,fm(FL+2.2))+lvl(TOPF,fm(TOPF))+lvl(5.1,fm(5.1));
+  s+=T(X(1.0),Y(1.7),'предбанник','lbl')+T(X(3.0),Y(2.6),'парная','lbl');
+  s+=dimV(Y(FL+2.2),Y(FL),X(2.5),'2200');
+  const ld=leadF(X,Y,X(5.15));
+  s+=ld(3.5,FL+2.3,4.3,['Потолок парной на 2200: вагонка, зазор,','фольга, Изба 150, балки 40×120']);
+  s+=ld(3.6,FL+1.0,3.4,['Полки из осины: верхний 600 на 1000,','нижний 400 на 500']);
+  s+=ld(BATH.SZ,FL+1.6,2.5,['Банная печь с выносной топкой','бак на трубе, камни 40 кг']);
+  s+=ld(3.94,2.0,1.8,['Стена парной: вагонка, зазор 20,','фольга, Изба Стандарт 100, OSB']);
+  s+=ld(3.0,0.6,0.9,['Протекающий пол: доска с зазором 5 мм,','поддон из С8, трап, дренаж']);
+  return svg('-190 -10 1180 640',s,'Разрез бани');
+}
+function bathPilesSVG(){
+  const X=x=>x*100,Y=z=>(4-z)*100;let s='';
+  for(const z of [0.04,2.0,3.96])s+=R(X(0),Y(z+0.04),400,8,'wood2');
+  for(const x of rafGrid(4))s+=L(X(x),Y(3.96),X(x),Y(0.04),'dash');
+  const tire=FOUND==='piles'?(x,z)=>`<rect x="${X(x)-10}" y="${Y(z)-10}" width="20" height="20" class="metal" opacity=".55"/><circle cx="${X(x)}" cy="${Y(z)}" r="5" class="stove"/>`
+    :(x,z)=>`<circle cx="${X(x)}" cy="${Y(z)}" r="31" class="tire" opacity=".85"/><circle cx="${X(x)}" cy="${Y(z)}" r="19" class="grav"/>`;
+  for(const [u,w] of BATH.supports)s+=tire(u,w);
+  for(const [u,w] of BATH.stoveSup)s+=tire(u,w);
+  s+=T(X(2.1),Y(2.5)+48,'под печь','sm');
+  for(const x of [2.45,3.9])s+=tire(x,-1.1);
+  s+=dimH(X(0.1),X(2.0),-45,'1900')+dimH(X(2.0),X(3.9),-45,'1900')+dimH(X(0),X(4),-72,'4000')+dimV(Y(4),Y(0),-72,'4000');
+  return svg('-105 -100 560 660',s,'Опоры бани');
+}
+function bathWallSVG(){
+  const X=u=>u*100,Y=v=>(3.45-v)*100;let s='';
+  for(const m of BATH.FR.high){const c=m.t==='header'?'hdr':(m.t==='plate'?'wood2':'wood');s+=R(X(m.u0),Y(m.v1),(m.u1-m.u0)*100,(m.v1-m.v0)*100,c);}
+  for(const o of BATH.walls.high.ops)s+=T(X((o.a+o.b)/2),Y((o.bot+o.top)/2)+4,o.id,'lbl');
+  s+=dimH(X(0),X(4),Y(-0.28),'4000')+dimV(Y(3.35),Y(0),-30,'3350');
+  return svg('-70 -50 560 440',s,'Каркас фасада бани');
+}
+function bathCommsSVG(){
+  const k=100,X=x=>x*k,Y=z=>(4-z)*k;let s=bathWallsSVG(X,Y,k);
+  const g=(x,y,t,a='start')=>T(x,y,t,'elt',a);
+  const lamp=(x,z,t)=>{const cx=X(x),cy=Y(z);return `<circle cx="${cx}" cy="${cy}" r="10" class="elc"/><path d="M${cx-7} ${cy-7}L${cx+7} ${cy+7}M${cx+7} ${cy-7}L${cx-7} ${cy+7}" class="elc"/>`+g(cx+13,cy-8,t);};
+  const sl=(x,z,t,a='start')=>`<circle cx="${X(x)}" cy="${Y(z)}" r="8" class="plc"/>`+T(X(x)+(a==='end'?-12:12),Y(z)+4,t,'plt',a);
+  s+=R(X(3.0),Y(0.18),35,9,'elc')+T(X(3.17),Y(0.18)+22,'ЩР + УЗО','elt','middle');
+  s+=`<path d="M${X(4.9)} ${Y(0.4)} H${X(4.07)}" class="elc" style="fill:none;stroke-dasharray:6 3"/>`+g(X(4.1)+90,Y(0.4)-8,'кабель от дома в земле','end');
+  s+=lamp(2.0,1.0,'свет')+lamp(0.7,2.4,'IP54')+lamp(3.5,2.2,'IP54, термо');
+  s+=`<path d="M${X(1.8)} ${Y(0.2)} A7 7 0 0 1 ${X(1.94)} ${Y(0.2)}Z" class="elc"/>`+g(X(1.97),Y(0.2)+4,'розетка');
+  s+=sl(0.71,2.7,'трап → дренаж','start')+sl(1.6,2.2,'приток у печи','start')+sl(3.6,3.75,'вытяжка вверху','end');
+  s+=T(X(2.0),Y(1.4),'Предбанник','room');
+  return svg('-190 -80 790 560',s,'Электрика и вентиляция бани');
+}
+function renderBath(){
+  document.getElementById('svgPlan').innerHTML=bathPlanSVG();
+  document.getElementById('svgSection').innerHTML=bathSectionSVG();
+  document.getElementById('svgPiles').innerHTML=bathPilesSVG();
+  document.getElementById('svgColumn').innerHTML=FOUND==='piles'?pileDetailSVG():columnSVG();
+  document.getElementById('svgWall').innerHTML=bathWallSVG();
+  document.getElementById('svgStove').innerHTML=bathSeatSVG();
+  document.getElementById('svgComms').innerHTML=bathCommsSVG();
 }
 
 let LY,LEN,OPEN,FR,rafterXs,CH,INNER=0;
@@ -1204,6 +1406,8 @@ function pileDetailSVG(){
   return svg('-150 -10 640 450',s,'Свая с оголовком-стаканом');
 }
 function renderAllSVG(){
+  renderLayers();
+  if(OBJ==='bath'){renderBath();return;}
   document.getElementById('svgPlan').innerHTML=planSVG();
   document.getElementById('svgSection').innerHTML=sectionSVG();
   document.getElementById('svgPiles').innerHTML=pilesSVG();
@@ -1214,9 +1418,13 @@ function renderAllSVG(){
 }
 
 /* ===================== Слои ===================== */
-(function(){
+function renderLayers(){
   const C={board:'var(--pine-soft)',gap:'var(--surface)',memb:'var(--blue)',osb:'var(--wool)',wool:'#C9B37A',vap:'var(--muted)',metal:'var(--ink)'};
-  const A=[
+  const A=OBJ==='bath'?[
+    {t:'Стена парной',d:['парная','улица'],l:[['Вагонка осина 14','board',14],['Зазор на рейке 20','gap',20],['Фольгированная пароизоляция','vap',2],['Каркас 40×120 + Изба Стандарт 100','wool',120],['OSB-3','osb',9],['Мембрана A, фасад','memb',30]],tot:'фольгой внутрь, стыки на фольгированный скотч'},
+    {t:'Потолок парной',d:['парная','чердак'],l:[['Вагонка осина 14','board',14],['Зазор 20','gap',20],['Фольга','vap',2],['Балки 40×120 + Изба 150','wool',150]],tot:'потолок на 2,2 м: парная быстрее прогревается'},
+    {t:'Пол моечной и парной',d:['пол','земля'],l:[['Доска 30 с зазором 5 мм','board',30],['Лаги 40×210, проветриваемый зазор','gap',150],['Поддон из профнастила С8 с уклоном к трапу','metal',8],['Подполье, вентиляция','gap',60]],tot:'протекающий пол: вода уходит в трап, доски сохнут'}
+  ]:[
     {t:'Стена',d:['улица','комната'],l:[['OSB-3, фасадная краска (доска на этапе 3)','osb',9],['Каркас 40×120 + Изба Лайт 100','wool',120],['Пароизоляция СПАНЭЛ B','vap',2],['ДВП, покраска (этап 3)','board',4]],tot:'≈ 135 мм, утеплитель 100, потом +50'},
     {t:'Пол',d:['комната','земля'],l:[['Доска пола 30','board',30],['Пароизоляция СПАНЭЛ B','vap',2],['Лаги 40×210 + Изба Лайт 2×100','wool',210],['Мембрана A','memb',2],['OSB-3, подшивка','osb',9]],tot:'≈ 250 мм, утеплитель 200'},
     {t:'Крыша',d:['комната','улица'],l:[['ДВП (этап 3)','board',4],['Пароизоляция СПАНЭЛ B','vap',2],['Стропила 40×210 + Изба Лайт 2×100','wool',210],['Мембрана A','memb',2],['Контррейка, вентзазор','gap',30],['Обрешётка из доски 30×210 вполовину','board',30],['Профнастил С8','metal',8]],tot:'≈ 290 мм, утеплитель 200'}
@@ -1226,7 +1434,7 @@ function renderAllSVG(){
     <div class="stack-bar">${a.l.map(x=>`<i style="flex:${Math.max(x[2],6)/sum} 0 0;background:${C[x[1]]}"></i>`).join('')}</div>
     <ol>${a.l.map(x=>`<li><i style="background:${C[x[1]]}"></i><span>${x[0]}</span><span>${x[2]} мм</span></li>`).join('')}</ol>
     <span class="muted" style="font:12px var(--f-mono)">${a.tot}</span></div>`}).join('');
-})();
+}
 
 /* ===================== Смета ===================== */
 // [id, название, где, кол-во, ед., цена, метка (1 — объявл., 2 — даром), условие]
@@ -1345,13 +1553,13 @@ const EST=[
   ['tr8','Бутиловая лента, саморезы кровельные','',1,'компл',1000],
   ['tr9','Уголки, болты М12 для опорной доски, гвозди','',1,'компл',1800],
   ['tr10','Масло или краска для настила','',1,'компл',2500]]},
- {st:4,id:'m2f',v:'s4 g2 tires',name:'Модуль 2: опоры из шин',items:[
+ {st:4,mod:2,ph:'box',id:'m2f',v:'s4 g2 tires',name:'Модуль 2: опоры из шин',items:[
   ['m2f1','Шины б/у по 2 на столб','6 столбов',12,'шт',0,2],['m2f2','Щебень и бой','',0.5,'т',2000],['m2f3','Цемент М500','',2,'меш',450],['m2f4','Рубероид','',1,'рул',600],
   ['m2f5','Пластины и болты стыка обвязки','обвязка модуля 2 ложится на общие опоры стыка',1,'компл',800]]},
- {st:4,id:'m2p',v:'s4 g2 piles',name:'Модуль 2: сваи',items:[
+ {st:4,mod:2,ph:'box',id:'m2p',v:'s4 g2 piles',name:'Модуль 2: сваи',items:[
   ['m2p1','Свая 73×2500, лопасть 200','6 шт, ряд на стыке уже стоит',6,'шт',1820,1],['m2p2','Труба НКТ 89 на стаканы','',1,'м',580,1],['m2p3','Обрезь листа на пластины','',9,'кг',60],
   ['m2p4','Болты М12','',6,'шт',50],['m2p5','Пластины стыка обвязки','',1,'компл',800],['m2p6','Доставка свай','',1,'рейс',1500]]},
- {st:4,id:'m2b',v:'s4 g2',name:'Модуль 2: коробка',items:[
+ {st:4,mod:2,ph:'box',id:'m2b',v:'s4 g2',name:'Модуль 2: коробка',items:[
   ['m2b1','Доска 3400×40×120','стойки, обвязка, стойки прогона',40,'шт',150,1],['m2b2','Доска 2700×40×210','обвязка, лаги, стропила, прогон в 3 доски',47,'шт',150,1],
   ['m2b3','Доска 2700×30×210','пол, обрешётка, лобовые',54,'шт',140,1],['m2b4','Доставка досок','',1,'рейс',2500,1],
   ['m2b5','OSB-3 9 мм','стены и подшивка пола',18,'лист',615,1],['m2b6','Доставка OSB','',1,'рейс',1500],
@@ -1359,34 +1567,38 @@ const EST=[
   ['m2b9','Изба Лайт 100 мм','пол, 2 слоя',13,'уп',390,1],['m2b10','Мембрана A, 70 м²','',1,'рул',1600],['m2b11','Пароизоляция СПАНЭЛ B','',1,'рул',700,1],
   ['m2b12','Окна ПВХ б/у','фасад и торец',2,'шт',1000],['m2b13','Монтажная пена','',2,'балл',450],
   ['m2b14','Гвозди, перфопластины','',1,'компл',3500],['m2b15','Шпильки М12 стяжки модулей','через стойки стыка, шаг 600',10,'шт',80],['m2b16','Антисептик','',1,'кан',2000]]},
- {st:4,id:'m2w',v:'s4 g2',name:'Модуль 2: утепление, свет, отделка',items:[
+ {st:4,mod:2,ph:'warm',id:'m2w',v:'s4 g2',name:'Модуль 2: тёплый контур',items:[
   ['m2w1','Изба Лайт 100 мм','стены и крыша',24,'уп',390,1],['m2w2','Пароизоляция и лента','',1,'компл',1050],
   ['m2w3','Кабель, металлорукав, розетки, свет, 2 автомата','2 новые группы в щитке',1,'компл',6600],['m2w4','Конвектор 1,5 кВт','',1,'шт',4000],
-  ['m2w5','Краска фасадная для OSB','',1,'ведро',3000],['m2w6','ДВП и рейка изнутри','потом',1,'компл',5200],['m2w7','Фасадная доска, мембрана, краска','потом',1,'компл',14500]]},
- {st:4,id:'m2t',v:'s4 g2 n3 terrace',name:'Терраса вдоль модуля 2 (+4 м)',items:[
+  ['m2w5','Краска фасадная для OSB','',1,'ведро',3000]]},
+ {st:4,mod:2,ph:'fin',id:'m2x',v:'s4 g2',name:'Модуль 2: отделка',items:[
+  ['m2w6','ДВП и рейка изнутри, покраска','',1,'компл',5200],['m2w7','Фасадная доска, мембрана, краска','',1,'компл',14500]]},
+ {st:4,mod:2,ph:'fin',id:'m2t',v:'s4 g2 n3 terrace',name:'Терраса вдоль модуля 2 (+4 м)',items:[
   ['m2t1','Опоры террасы','шины',1,'компл',300,0,'tires'],['m2t2','Опоры террасы: сваи 73×2500','',2,'шт',1820,1,'piles'],
   ['m2t3','Доски 40×210, 40×120, 30×210','лаги, стойки, стропила, настил',1,'компл',6300],['m2t4','Профнастил С8','',8,'лист',410,1],['m2t5','Крепёж, масло','',1,'компл',3000]]},
- {st:5,id:'m3f',v:'s4 g3 tires',name:'Модуль 3: опоры из шин',items:[
+ {st:5,mod:3,ph:'box',id:'m3f',v:'s4 g3 tires',name:'Модуль 3: опоры из шин',items:[
   ['m3f1','Шины б/у по 2 на столб','6 столбов',12,'шт',0,2],['m3f2','Щебень, цемент, рубероид','',1,'компл',2500],['m3f3','Пластины стыка обвязки','',1,'компл',800]]},
- {st:5,id:'m3p',v:'s4 g3 piles',name:'Модуль 3: сваи',items:[
+ {st:5,mod:3,ph:'box',id:'m3p',v:'s4 g3 piles',name:'Модуль 3: сваи',items:[
   ['m3p1','Свая 73×2500, лопасть 200','',6,'шт',1820,1],['m3p2','Оголовки-стаканы, болты','',6,'шт',300],['m3p3','Доставка свай','',1,'рейс',1500]]},
- {st:5,id:'m3b',v:'s4 g3',name:'Модуль 3: коробка',items:[
+ {st:5,mod:3,ph:'box',id:'m3b',v:'s4 g3',name:'Модуль 3: коробка',items:[
   ['m3b1','Доски 3400×40×120, 2700×40×210, 2700×30×210','как модуль 2',1,'компл',20460,1],['m3b2','Доставка досок','',1,'рейс',2500,1],
   ['m3b3','OSB-3 9 мм','',18,'лист',615,1],['m3b4','Профнастил С8 1,2×1,5','',16,'лист',410,1],['m3b5','Планка конька и уплотнитель','стык скатов модулей 2 и 3',1,'компл',1200],
   ['m3b6','Утеплитель пола, мембраны','',1,'компл',7370],['m3b7','Окна ПВХ б/у, пена','',1,'компл',2900],['m3b8','Крепёж, стяжка, антисептик','',1,'компл',6300]]},
- {st:5,id:'m3w',v:'s4 g3',name:'Модуль 3: утепление, свет, отделка',items:[
-  ['m3w1','Утеплитель стен и крыши, пароизоляция','',1,'компл',10410],['m3w2','Свет и розетки, конвектор','',1,'компл',10600],['m3w3','Краска, ДВП, фасадная доска','потом',1,'компл',22700]]},
- {st:6,id:'m4f',v:'s4 g4 tires',name:'Модуль 4: опоры из шин',items:[
+ {st:5,mod:3,ph:'warm',id:'m3w',v:'s4 g3',name:'Модуль 3: тёплый контур',items:[
+  ['m3w1','Утеплитель стен и крыши, пароизоляция','',1,'компл',10410],['m3w2','Свет и розетки, конвектор','',1,'компл',10600],['m3w4','Краска фасадная для OSB','',1,'ведро',3000]]},
+ {st:5,mod:3,ph:'fin',id:'m3x',v:'s4 g3',name:'Модуль 3: отделка',items:[['m3w3','ДВП изнутри, фасадная доска, краска','',1,'компл',19700]]},
+ {st:6,mod:4,ph:'box',id:'m4f',v:'s4 g4 tires',name:'Модуль 4: опоры из шин',items:[
   ['m4f1','Шины б/у по 2 на столб','4 столба',8,'шт',0,2],['m4f2','Щебень, цемент, пластины стыка','',1,'компл',2600]]},
- {st:6,id:'m4p',v:'s4 g4 piles',name:'Модуль 4: сваи',items:[
+ {st:6,mod:4,ph:'box',id:'m4p',v:'s4 g4 piles',name:'Модуль 4: сваи',items:[
   ['m4p1','Свая 73×2500, лопасть 200','',4,'шт',1820,1],['m4p2','Оголовки-стаканы, болты','',4,'шт',300],['m4p3','Доставка свай','',1,'рейс',1500]]},
- {st:6,id:'m4b',v:'s4 g4',name:'Модуль 4: коробка',items:[
+ {st:6,mod:4,ph:'box',id:'m4b',v:'s4 g4',name:'Модуль 4: коробка',items:[
   ['m4b1','Доски 3400×40×120, 2700×40×210, 2700×30×210','две стены вместо трёх',1,'компл',18100,1],['m4b2','Доставка досок','',1,'рейс',2500,1],
   ['m4b3','OSB-3 9 мм','',15,'лист',615,1],['m4b4','Профнастил С8 1,2×1,5','',16,'лист',410,1],['m4b5','Планка конька и уплотнитель','стык скатов модулей 1 и 4',1,'компл',1200],
   ['m4b6','Утеплитель пола, мембраны','',1,'компл',7370],['m4b7','Окна ПВХ б/у, пена','',1,'компл',2900],
   ['m4b8','Входная дверь','переносится из модуля 1',1,'шт',0,2],['m4b9','Крепёж, стяжка, антисептик','',1,'компл',5800]]},
- {st:6,id:'m4w',v:'s4 g4',name:'Модуль 4: утепление, свет, отделка',items:[
-  ['m4w1','Утеплитель стен и крыши, пароизоляция','',1,'компл',8850],['m4w2','Свет и розетки, конвектор','',1,'компл',10600],['m4w3','Краска, ДВП, фасадная доска','потом',1,'компл',17000]]},
+ {st:6,mod:4,ph:'warm',id:'m4w',v:'s4 g4',name:'Модуль 4: тёплый контур',items:[
+  ['m4w1','Утеплитель стен и крыши, пароизоляция','',1,'компл',8850],['m4w2','Свет и розетки, конвектор','',1,'компл',10600],['m4w4','Краска фасадная для OSB','',1,'ведро',2500]]},
+ {st:6,mod:4,ph:'fin',id:'m4x',v:'s4 g4',name:'Модуль 4: отделка',items:[['m4w3','ДВП изнутри, фасадная доска, краска','',1,'компл',14500]]},
  {st:0,id:'cv',name:'Конвекторы, когда подключат свет',opt:true,items:[
   ['cv1','Конвектор 1 кВт с механическим термостатом','спальня',1,'шт',3500],
   ['cv2','Конвектор 1,5 кВт с термостатом','гостиная, держит +5 °C без вас',1,'шт',4000]]},
@@ -1404,6 +1616,54 @@ const EST=[
   ['wt1','Бак на 100 л и насос','',1,'компл',5000],['wt2','Водонагреватель 30 л','нужно электричество',1,'шт',8000],
   ['wt3','Душевой поддон, шторка, смеситель','',1,'компл',6500],['wt4','Канализация 50/110 и выгребная яма из бочки','',1,'компл',5000]]}
 ];
+const EST_B=[
+ {st:1,id:'bf',v:'tires',name:'Баня: фундамент из шин, 11 столбов',items:[
+  ['bf1','Шины б/у по 2 на столб','9 под баню и 2 под печь',22,'шт',0,2],['bf2','Бетонный бой на засыпку','',1,'компл',0,2],
+  ['bf3','Щебень 20–40','',1,'т',2000],['bf4','Цемент М500','',3,'меш',450],['bf5','Рубероид','',1,'рул',600],['bf6','Анкеры, перфолента','',1,'компл',500]]},
+ {st:1,id:'bp',v:'piles',name:'Баня: винтовые сваи 73×2500',items:[
+  ['bp1','Свая 73×2500, лопасть 200','9 под баню и 2 под печь',11,'шт',1820,1],['bp2','Труба НКТ 89 на стаканы','',2,'м',580,1],['bp3','Обрезь листа на пластины','',16,'кг',60],
+  ['bp4','Болты М12','',11,'шт',50],['bp5','Электроды, диски, цемент, мастика','',1,'компл',1750],['bp6','Рубероид','',1,'рул',600],['bp7','Доставка свай','',1,'рейс',1500]]},
+ {st:1,id:'bl',name:'Баня: пиломатериал',items:[
+  ['bl1','Доска 3400×40×120','стойки, обвязка, перегородки, балки потолка парной, каркас полков',60,'шт',150,1],
+  ['bl2','Доска 2700×40×210','обвязка, лаги, стропила, прогон, перемычки',52,'шт',150,1],
+  ['bl3','Доска 2700×30×210','пол, двери, обрешётка, лобовые',60,'шт',140,1],['bl4','Доставка досок','',2,'рейс',2500,1]]},
+ {st:1,id:'bo',name:'Баня: OSB, кровля, пол',items:[
+  ['bo1','OSB-3 9 мм','стены снаружи, подшивка пола предбанника',19,'лист',615,1],['bo2','Доставка OSB','',1,'рейс',1500],
+  ['bo3','Профнастил С8 некондиция 1,2×1,5','кровля 16 + поддон под пол моечной и парной 4',20,'лист',410,1],
+  ['bo4','Бутиловая лента, саморезы, планки','',1,'компл',2700],['bo5','Изба Лайт 100 мм','пол предбанника, 2 слоя',6,'уп',390,1],
+  ['bo6','Мембрана A, пароизоляция, лента','',1,'компл',2650]]},
+ {st:1,id:'bw',name:'Баня: окна и двери',items:[
+  ['bw1','Окно ПВХ б/у ~1000×1000','предбанник',1,'шт',1000],['bw2','Окошко ~500×500','моечная',1,'шт',500],['bw3','Монтажная пена','',2,'балл',450],
+  ['bw4','Входная дверь своими руками','',1,'компл',2500],['bw5','Двери в парную и моечную своими руками','глухие, с уплотнителем, ручки деревянные',2,'компл',1200]]},
+ {st:1,id:'bk',name:'Баня: крепёж и защита',items:[['bk1','Гвозди, перфопластины','',1,'компл',3900],['bk2','Антисептик-концентрат','',1,'кан',2000]]},
+ {st:2,id:'bu',name:'Баня: утепление',items:[
+  ['bu1','Изба Стандарт 45, 100 мм','стены: плотная плита не садится от перепадов',14,'уп',600,1],
+  ['bu2','Изба Лайт 100 мм','крыша над предбанником и моечной, 2 слоя',8,'уп',390,1],
+  ['bu3','Изба Стандарт 100 и 50 мм','потолок парной, 150 мм',3,'уп',600,1],
+  ['bu4','Фольгированная пароизоляция, 30 м²','парная: стены и потолок, фольгой внутрь',1,'рул',1800],['bu5','Фольгированный скотч','',1,'шт',400],
+  ['bu6','Пароизоляция СПАНЭЛ B','предбанник и моечная',1,'рул',700,1]]},
+ {st:2,id:'bh',name:'Баня: печь, бак, дымоход',items:[
+  ['bh1','Банная печь б/у с выносной топкой, на 8–12 м³','Авито; новая от 20 тыс.',1,'шт',10000],
+  ['bh2','Сэндвич 115/200 нержавейка, 1 м','через потолок и кровлю',2,'шт',2200],['bh3','Труба одностенная 1 м','',1,'шт',600],
+  ['bh4','Проходные узлы: потолок парной и кровля','',2,'компл',2000],['bh5','Бак-самовар на трубу, 30 л','горячая вода',1,'шт',4000],
+  ['bh6','Камни габбро-диабаз, 20 кг','',2,'короб',1000],['bh7','Кирпич б/у','экран и разделка у топки',200,'шт',0,2],
+  ['bh8','Глина, лист перед топкой, базальтовый картон','',1,'компл',3200],['bh9','Датчик угарного газа, огнетушитель','в предбанник',1,'компл',2500]]},
+ {st:2,id:'bv',name:'Баня: обшивка парной и полки',items:[
+  ['bv1','Вагонка осина, класс C','парная: стены и потолок',24,'м²',650],['bv2','Доска осина 28×90 на полки','каркас полков из доски 40×120',1,'компл',8000]]},
+ {st:2,id:'bm',name:'Баня: моечная, вентиляция, свет',items:[
+  ['bm1','Трап, труба 110 и фитинги','',1,'компл',1500],['bm2','Дренажная яма из бочки или шин','',1,'компл',500],
+  ['bm3','Решётки с задвижками','приток у печи внизу, вытяжка напротив вверху',2,'шт',300],
+  ['bm4','Кабель от дома в гофре в земле','~20 м',20,'м',120],['bm5','Щиток с УЗО','',1,'компл',2500],
+  ['bm6','Светильники влагозащитные, термостойкий в парную','',3,'шт',900],['bm7','Розетка, выключатели снаружи парной','',1,'компл',600]]},
+ {st:3,id:'bx',name:'Баня: отделка',items:[
+  ['bx1','Вагонка хвоя, класс C','предбанник и моечная',38,'м²',300],['bx2','Стол и лавки в предбанник','из доски 40×210',12,'шт',150,1],
+  ['bx3','Фасад: доска 2700×30×210, мембрана, краска','',1,'компл',25700],['bx4','Пропитка для предбанника','',1,'банка',1500],
+  ['bx5','Крыльцо: брус, доски, 2 опоры','',1,'компл',3200]]}
+];
+const STN_B={1:'Баня · этап 1 · коробка',2:'Баня · этап 2 · можно париться',3:'Баня · этап 3 · отделка'};
+const curEst=()=>OBJ==='bath'?EST_B:EST;
+
+for(const g of EST)if(g.st>=1&&g.st<=3){g.mod=1;g.ph=['','box','warm','fin'][g.st];}
 const STN={1:'Этап 1 · коробка',2:'Этап 2 · до морозов',3:'Этап 3 · потом, по деньгам',4:'Этап 4 · пристройка модуля 2',5:'Этап 5 · модуль 3, буква Г',6:'Этап 6 · модуль 4, квадрат 8×8',0:'По ситуации'};
 const KEY='vremyanka-6x4-v7';
 let ST={q:{},p:{},g:{}};
@@ -1417,16 +1677,16 @@ const SI=()=>SIZE==='8'?1:0;
 const pickQ=(id,v)=>SIZE==='4'&&Q4[id]!==undefined?Q4[id]:(Array.isArray(v)?v[SI()]:v);
 const pickW=(id,v)=>SIZE==='4'&&W4[id]!==undefined?W4[id]:(Array.isArray(v)?v[SI()]:v);
 const qKey=(id,q)=>(Array.isArray(q)||Q4[id]!==undefined)?id+'@'+SIZE:id;
-const tokOK=(x,f)=>!x||x.split(' ').every(t=>t===f||t===ENT||t==='s'+SIZE||(t[0]==='g'&&SIZE==='4'&&+MOD>=+t[1])||(t[0]==='n'&&(SIZE!=='4'||+MOD<+t[1])));
+const tokOK=(x,f)=>!x||x.split(' ').every(t=>t===f||t===ENT||t===OBJ||t==='s'+SIZE||(t[0]==='g'&&SIZE==='4'&&+MOD>=+t[1])||(t[0]==='n'&&(SIZE!=='4'||+MOD<+t[1])));
 const vis=(x)=>tokOK(x,FOUND);
 function buildEst(){
   const tbl=document.getElementById('estTable');tbl.querySelectorAll('tbody').forEach(b=>b.remove());
   let last=null;
-  for(const g of EST){
+  for(const g of curEst()){
     if(!vis(g.v))continue;
     const on=g.opt?!!ST.g[g.id]:true;
     const tb=document.createElement('tbody');let h='';
-    if(g.st!==last){h+=`<tr class="st"><td colspan="4">${STN[g.st]}</td><td class="num" id="ss-${g.st}"></td></tr>`;last=g.st;}
+    if(g.st!==last){h+=`<tr class="st"><td colspan="4">${(OBJ==='bath'?STN_B:STN)[g.st]}</td><td class="num" id="ss-${g.st}"></td></tr>`;last=g.st;}
     h+=`<tr class="g${on?'':' off'}"><td colspan="4">${g.opt?`<label class="gtoggle"><input type="checkbox" id="g-${g.id}" ${on?'checked':''}> ${g.name}</label>`:g.name}</td><td class="num" id="gs-${g.id}"></td></tr>`;
     for(const [id,name,whereA,qA,u,p,tag,iv] of g.items){
       if(!vis(iv))continue;
@@ -1445,7 +1705,7 @@ function buildEst(){
 }
 function sums(variant){
   const st={0:0,1:0,2:0,3:0,4:0,5:0,6:0};
-  for(const g of EST){
+  for(const g of curEst()){
     if(!tokOK(g.v,variant))continue;
     const on=g.opt?!!ST.g[g.id]:true;let gs=0;
     for(const [id,,,qA,,p,,iv] of g.items){if(!tokOK(iv,variant))continue;
@@ -1469,10 +1729,32 @@ function calc(){
   set('hM2',tsd(grand/(LEN*4))+'/м²');
   const t=sums('tires'),p=sums('piles');
   set('vT',rub(t[1]));set('vP',rub(p[1]));set('vD',rub(p[1]-t[1]));
+  renderModTable();
+}
+
+// сводка по модулям: коробка / тёплый контур / отделка, шины и сваи
+function renderModTable(){
+  const box=document.getElementById('modTable');if(!box)return;
+  if(!(OBJ==='house'&&SIZE==='4')){box.innerHTML='';return;}
+  const keepM=MOD,keepE=ENT,res={};
+  for(const f of ['tires','piles'])for(let k=1;k<=4;k++){
+    MOD=String(k);ENT=k===4?'porch':ENTRY;
+    const r={box:0,warm:0,fin:0};
+    for(const g of EST){if(g.mod!==k||!tokOK(g.v,f))continue;
+      for(const [id,,,qA,,p,,iv] of g.items){if(!tokOK(iv,f))continue;const qk=qKey(id,qA),q=pickQ(id,qA);
+        r[g.ph]+=(+(ST.q[qk]!==undefined?ST.q[qk]:q)||0)*(+(ST.p[id]!==undefined?ST.p[id]:p)||0);}}
+    res[f+k]=r;}
+  MOD=keepM;ENT=keepE;
+  const t=v=>Math.round(v/1000),pair=(a,b)=>`${t(a)} / ${t(b)}`;
+  const names={1:'Модуль 1 · 4×4',2:'+ модуль 2 · 8×4',3:'+ модуль 3 · буква Г',4:'+ модуль 4 · 8×8'};
+  let cumT=0,cumP=0,rows='';
+  for(let k=1;k<=4;k++){const a=res['tires'+k],b=res['piles'+k],sa=a.box+a.warm+a.fin,sb=b.box+b.warm+b.fin;cumT+=sa;cumP+=sb;
+    rows+=`<tr class="${k<=+MOD?'':'off-item'}"><td>${names[k]}</td><td class="num">${pair(a.box,b.box)}</td><td class="num">${pair(a.box+a.warm,b.box+b.warm)}</td><td class="num">${pair(sa,sb)}</td><td class="num"><b>${pair(cumT*1.1,cumP*1.1)}</b></td></tr>`;}
+  box.innerHTML=`<table class="est"><thead><tr><th>Модуль</th><th class="num">Коробка</th><th class="num">+ тёплый контур</th><th class="num">+ отделка = модуль</th><th class="num">Дом целиком, с резервом</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 const tblEl=document.getElementById('estTable');
 tblEl.addEventListener('input',e=>{const t=e.target;if(t.type!=='number')return;
-  const k=t.id[0],id=t.id.slice(2),item=EST.flatMap(g=>g.items).find(i=>i[0]===id);if(!item)return;
+  const k=t.id[0],id=t.id.slice(2),item=EST.concat(EST_B).flatMap(g=>g.items).find(i=>i[0]===id);if(!item)return;
   const v=t.value===''?0:+t.value;
   if(k==='q'){ST.q[qKey(id,item[3])]=v;t.classList.toggle('changed',v!==pickQ(id,item[3]));}else{ST.p[id]=v;t.classList.toggle('changed',v!==item[5]);}
   calc();save();});
@@ -1484,16 +1766,19 @@ tblEl.addEventListener('change',e=>{const t=e.target;if(t.type!=='checkbox')retu
 document.getElementById('estReset').addEventListener('click',()=>{ST={q:{},p:{},g:{}};try{localStorage.removeItem(KEY)}catch(e){};buildEst();document.getElementById('estSaved').textContent='Исходные цифры восстановлены';});
 
 let sizeDirty=false;
-function applyState(){ENT=(SIZE==='4'&&MOD==='4')?'porch':ENTRY;try{localStorage.setItem('vremyanka-found',FOUND);localStorage.setItem('vremyanka-entry',ENTRY);localStorage.setItem('vremyanka-mod',MOD);localStorage.setItem('vremyanka-size',SIZE)}catch(e){}
+function applyState(){applyLayout();ENT=(SIZE==='4'&&MOD==='4')?'porch':ENTRY;try{localStorage.setItem('vremyanka-obj',OBJ);localStorage.setItem('vremyanka-found',FOUND);localStorage.setItem('vremyanka-entry',ENTRY);localStorage.setItem('vremyanka-mod',MOD);localStorage.setItem('vremyanka-size',SIZE)}catch(e){}
   document.querySelectorAll('.fsw button[data-f]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.f===FOUND?'true':'false'));
   document.querySelectorAll('.fsw button[data-e]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.e===ENTRY?'true':'false'));
   document.querySelectorAll('.fsw button[data-m]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===MOD?'true':'false'));
   document.querySelectorAll('.fsw button[data-s]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===SIZE?'true':'false'));
+  document.querySelectorAll('.fsw button[data-o]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.o===OBJ?'true':'false'));
+  if(OBJ==='bath'){const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};set('hIn',fmtA(BATH.inner));set('hOut','16,0 м²');set('hBath',fmtA(2.46*1.81));document.getElementById('studCount').textContent='баня 4×4, стоек: '+Object.values(BATH.FR).flat().filter(m=>m.t==='stud'||m.t==='jack').length;}
   document.querySelectorAll('[data-v]').forEach(e=>e.hidden=!vis(e.dataset.v));
   renderAllSVG();buildEst();
   if(sizeDirty&&window.__rebuild3D){sizeDirty=false;window.__rebuild3D();}
   else if(window.__state3D)window.__state3D();}
 document.querySelectorAll('.fsw button[data-f]').forEach(b=>b.addEventListener('click',()=>{FOUND=b.dataset.f;applyState();}));
+document.querySelectorAll('.fsw button[data-o]').forEach(b=>b.addEventListener('click',()=>{if(OBJ===b.dataset.o)return;OBJ=b.dataset.o;applyState();if(window.__focus3D)window.__focus3D();}));
 document.querySelectorAll('.fsw button[data-e]').forEach(b=>b.addEventListener('click',()=>{ENTRY=b.dataset.e;const was=ENT;ENT=(SIZE==='4'&&MOD==='4')?'porch':ENTRY;if(was!==ENT&&LY.modular){}applyState();}));
 document.querySelectorAll('.fsw button[data-m]').forEach(b=>b.addEventListener('click',()=>{if(MOD===b.dataset.m)return;MOD=b.dataset.m;applyLayout();sizeDirty=true;applyState();}));
 document.querySelectorAll('.fsw button[data-s]').forEach(b=>b.addEventListener('click',()=>{if(SIZE===b.dataset.s)return;SIZE=b.dataset.s;applyLayout();sizeDirty=true;applyState();}));
@@ -1524,7 +1809,7 @@ applyState();
   const M=(c,o={})=>new THREE.MeshStandardMaterial(Object.assign({color:C(c),roughness:0.85},o));
   const mat={wood:M('#D8B07A'),woodDark:M('#B98B55'),floor:M('#C9A678'),lining:M('#EEECE6',{roughness:0.95}),part:M('#F2F0EA',{roughness:0.95}),
     pvc:M('#F3F3F1',{roughness:0.4}),glass:M('#7F98AC',{roughness:0.08,metalness:0.3}),door:M('#6E4F33',{roughness:0.7}),
-    white:M('#F4F3EF'),blanket:M('#D9CFC0'),dark:M('#2F3336'),fabric:M('#8C9A93'),ground:M('#8E9C70',{roughness:1}),gravel:M('#A9A69E',{roughness:1}),
+    white:M('#F4F3EF'),aspen:M('#E6D2A8'),blanket:M('#D9CFC0'),dark:M('#2F3336'),fabric:M('#8C9A93'),ground:M('#8E9C70',{roughness:1}),gravel:M('#A9A69E',{roughness:1}),
     tire:M('#1E1F21',{roughness:0.9}),pile:M('#8A4434',{metalness:0.4,roughness:0.5}),conc:M('#B9B8B2'),brick:M('#A3553A'),steel:M('#B9BEC2',{metalness:0.7,roughness:0.3}),
     stove:M('#232526',{metalness:0.4,roughness:0.5}),fire:new THREE.MeshStandardMaterial({color:C('#FF8A3D'),emissive:C('#FF6A1A'),emissiveIntensity:1.2})};
   const SCHEMES={graphite:{base:'#33373A',trim:'#C9965A',roof:'#2E3134',boards:true},white:{base:'#E8E4DA',trim:'#3A3F42',roof:'#3A3F42',boards:true},
@@ -1722,6 +2007,7 @@ applyState();
 
     root.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;}});pad.castShadow=false;
     H={gFound,gFloor,gFloorHalf,gFrame,gRaf,gSkin,gRoof,gInt,gPorch,gStove,gColT,gColP,gPorchT,gPorchP,gTerr,gTerrT,gTerrP,gTR};
+    buildBath(H);root.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;}});
   }
   /* ---------- 3D: модульный дом ---------- */
   function buildModular(){
@@ -1885,6 +2171,90 @@ applyState();
     }
     root.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;}});pad.castShadow=false;
     H={gFound,gFloor,gFloorHalf,gFrame,gRaf,gSkin,gRoof,gInt,gPorch,gStove,gColT,gColP,gPorchT,gPorchP,gTerr,gTerrT,gTerrP,gTR};
+    buildBath(H);root.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;}});
+  }
+  /* ---------- 3D: баня рядом с домом, на 8 м правее ---------- */
+  function buildBath(Hs){
+    const X0=LEN+8,B=BATH,SX=B.SX;
+    const T=p=>{const t=new THREE.Group();t.position.x=X0;p.add(t);return t;};
+    const f=T(Hs.gFound),fl=T(Hs.gFloor),flh=T(Hs.gFloorHalf),fr=T(Hs.gFrame),rf=T(Hs.gRaf),sk=T(Hs.gSkin),ro=T(Hs.gRoof),it=T(Hs.gInt),st=T(Hs.gStove),ct=T(Hs.gColT),cp=T(Hs.gColP);
+    const box=(g,x0,x1,y0,y1,z0,z1,m)=>{const b=new THREE.Mesh(new THREE.BoxGeometry(Math.abs(x1-x0)||0.001,Math.abs(y1-y0)||0.001,Math.abs(z1-z0)||0.001),m);
+      b.position.set((x0+x1)/2,(y0+y1)/2,(z0+z1)/2);g.add(b);return b;};
+    const cyl=(g,r,h,x,y,z,m)=>{const c=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,16),m);c.position.set(x,y,z);g.add(c);return c;};
+    const pad=new THREE.Mesh(new THREE.PlaneGeometry(5.6,6.4),mat.gravel);pad.rotation.x=-Math.PI/2;pad.position.set(2,0.006,1.5);f.add(pad);pad.receiveShadow=true;
+    const column=(g,x,z)=>{for(const y of [-0.02,0.18]){const t=new THREE.Mesh(tireGeo,mat.tire);t.rotation.x=Math.PI/2;t.position.set(x,y,z);g.add(t);const q=new THREE.Mesh(fillGeo,mat.gravel);q.position.set(x,y,z);g.add(q);}
+      cyl(g,0.24,0.03,x,0.285,z,mat.conc);};
+    const pile=(g,x,z)=>{cyl(g,0.0365,0.8,x,-0.26,z,mat.pile);cyl(g,0.0445,0.15,x,0.205,z,mat.pile);box(g,x-0.1,x+0.1,0.28,0.292,z-0.1,z+0.1,mat.pile);};
+    for(const [u,w] of B.supports.concat(B.stoveSup,[[2.45,-1.1],[3.9,-1.1]])){column(ct,u,w);pile(cp,u,w);}
+    const grid=rafGrid(4);
+    for(const w of [0.04,2.0,3.96])box(f,0,4,0.30,0.51,w-0.04,w+0.04,mat.woodDark);
+    box(f,0,4,0.51,0.72,0,0.04,mat.woodDark);box(f,0,4,0.51,0.72,3.96,4.0,mat.woodDark);
+    for(const x of grid){const d=x>2?-0.04:0.04;box(f,x-0.02,x+0.02,0.51,0.72,0.04,2.74,mat.wood);box(f,x+d-0.02,x+d+0.02,0.51,0.72,1.26,3.96,mat.wood);}
+    box(fl,0,4,0.72,0.75,0,4,mat.floor);box(flh,2,4,0.72,0.75,0,4,mat.floor);
+    // каркас
+    const place={high:(a,b,y0,y1)=>[a,b,y0,y1,0,0.12],low:(a,b,y0,y1)=>[a,b,y0,y1,3.88,4.0],
+      left:(a,b,y0,y1)=>[0,0.12,y0,y1,0.12+a,0.12+b],right:(a,b,y0,y1)=>[3.88,4.0,y0,y1,0.12+a,0.12+b],
+      p1:(a,b,y0,y1)=>[0.12+a,0.12+b,y0,y1,1.95,2.07],p2:(a,b,y0,y1)=>[1.30,1.42,y0,y1,2.07+a,2.07+b]};
+    for(const k in B.FR)for(const mm of B.FR[k]){
+      if(mm.t==='tplate'){const xs=place[k](0,0,0,0),z0=k==='p2'?2.07:0.12,Lp=mm.L/Math.cos(ANG);
+        const b=new THREE.Mesh(new THREE.BoxGeometry(xs[1]-xs[0],0.04,Lp),mat.wood);b.position.set((xs[0]+xs[1])/2,FL+(mm.h0+mm.h1)/2-0.02,z0+mm.L/2);b.rotation.x=ANG;fr.add(b);continue;}
+      box(fr,...place[k](mm.u0,mm.u1,FL+mm.v0,FL+mm.v1),mm.t==='header'?mat.woodDark:mat.wood);}
+    for(const x of [0.06,1.36,3.94])box(fr,x-0.04,x+0.04,FL+0.04,PURL_BOT,PZ-0.06,PZ+0.06,mat.woodDark);
+    box(rf,0,4,PURL_BOT,PURL_TOP,PZ-0.04,PZ+0.04,mat.woodDark);
+    // крыша
+    const slope=(g,x0,x1,off,th,s0,s1,m)=>{const Ls=s1-s0,mid=(s0+s1)/2,z=-OVF+mid*COS+off*SIN,y=yR(-OVF)-mid*SIN+off*COS;
+      const b=new THREE.Mesh(new THREE.BoxGeometry(Math.abs(x1-x0),th,Ls),m);b.position.set((x0+x1)/2,y,z);b.rotation.x=ANG;g.add(b);};
+    for(const x of grid){const d=x>2?-0.04:0.04;slope(rf,x-0.02,x+0.02,RAF/2,RAF,0,2.7,mat.wood);slope(rf,x+d-0.02,x+d+0.02,RAF/2,RAF,SLEN-2.7,SLEN,mat.wood);}
+    for(const x of [-GOV+0.02,4+GOV-0.02])slope(rf,x-0.02,x+0.02,RAF/2,RAF,0,SLEN,mat.wood);
+    for(let d=0.05;d<SLEN;d+=0.45)slope(fr,-GOV,4+GOV,RAF+0.045,0.03,d-0.06,d+0.06,mat.woodDark);
+    const bRoof=new THREE.MeshStandardMaterial({map:rtex,roughness:0.45,metalness:0.35});
+    slope(ro,-GOV-0.02,4+GOV+0.02,ROOF_OFF-0.012,0.024,-0.03,SLEN+0.03,bRoof);
+    for(const x of [-GOV-0.03,4+GOV+0.03])slope(ro,x-0.015,x+0.015,RAF/2+0.03,0.30,0,SLEN,trimMat);
+    {const h=RAF/COS+0.06;box(ro,-GOV,4+GOV,yR(-OVF)-0.02,yR(-OVF)-0.02+h,-OVF-0.03,-OVF,trimMat);box(ro,-GOV,4+GOV,yR(4+OVB)-0.02,yR(4+OVB)-0.02+h,4+OVB,4+OVB+0.03,trimMat);}
+    // обшивка и проёмы
+    const Y0=0.51;
+    const hole=(o,uOff)=>{const p=new THREE.Path(),a=o.a+uOff,b=o.b+uOff,y0=FL+o.bot,y1=FL+o.top;p.moveTo(a,y0);p.lineTo(b,y0);p.lineTo(b,y1);p.lineTo(a,y1);p.closePath();return p;};
+    const skin=(shape,setT)=>{const mm=new THREE.Mesh(new THREE.ExtrudeGeometry(shape,{depth:0.19,bevelEnabled:false}),facadeMat);setT(mm);sk.add(mm);};
+    {const s=new THREE.Shape();s.moveTo(0.12,Y0);s.lineTo(3.88,Y0);s.lineTo(3.88,yR(-OUT)+0.22);s.lineTo(0.12,yR(-OUT)+0.22);s.closePath();B.walls.high.ops.forEach(o=>s.holes.push(hole(o,0)));skin(s,m=>m.position.z=-OUT);
+     const b=new THREE.Shape();b.moveTo(0.12,Y0);b.lineTo(3.88,Y0);b.lineTo(3.88,yR(4+OUT)+0.22);b.lineTo(0.12,yR(4+OUT)+0.22);b.closePath();skin(b,m=>m.position.z=3.88);}
+    for(const side of ['left','right']){const s=new THREE.Shape();s.moveTo(-OUT,Y0);s.lineTo(4+OUT,Y0);s.lineTo(4+OUT,yR(4+OUT)+0.22);s.lineTo(-OUT,yR(-OUT)+0.22);s.closePath();
+      B.walls[side].ops.forEach(o=>s.holes.push(hole(o,0.12)));skin(s,m=>{m.rotation.y=-Math.PI/2;m.position.x=side==='left'?0.12:4+OUT;});}
+    const opening=(o,uOff,setT,flip)=>{const g=new THREE.Group();setT(g);sk.add(g);
+      const a=o.a+uOff,b=o.b+uOff,y0=FL+o.bot,y1=FL+o.top,w=0.06,fz=z=>flip?0.19-z:z,bx=(x0,x1,yy0,yy1,z0,z1,m)=>box(g,x0,x1,yy0,yy1,fz(z0),fz(z1),m);
+      if(o.kind==='door'){bx(a+0.02,b-0.02,y0,y1-0.02,0.03,0.09,mat.door);for(let i=1;i<6;i++)bx(a+0.02+i*0.143-0.004,a+0.02+i*0.143+0.004,y0,y1-0.02,0.025,0.03,mat.woodDark);bx(a+0.10,a+0.14,y0+1.0,y0+1.04,-0.01,0.03,mat.dark);}
+      else{bx(a,b,y0,y0+w,0.04,0.11,mat.pvc);bx(a,b,y1-w,y1,0.04,0.11,mat.pvc);bx(a,a+w,y0,y1,0.04,0.11,mat.pvc);bx(b-w,b,y0,y1,0.04,0.11,mat.pvc);bx(a+w,b-w,y0+w,y1-w,0.07,0.08,mat.glass);bx(a-0.04,b+0.04,y0-0.03,y0,-0.07,0.02,trimMat);}
+      bx(a-0.1,a,o.kind==='door'?y0-0.2:y0-0.03,y1+0.1,-0.025,0,trimMat);bx(b,b+0.1,o.kind==='door'?y0-0.2:y0-0.03,y1+0.1,-0.025,0,trimMat);bx(a-0.12,b+0.12,y1,y1+0.12,-0.03,0,trimMat);};
+    B.walls.high.ops.forEach(o=>opening(o,0,g=>g.position.z=-OUT,false));
+    B.walls.left.ops.forEach(o=>opening(o,0.12,g=>{g.rotation.y=-Math.PI/2;g.position.x=0.12;},true));
+    for(const [x,z] of [[-OUT,-OUT],[4+OUT,-OUT],[-OUT,4+OUT],[4+OUT,4+OUT]]){const sx=x<1?1:-1,sz=z<1?1:-1,yt=yR(z<1?0:4)+0.2;
+      box(sk,x-sx*0.025,x+sx*0.11,Y0,yt,z-sz*0.025,z,trimMat);box(sk,x-sx*0.025,x,Y0,yt,z-sz*0.025,z+sz*0.11,trimMat);}
+    // интерьер
+    const PH=FL+2.4,asp=mat.aspen,F=(x0,x1,h0,h1,z0,z1,m)=>box(it,x0,x1,FL+h0,FL+h1,z0,z1,m);
+    box(it,0.12,3.88,FL+0.001,FL+0.003,0.12,3.88,mat.floor);
+    box(it,0.12,3.88,FL,PH,0.12,0.125,mat.lining);box(it,0.12,0.125,FL,PH,0.12,3.88,mat.lining);
+    box(it,0.12,1.30,FL,PH,3.875,3.88,mat.lining);box(it,1.42,3.88,FL,FL+2.2,3.875,3.88,asp);
+    box(it,3.875,3.88,FL,PH,0.12,1.95,mat.lining);box(it,3.875,3.88,FL,FL+2.2,2.07,3.88,asp);
+    {let x=0.12;for(const [g0,g1] of [[0.35,0.95],[2.65,3.25]]){box(it,x,g0,FL,PH,1.95,2.07,mat.part);box(it,g0,g1,FL+2.21,PH,1.95,2.07,mat.part);box(it,g0+0.02,g1-0.02,FL,FL+2.05,1.99,2.03,mat.woodDark);x=g1;}box(it,x,3.88,FL,PH,1.95,2.07,mat.part);}
+    box(it,1.30,1.42,FL,PH,2.07,3.88,mat.part);
+    box(it,1.42,3.88,FL+2.2,FL+2.23,2.07,3.88,asp);
+    F(0.14,0.5,0,0.45,0.2,1.8,mat.wood);F(0.6,1.3,0.72,0.75,0.3,1.7,mat.wood);F(0.9,1.0,0,0.72,0.95,1.05,mat.dark);
+    F(1.4,1.72,0,0.45,0.55,0.87,mat.woodDark);F(1.4,1.72,0,0.45,1.1,1.42,mat.woodDark);F(3.6,3.86,0,1.8,0.5,1.6,mat.woodDark);
+    for(let i=0;i<6;i++){const c=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,0.4,8),mat.woodDark);c.rotation.x=Math.PI/2;c.position.set(2.55+(i%3)*0.13,FL+0.07+Math.floor(i/3)*0.12,1.7);it.add(c);}
+    F(0.2,1.22,0,0.45,3.3,3.86,mat.aspen);F(0.62,0.82,0.002,0.006,2.7,2.9,mat.steel);
+    F(1.42,3.88,0.96,1.0,3.28,3.88,asp);F(1.42,3.88,0.46,0.5,2.88,3.28,asp);F(3.28,3.88,0.96,1.0,2.07,2.88,asp);
+    for(const x of [1.5,2.6,3.8])F(x-0.02,x+0.02,0,0.96,3.3,3.34,mat.woodDark);
+    // печь
+    box(st,SX-0.25,SX+0.25,FL,FL+0.8,2.15,2.55,mat.stove);box(st,SX-0.22,SX+0.22,FL+0.8,FL+1.05,2.18,2.52,mat.gravel);
+    box(st,SX-0.15,SX+0.15,FL+0.2,FL+0.55,1.85,2.15,mat.stove);box(st,SX-0.11,SX+0.11,FL+0.26,FL+0.5,1.848,1.85,mat.fire);
+    box(st,SX-0.4,SX+0.4,FL,FL+1.2,1.88,1.95,mat.brick);box(st,1.5,1.62,FL,FL+1.4,2.1,2.7,mat.brick);
+    box(st,SX-0.35,SX+0.35,FL,FL+0.006,1.45,1.85,mat.steel);
+    for(const y of [0.35,0.85])box(st,SX-0.32,SX+0.32,FL+y,FL+y+0.05,2.68,2.72,mat.aspen);
+    cyl(st,0.0575,1.15,SX,FL+1.05+0.575,2.35,mat.stove);
+    {const sh=5.1-(FL+2.2);cyl(st,0.1,sh,SX,FL+2.2+sh/2,2.35,mat.steel);cyl(st,0.16,0.5,SX,FL+1.65,2.35,mat.steel);
+     const cone=new THREE.Mesh(new THREE.ConeGeometry(0.2,0.14,20),mat.steel);cone.position.set(SX,5.2,2.35);st.add(cone);}
+    // крыльцо
+    box(f,2.35,4.0,0.55,0.69,-1.2,-0.07,mat.woodDark);box(f,2.35,4.0,0.69,0.72,-1.2,-0.07,mat.wood);
+    for(let i=1;i<=3;i++)box(f,2.7,3.9,0,0.72-i*0.18,-1.2-i*0.28,-1.2-(i-1)*0.28,mat.wood);
   }
   window.__state3D=()=>{if(!H.gColT)return;const p=FOUND==='piles',t=ENT==='terrace';
     H.gColT.visible=!p;H.gColP.visible=p;H.gPorch.visible=!t;H.gPorchT.visible=!t&&!p;H.gPorchP.visible=!t&&p;
@@ -1916,14 +2286,16 @@ applyState();
     H.gSkin.visible=m!=='frame';H.gRoof.visible=m==='ext';H.gTR.visible=m==='ext';H.gRaf.visible=m!=='int';H.gFrame.visible=m==='frame';
     H.gFloor.visible=m!=='frame';H.gFloorHalf.visible=m==='frame';H.gInt.visible=m!=='frame';
     renderer.clippingPlanes=m==='int'?[clip]:[];
-    const cx=LEN/2,cz=LY.modular?(LY.ZMIN+4)/2:2,base=(LEN>7||(LY.ZMIN||0)<0)?14:12;
+    const isB=OBJ==='bath',cx=isB?-10:LEN/2,cz=isB?2:(LY.modular?(LY.ZMIN+4)/2:2),base=isB?10:((LEN>7||(LY.ZMIN||0)<0)?14:12);
     if(!keepCam){if(m==='int'){r=base-2.5;ph=0.55;th=-1.25;target.set(cx,0.9,cz);}else{if(r<6||ph<0.7){r=base;ph=1.2;th=-0.85;}target.set(cx,2.0,cz);}}
     else{target.x=cx;target.z=cz;}
+    sun.target.position.set(target.x,1,target.z);sun.position.set(target.x+10,11,target.z-9);
     upd();}
+  window.__focus3D=()=>{r=OBJ==='bath'?10:((LEN>7||(LY.ZMIN||0)<0)?14:12);setMode(mode);};
   document.getElementById('m-ext').onclick=()=>setMode('ext');
   document.getElementById('m-frame').onclick=()=>setMode('frame');
   document.getElementById('m-int').onclick=()=>setMode('int');
-  window.__rebuild3D=()=>{build();window.__state3D();r=(LEN>7||(LY.ZMIN||0)<0)?14:12;setMode(mode,true);};
+  window.__rebuild3D=()=>{build();window.__state3D();r=OBJ==='bath'?10:((LEN>7||(LY.ZMIN||0)<0)?14:12);setMode(mode,true);};
 
   function req(){if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;renderer.render(scene,cam);});}
   function resize(){const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();req();}
@@ -1931,7 +2303,7 @@ applyState();
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change',setBg);
   new MutationObserver(setBg).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
   build();window.__state3D();
-  if(LEN>7||(LY.ZMIN||0)<0)r=14;
+  r=OBJ==='bath'?10:((LEN>7||(LY.ZMIN||0)<0)?14:12);
   setBg();setMode('ext');resize();
 })();
 </script>
