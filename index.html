@@ -471,7 +471,7 @@ html{scroll-behavior:smooth}
         <li>Потолок парной на высоте 2,2 м, утеплитель 150 мм. Так парная быстрее прогревается и тратит меньше дров.</li>
         <li>Печь б/у с выносной топкой на 12–18 м³. Проверьте швы и колосник. Печь стоит в дальнем углу: кирпичный экран на стенах, деревянное ограждение в 200 мм от печи, до нижнего полка 1,26 м.</li><li>Перед топкой лист 500×700 и 1,25 м свободного места. Дрова и стол за этой зоной, до стола около 1,9 м.</li>
         <li>Полки из осины, без гвоздей сверху: крепёж только снизу. Верхний 600 мм на высоте 1,0 м, нижний 400 мм на 0,5 м. Не красить и не лакировать.</li>
-        <li>Вентиляция: приток у печи внизу, вытяжка по диагонали под потолком, обе с задвижками.</li>
+        <li>Вентиляция: приток у печи внизу, вытяжка по диагонали под потолком, обе с задвижками.</li><li>Окошки открываются: в парной деревянное 400×400 у задней стены, подальше от печи, в моечной 500×500. После бани откройте оба и дверь, чтобы всё просохло. В парной не ставьте ПВХ: от жара он ведёт.</li>
         <li>Свет только через УЗО. В парной светильник, рассчитанный на 120 °C, выключатели снаружи. Датчик угарного газа в предбаннике.</li>
       </ul>
     </div>
@@ -829,7 +829,7 @@ const BATH=(()=>{
   const BL=6.0,P=2.80; // P — левая грань перегородки П1
   const B={BL,P,SX:3.37,SZ:3.325,CEIL:2.2,
     walls:{high:{ops:[{id:'Д1',a:1.6,b:2.4,bot:0.04,top:2.21,kind:'door'},{id:'О2',a:4.0,b:4.5,bot:1.4,top:1.9,kind:'win'}]},
-      low:{ops:[]},left:{ops:[{id:'О1',a:0.4,b:1.4,bot:0.95,top:1.95,kind:'win'}]},right:{ops:[]}},
+      low:{ops:[{id:'О3',a:4.3,b:4.7,bot:1.4,top:1.8,kind:'win'}]},left:{ops:[{id:'О1',a:0.4,b:1.4,bot:0.95,top:1.95,kind:'win'}]},right:{ops:[]}},
     // П1: предбанник | моечная и парная (поперёк бани, со стойкой под прогон), П2: моечная | парная
     parts:[{x0:P,x1:P+0.12,z0:0.12,z1:3.88,gapsZ:[[0.40,1.00]]},{x0:P+0.12,x1:BL-0.12,z0:1.50,z1:1.62,gaps:[[3.35,3.95]]}],
     rooms:[{n:'Предбанник',u:2.0,w:2.65,a:2.68*3.76},{n:'Моечная',u:3.7,w:0.42,a:2.96*1.38},{n:'Парная',u:4.36,w:2.25,a:2.96*2.26}],
@@ -845,12 +845,12 @@ const BATH=(()=>{
   return B;})();
 
 function bathWallsSVG(X,Y,k){const BL=BATH.BL;let s='';const ext=[
-  {r:[-OUT,BL+OUT,-OUT,0.12],ax:'x',ops:BATH.walls.high.ops},{r:[-OUT,BL+OUT,3.88,4+OUT],ax:'x',ops:[]},
+  {r:[-OUT,BL+OUT,-OUT,0.12],ax:'x',ops:BATH.walls.high.ops},{r:[-OUT,BL+OUT,3.88,4+OUT],ax:'x',ops:BATH.walls.low.ops,back:true},
   {r:[-OUT,0.12,0.12,3.88],ax:'z',ops:BATH.walls.left.ops},{r:[BL-0.12,BL+OUT,0.12,3.88],ax:'z',ops:[]}];
   for(const w of ext){const [x0,x1,z0,z1]=w.r;s+=R(X(x0),Y(z1),(x1-x0)*k,(z1-z0)*k,'wall');
     for(const o of w.ops){
       if(w.ax==='x'){s+=R(X(o.a),Y(z1)-0.7,(o.b-o.a)*k,(z1-z0)*k+1.4,'cut')+L(X(o.a),Y(z0),X(o.a),Y(z1),'ln')+L(X(o.b),Y(z0),X(o.b),Y(z1),'ln');
-        if(o.kind==='win')s+=L(X(o.a),Y(0.0),X(o.b),Y(0.0),'glass')+L(X(o.a),Y(0.05),X(o.b),Y(0.05),'glass')+T(X((o.a+o.b)/2),Y(-0.3),o.id+' 500×500','sm');
+        if(o.kind==='win'){const g0=w.back?3.95:0.0,sz=o.id+' '+f1((o.b-o.a)*1000)+'×'+f1((o.top-o.bot)*1000);s+=L(X(o.a),Y(g0),X(o.b),Y(g0),'glass')+L(X(o.a),Y(g0+0.05),X(o.b),Y(g0+0.05),'glass')+T(X((o.a+o.b)/2),w.back?Y(3.62):Y(-0.3),sz,'sm');}
         else s+=L(X(o.a+0.02),Y(-0.07),X(o.a+0.02),Y(-0.85),'ln')+`<path d="M${X(o.a+0.02)} ${Y(-0.85)} A78 78 0 0 1 ${X(o.b)} ${Y(-0.07)}" class="thin"/>`+T(X((o.a+o.b)/2),Y(-0.3),o.id,'sm');}
       else{const za=0.12+o.a,zb=0.12+o.b;s+=R(X(x0)-0.7,Y(zb),(x1-x0)*k+1.4,(zb-za)*k,'cut')+L(X(x0),Y(za),X(x1),Y(za),'ln')+L(X(x0),Y(zb),X(x1),Y(zb),'ln')
         +L(X(0.01),Y(za),X(0.01),Y(zb),'glass')+L(X(0.06),Y(za),X(0.06),Y(zb),'glass')+T(X(-0.2),Y((za+zb)/2)+4,o.id+' ~1000×1000','sm','end');}}}
@@ -1631,7 +1631,7 @@ const EST_B=[
   ['bo4','Бутиловая лента, саморезы, планки','',1,'компл',3600],['bo5','Изба Лайт 100 мм','пол предбанника, 2 слоя',9,'уп',390,1],
   ['bo6','Мембрана A, пароизоляция, лента','',1,'компл',3500]]},
  {st:1,id:'bw',name:'Баня: окна и двери',items:[
-  ['bw1','Окно ПВХ б/у ~1000×1000','предбанник',1,'шт',1000],['bw2','Окошко ~500×500','моечная',1,'шт',500],['bw3','Монтажная пена','',2,'балл',450],
+  ['bw1','Окно ПВХ б/у ~1000×1000','предбанник',1,'шт',1000],['bw2','Окошко ПВХ б/у ~500×500, открывается','моечная: проветривание и просушка',1,'шт',800],['bw6','Окошко деревянное 400×400 со стеклопакетом, открывается','парная: проветривание; ПВХ от жара ведёт',1,'шт',2500],['bw3','Монтажная пена','',2,'балл',450],
   ['bw4','Входная дверь своими руками','',1,'компл',2500],['bw5','Двери в парную и моечную своими руками','глухие, с уплотнителем, ручки деревянные',2,'компл',1200]]},
  {st:1,id:'bk',name:'Баня: крепёж и защита',items:[['bk1','Гвозди, перфопластины','',1,'компл',5000],['bk2','Антисептик-концентрат','',1,'кан',2000]]},
  {st:2,id:'bu',name:'Баня: утепление',items:[
@@ -2214,7 +2214,7 @@ applyState();
     const hole=(o,uOff)=>{const p=new THREE.Path(),a=o.a+uOff,b=o.b+uOff,y0=FL+o.bot,y1=FL+o.top;p.moveTo(a,y0);p.lineTo(b,y0);p.lineTo(b,y1);p.lineTo(a,y1);p.closePath();return p;};
     const skin=(shape,setT)=>{const mm=new THREE.Mesh(new THREE.ExtrudeGeometry(shape,{depth:0.19,bevelEnabled:false}),facadeMat);setT(mm);sk.add(mm);};
     {const s=new THREE.Shape();s.moveTo(0.12,Y0);s.lineTo(BL-0.12,Y0);s.lineTo(BL-0.12,yR(-OUT)+0.22);s.lineTo(0.12,yR(-OUT)+0.22);s.closePath();B.walls.high.ops.forEach(o=>s.holes.push(hole(o,0)));skin(s,m=>m.position.z=-OUT);
-     const b=new THREE.Shape();b.moveTo(0.12,Y0);b.lineTo(BL-0.12,Y0);b.lineTo(BL-0.12,yR(4+OUT)+0.22);b.lineTo(0.12,yR(4+OUT)+0.22);b.closePath();skin(b,m=>m.position.z=3.88);}
+     const b=new THREE.Shape();b.moveTo(0.12,Y0);b.lineTo(BL-0.12,Y0);b.lineTo(BL-0.12,yR(4+OUT)+0.22);b.lineTo(0.12,yR(4+OUT)+0.22);b.closePath();B.walls.low.ops.forEach(o=>b.holes.push(hole(o,0)));skin(b,m=>m.position.z=3.88);}
     for(const side of ['left','right']){const s=new THREE.Shape();s.moveTo(-OUT,Y0);s.lineTo(4+OUT,Y0);s.lineTo(4+OUT,yR(4+OUT)+0.22);s.lineTo(-OUT,yR(-OUT)+0.22);s.closePath();
       B.walls[side].ops.forEach(o=>s.holes.push(hole(o,0.12)));skin(s,m=>{m.rotation.y=-Math.PI/2;m.position.x=side==='left'?0.12:BL+OUT;});}
     const opening=(o,uOff,setT,flip)=>{const g=new THREE.Group();setT(g);sk.add(g);
@@ -2224,6 +2224,7 @@ applyState();
       bx(a-0.1,a,o.kind==='door'?y0-0.2:y0-0.03,y1+0.1,-0.025,0,trimMat);bx(b,b+0.1,o.kind==='door'?y0-0.2:y0-0.03,y1+0.1,-0.025,0,trimMat);bx(a-0.12,b+0.12,y1,y1+0.12,-0.03,0,trimMat);};
     B.walls.high.ops.forEach(o=>opening(o,0,g=>g.position.z=-OUT,false));
     B.walls.left.ops.forEach(o=>opening(o,0.12,g=>{g.rotation.y=-Math.PI/2;g.position.x=0.12;},true));
+    B.walls.low.ops.forEach(o=>opening(o,0,g=>g.position.z=3.88,true));
     for(const [x,z] of [[-OUT,-OUT],[BL+OUT,-OUT],[-OUT,4+OUT],[BL+OUT,4+OUT]]){const sx=x<1?1:-1,sz=z<1?1:-1,yt=yR(z<1?0:4)+0.2;
       box(sk,x-sx*0.025,x+sx*0.11,Y0,yt,z-sz*0.025,z,trimMat);box(sk,x-sx*0.025,x,Y0,yt,z-sz*0.025,z+sz*0.11,trimMat);}
     // интерьер
