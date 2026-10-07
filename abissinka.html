@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Абиссинская скважина своими руками на участке в СОТ «Русь»: разведка ручным буром, игла, пробивка бабой, глиняный замок, колонка. Материалы и цены.">
+<title>Абиссинка своими руками</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF0EE; --surface:#F9FBFA; --ink:#1C2528; --muted:#5D6A6C; --line:#CBD3D1;
+  --pine:#B5722F; --pine-soft:#ECD7BC; --blue:#2B5C8A; --blue-soft:#D6E4F0; --brick:#A9573B;
+  --ok:#3B7A4C; --warn:#A8601C; --bad:#A33A2E; --chip:#E2E8E6;
+  --soil:#C9A97E; --sand:#E4D3A3; --rock:#9AA3A5; --clay:#B08560;
+  --f-display:'Unbounded','Arial Black',system-ui,sans-serif;
+  --f-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111618; --surface:#182023; --ink:#E3E9E7; --muted:#97A4A6; --line:#2C383B;
+  --pine:#DFA062; --pine-soft:#3B2F22; --blue:#82B3E0; --blue-soft:#1E3346; --brick:#D27A5C;
+  --ok:#7CC48F; --warn:#E3A260; --bad:#E57B6E; --chip:#222C2F;
+  --soil:#6E5A41; --sand:#7A6C47; --rock:#555E61; --clay:#6B4E37; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111618; --surface:#182023; --ink:#E3E9E7; --muted:#97A4A6; --line:#2C383B;
+  --pine:#DFA062; --pine-soft:#3B2F22; --blue:#82B3E0; --blue-soft:#1E3346; --brick:#D27A5C;
+  --ok:#7CC48F; --warn:#E3A260; --bad:#E57B6E; --chip:#222C2F;
+  --soil:#6E5A41; --sand:#7A6C47; --rock:#555E61; --clay:#6B4E37; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--f-body);margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 16px 64px}
+a{color:var(--blue)}
+.back{font:13px var(--f-mono);text-decoration:none;color:var(--muted)}
+.back:hover{color:var(--blue)}
+.eyebrow{font:600 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--pine);margin-top:18px}
+h1{font:700 clamp(28px,5vw,44px)/1.08 var(--f-display);margin:8px 0 14px;letter-spacing:-.01em}
+h2{font:600 clamp(20px,3vw,26px)/1.2 var(--f-display);margin:44px 0 14px}
+h3{font:600 17px/1.3 var(--f-body);margin:0 0 8px}
+.lead{max-width:760px;font-size:17px;color:var(--ink)}
+.muted{color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.grid2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:820px){.grid2{grid-template-columns:1fr}}
+.verdict{border-left:4px solid var(--warn)}
+.verdict b{color:var(--warn)}
+.steps{counter-reset:s;display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.steps>li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px 14px 64px;position:relative}
+.steps>li::before{content:counter(s);position:absolute;left:16px;top:14px;width:34px;height:34px;border-radius:50%;background:var(--pine);color:#fff;font:700 16px/34px var(--f-display);text-align:center}
+.steps ul{margin:6px 0 0;padding-left:20px}
+.steps li li{margin:3px 0}
+.tag{display:inline-block;font:600 11px var(--f-mono);padding:2px 8px;border-radius:99px;background:var(--chip);color:var(--muted);margin-left:6px;vertical-align:2px}
+.tag.stop{background:var(--bad);color:#fff}.tag.go{background:var(--ok);color:#fff}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px var(--f-mono);text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+td.num,th.num{text-align:right;white-space:nowrap;font-family:var(--f-mono)}
+tfoot td{font-weight:600;border-bottom:0}
+.tablebox{overflow-x:auto}
+svg{display:block;width:100%;height:auto}
+.sv text{font-family:var(--f-body);fill:var(--ink)}
+.sv .sm{font-size:12px;fill:var(--muted)}
+.sv .lbl{font-size:14px}
+.sv .hd{font:600 13px var(--f-mono);fill:var(--muted)}
+.note{font-size:14px;color:var(--muted);margin-top:8px}
+.warnbox{border-left:4px solid var(--bad)}
+footer{margin-top:48px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="./">← к проекту: дом, баня, А-фрейм, участок</a>
+  <div class="eyebrow">Вода на участке · СОТ «Русь», уч. 71 · своими руками</div>
+  <h1>Абиссинская скважина своими руками</h1>
+  <p class="lead">Абиссинка — это труба 1" с фильтром-иглой на конце, загнанная в мокрый песок на 5–8 м. Вода поднимается ручной колонкой или поверхностным насосом. Делается за 1–2 дня, без техники. Но получится она только при одном условии: <b>выше 7–8 м есть песок или дресва с водой</b>. Поэтому сначала разведка, потом покупки.</p>
+
+  <div class="card verdict" style="margin-top:18px">
+    <h3>Что известно про наш участок</h3>
+    <p style="margin:0">У скважины в посёлке Крутиха, в 1,3 км от участка, стальная обсадная труба всего 3 м, дальше гранит, глубина 40 м. У другой скважины рядом с Крутихой «труба 14 м, дальше скала». Рядом гранитный карьер «Крутиха 1». Пруд в 130 м к востоку лежит примерно на 7 м ниже участка: вода в дресве над гранитом может быть на глубине 5–7 м. <b>Шанс есть, но небольшой.</b> Поэтому сначала шаги 1–2, они почти бесплатные. Самый быстрый ответ — спросить соседей с участков 73 и 75, какая у них вода и на какой глубине.</p>
+  </div>
+
+  <h2>Как устроена</h2>
+  <div class="card" id="scheme"></div>
+  <div class="grid2" style="margin-top:18px;grid-template-columns:1fr">
+    <div class="card">
+      <h3>Главное в двух словах</h3>
+      <ul style="margin:0;padding-left:20px">
+        <li><b>Бур</b> проходит сухую часть и показывает, что внизу: суглинок, песок, скала.</li>
+        <li><b>Игла</b> — нижний кусок трубы с сеткой и наконечником. Вода через сетку заходит, песок остаётся снаружи. Голая яма воду давать не будет: стенки в мокром песке плывут, насос тянет песок, сверху затекает грязь.</li>
+        <li><b>Пробивка:</b> когда бур упёрся в мокрый песок и дальше не идёт, иглу на трубе добивают бабой ещё на 1–2 м вглубь водоносного слоя.</li>
+        <li><b>Глиняный замок</b> вокруг трубы наверху не пускает в скважину дождевую и талую воду.</li>
+        <li><b>Колонка или насос</b> тянут воду вакуумом, поэтому вся труба должна быть герметичной, а вода — не глубже 7–8 м от поверхности.</li>
+        <li><b>Скалу</b> иглой не пробить. Если бур или щуп упёрся в камень до воды, абиссинки не будет.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>По шагам</h2>
+  <ol class="steps">
+    <li><h3>Щуп: есть ли скала близко <span class="tag">0–500 ₽ · час</span></h3>
+      Забей кувалдой арматуру 12–16 мм или трубу 1/2" длиной 3–4 м в нескольких местах.
+      <ul>
+        <li>Упёрлась намертво на 1,5–3 м, звенит, на конце царапины — скала близко. <span class="tag stop">стоп</span></li>
+        <li>Идёт туго, но идёт на всю длину — копаем дальше, переходим к шагу 2. <span class="tag go">дальше</span></li>
+      </ul>
+    </li>
+    <li><h3>Разведка ручным буром на 5–7 м <span class="tag">2–3 тыс. ₽ · полдня</span></h3>
+      Садовый бур ∅100–150 мм (около 1 тыс.) и удлинители из трубы ВГП 3/4" по 1–1,5 м. Их можно сварить самому: соединение на болту М10 или на муфте, сверху Т-образная ручка. Каждые 20–30 см вынимай бур и смотри на грунт.
+      <div class="tablebox" style="margin-top:8px"><table>
+        <thead><tr><th>Что на лопастях</th><th>Что значит</th></tr></thead>
+        <tbody>
+          <tr><td>Сухой суглинок, глина</td><td>Воды ещё нет, бурим дальше</td></tr>
+          <tr><td>Влажный песок, дресва (крупный «песок» из раздробленного гранита)</td><td>Подходим к воде, ещё 20–50 см</td></tr>
+          <tr><td>Мокрый песок, стенки плывут, бур не держит грунт</td><td>Водоносный слой, бурить дальше бесполезно. Запиши глубину и переходи к шагу 3 <span class="tag go">вода</span></td></tr>
+          <tr><td>Хруст, бур не идёт, на лопастях камешки и пыль</td><td>Скала. Если воды выше не было, абиссинки не будет <span class="tag stop">стоп</span></td></tr>
+          <tr><td>На 7 м плотная сухая глина</td><td>Воды в досягаемой глубине нет <span class="tag stop">стоп</span></td></tr>
+        </tbody></table></div>
+      <p class="note">Бензиновым ямобуром глубже 2–3 м не лезь: в глине шнек клинит, и его не вытащить.</p>
+    </li>
+    <li><h3>Собрать колонну <span class="tag">4–7 тыс. ₽</span></h3>
+      <ul>
+        <li>Игла-фильтр 1" с наконечником, длина фильтра 0,8–1 м.</li>
+        <li>Трубы 1" (ВГП или оцинковка) по 1–1,5 м, общей длиной на 1–1,5 м больше найденной глубины воды.</li>
+        <li>Муфты 1", сантехнический лён и паста или герметик. <b>Каждое соединение герметичное</b>: если подсасывает воздух, колонка не качает.</li>
+        <li>«Наковальня»: муфта с заглушкой на верх трубы, чтобы баба не мяла резьбу.</li>
+      </ul>
+    </li>
+    <li><h3>Пробить иглу в водоносный слой <span class="tag">2–4 часа</span></h3>
+      Опусти иглу на трубе в пробуренную дыру. Бей бабой сверху и загоняй её ещё на 1–2 м в мокрый песок.
+      <ul>
+        <li>Баба — отрезок трубы ∅60–80 мм, залитый бетоном или свинцом, 15–25 кг, с двумя ручками. Внутри неё проходит труба колонны, баба скользит по ней и бьёт в наковальню.</li>
+        <li>Наращивай трубы по мере погружения, каждую муфту затягивай до упора.</li>
+        <li>Каждые 20–30 см заливай в трубу ведро воды. <b>Уходит сразу</b> — игла в водоносном слое, пробуй качать. <b>Стоит</b> — бей дальше.</li>
+      </ul>
+    </li>
+    <li><h3>Обсыпка и глиняный замок <span class="tag">час</span></h3>
+      <ul>
+        <li>Зазор между трубой и стенками на уровне фильтра засыпь крупным песком или мелким гравием.</li>
+        <li>Верхние 1–1,5 м — мятая глина слоями с трамбовкой. Это замок от поверхностной воды.</li>
+        <li>Наверху бетонная отмостка 0,5×0,5 м с уклоном от трубы.</li>
+      </ul>
+    </li>
+    <li><h3>Колонка и прокачка <span class="tag">3–8 тыс. ₽ · полдня</span></h3>
+      <ul>
+        <li>Ручная колонка или поверхностный насос, на входе <b>обратный клапан</b>.</li>
+        <li>Перед первым запуском залей в колонку воду, иначе она не возьмёт.</li>
+        <li>Прокачивай, пока вода не станет прозрачной. Первые часы и даже сутки она мутная, это нормально: из фильтра вымывается мелкий песок.</li>
+        <li>На зиму: колонка со сливным клапаном, после каждого раза вода уходит обратно в трубу. Насос и шланги в морозы снимать.</li>
+      </ul>
+    </li>
+    <li><h3>Анализ воды <span class="tag">3–5 тыс. ₽</span></h3>
+      Пока нет анализа, пить только кипячёную. Пробу сдать в лабораторию: Центр гигиены и эпидемиологии или любая аккредитованная. Минимум — микробиология, нитраты, железо, мутность. Верховодка в садах часто с нитратами и железом.</li>
+  </ol>
+
+  <h2>Где на участке</h2>
+  <div class="card">
+    <ul style="margin:0;padding-left:20px">
+      <li><b>У заезда, в западной части</b>, выше по склону. До А-фрейма около 8 м, летом можно провести шланг или ПНД по земле.</li>
+      <li><b>Не ближе 20 м</b> к уборной и будущему септику, они ниже по склону на востоке. Схема участка — на <a href="./#site">главной странице</a>.</li>
+      <li>Западная полоса 12 м у леса — без построек, но колонка и скважина там разрешены.</li>
+      <li>Отмостка и место у колонки должны быть выше окружающей земли, чтобы лужи стекали от трубы.</li>
+    </ul>
+  </div>
+
+  <h2>Материалы и цены</h2>
+  <div class="card tablebox">
+    <table>
+      <thead><tr><th>Что</th><th>Где взять</th><th class="num">₽</th></tr></thead>
+      <tbody>
+        <tr><td>Щуп: арматура или труба 1/2", 3–4 м</td><td>скупка, остатки</td><td class="num">0–500</td></tr>
+        <tr><td>Садовый бур ∅100–150</td><td>Петрович, Кувалда, ВсеИнструменты</td><td class="num">500–1 000</td></tr>
+        <tr><td>Удлинители бура: труба ВГП 3/4" 6 м, болты</td><td>скупка или новая</td><td class="num">0–2 000</td></tr>
+        <tr><td>Игла-фильтр 1"</td><td>сантехника, маркетплейсы</td><td class="num">1 000–2 000</td></tr>
+        <tr><td>Трубы 1" на 8 м, муфты, лён, паста</td><td>новые или ВГП со скупки</td><td class="num">2 000–4 500</td></tr>
+        <tr><td>Баба и наковальня</td><td>сварить самому</td><td class="num">0–500</td></tr>
+        <tr><td>Гравий для обсыпки, глина, цемент на отмостку</td><td>по месту</td><td class="num">0–500</td></tr>
+        <tr><td>Ручная колонка с обратным клапаном</td><td>б/у или новая</td><td class="num">3 000–8 000</td></tr>
+        <tr><td>Анализ воды</td><td>лаборатория</td><td class="num">3 000–5 000</td></tr>
+      </tbody>
+      <tfoot><tr><td colspan="2">Итого, если вода найдётся</td><td class="num">≈ 10–24 тыс.</td></tr>
+      <tr><td colspan="2" class="muted" style="font-weight:400">Если на шагах 1–2 «стоп» — потрачено 0,5–3 тыс., дальше не тратимся</td><td></td></tr></tfoot>
+    </table>
+    <p class="note">Готовые комплекты для ручного гидробурения на 6 м (размыв грунта водой под давлением) стоят 7–15 тыс. Это другой способ пройти до воды, нужен насос или мотопомпа. Для разведки он не нужен.</p>
+  </div>
+
+  <h2>Если воды нет</h2>
+  <div class="card warnbox">
+    <ul style="margin:0;padding-left:20px">
+      <li><b>Пока стоит А-фрейм</b> — вода в канистрах: 2–3 канистры по 20 л на выходные.</li>
+      <li><b>Колодец из колец</b> имеет смысл, только если вода в дресве есть, но глубже 7–8 м или её мало.</li>
+      <li><b>Скважина в скалу</b> вместе с домом: в районе Крутихи 30–50 м. В Реже бурят от 750–1300 ₽ за метр, это 30–65 тыс. плюс обустройство (кессон или адаптер, насос). Вода из скалы чище верховодки.</li>
+    </ul>
+  </div>
+
+  <footer>Данные о глубинах — из открытых источников: карта объектов буровой компании, форумы, рельеф SRTM. Это ориентир, а не изыскания. Последнее слово за щупом и буром на своём участке.</footer>
+</div>
+<script>
+// Разрез скважины: глубины в метрах, масштаб 40 px/м
+(function(){
+  const k=40,top=40,W=720,Y=d=>top+d*k,H=Y(9.2)+30;
+  const layers=[[0,0.3,'var(--soil)','почва'],[0.3,3.2,'var(--clay)','суглинок, сухо'],[3.2,5.6,'var(--sand)','дресва, песок — сухо'],[5.6,8.0,'var(--sand)','песок, дресва — вода'],[8.0,9.2,'var(--rock)','гранит']];
+  let s=`<svg class="sv" viewBox="0 0 ${W} ${H}" role="img" aria-label="Разрез абиссинской скважины">`;
+  s+=`<defs><pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" style="fill:var(--ink);opacity:.25"/><circle cx="6" cy="6" r="1" style="fill:var(--ink);opacity:.2"/></pattern>
+    <pattern id="wave" width="14" height="8" patternUnits="userSpaceOnUse"><path d="M0 4 Q3.5 1 7 4 T14 4" style="fill:none;stroke:var(--blue);stroke-width:1;opacity:.55"/></pattern>
+    <pattern id="rk" width="22" height="16" patternUnits="userSpaceOnUse"><path d="M0 16 L8 6 L14 12 L22 2" style="fill:none;stroke:var(--ink);stroke-width:.8;opacity:.3"/></pattern></defs>`;
+  for(const [a,b,c,t] of layers){s+=`<rect x="20" y="${Y(a)}" width="${W-40}" height="${(b-a)*k}" style="fill:${c}"/>`;
+    if(c==='var(--sand)')s+=`<rect x="20" y="${Y(a)}" width="${W-40}" height="${(b-a)*k}" fill="url(#dots)"/>`;
+    if(t.includes('вода'))s+=`<rect x="20" y="${Y(a)}" width="${W-40}" height="${(b-a)*k}" fill="url(#wave)"/>`;
+    if(c==='var(--rock)')s+=`<rect x="20" y="${Y(a)}" width="${W-40}" height="${(b-a)*k}" fill="url(#rk)"/>`;
+    s+=`<text x="${W-28}" y="${Y((a+b)/2)+5}" text-anchor="end" class="sm" style="fill:var(--ink)">${t}</text>`;}
+  s+=`<line x1="20" y1="${Y(5.6)}" x2="${W-20}" y2="${Y(5.6)}" style="stroke:var(--blue);stroke-width:2;stroke-dasharray:8 5"/><text x="${W-28}" y="${Y(5.6)-6}" text-anchor="end" class="sm" style="fill:var(--blue)">уровень воды</text>`;
+  const cx=170;
+  // бурёная дыра, обсыпка, замок
+  s+=`<rect x="${cx-16}" y="${Y(0)}" width="32" height="${5.6*k}" style="fill:var(--surface);opacity:.55"/>`;
+  s+=`<rect x="${cx-16}" y="${Y(0.1)}" width="32" height="${1.3*k}" style="fill:var(--clay);stroke:var(--ink);stroke-width:.6"/><text x="${cx+24}" y="${Y(0.8)+4}" class="sm" style="fill:var(--ink)">глиняный замок</text>`;
+  s+=`<rect x="${cx-16}" y="${Y(4.8)}" width="32" height="${0.8*k}" fill="url(#dots)" style="stroke:var(--ink);stroke-width:.5"/>`;
+  // труба и игла
+  s+=`<rect x="${cx-6}" y="${Y(-1.0)}" width="12" height="${6.4*k+1.0*k}" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.4"/>`;
+  s+=`<rect x="${cx-7}" y="${Y(6.4)}" width="14" height="${1.0*k}" style="fill:var(--blue-soft);stroke:var(--blue);stroke-width:1.4"/>`;
+  for(let i=0;i<9;i++)s+=`<line x1="${cx-6}" y1="${Y(6.45+i*0.1)}" x2="${cx+6}" y2="${Y(6.45+i*0.1)}" style="stroke:var(--blue);stroke-width:1"/>`;
+  s+=`<path d="M${cx-7} ${Y(7.4)} L${cx} ${Y(7.75)} L${cx+7} ${Y(7.4)} Z" style="fill:var(--ink)"/>`;
+  s+=`<text x="${cx+24}" y="${Y(6.85)+4}" class="lbl">игла-фильтр, 1–2 м в водоносном слое</text>`;
+  s+=`<text x="${cx+24}" y="${Y(3)+4}" class="sm" style="fill:var(--ink)">труба 1" на герметичных муфтах</text>`;
+  s+=`<text x="${cx+24}" y="${Y(5.1)+4}" class="sm" style="fill:var(--ink)">обсыпка: крупный песок, гравий</text>`;
+  // колонка на поверхности
+  s+=`<rect x="${cx-40}" y="${Y(0)-6}" width="80" height="6" style="fill:var(--rock)"/><text x="${cx+46}" y="${Y(0)-2}" class="sm">отмостка</text>`;
+  s+=`<rect x="${cx-9}" y="${Y(-0.95)}" width="18" height="${0.95*k-6}" style="fill:var(--ok)"/><path d="M${cx+9} ${Y(-0.85)} l26 -10" style="stroke:var(--ink);stroke-width:4;stroke-linecap:round"/><path d="M${cx-9} ${Y(-0.55)} l-18 0 l0 8" style="fill:none;stroke:var(--ink);stroke-width:4"/>`;
+  s+=`<text x="${cx-34}" y="${Y(-0.95)-6}" class="lbl" text-anchor="end">колонка</text>`;
+  // бур слева: глубина разведки
+  const bx=70;s+=`<line x1="${bx}" y1="${Y(0)}" x2="${bx}" y2="${Y(5.6)}" style="stroke:var(--pine);stroke-width:3"/><path d="M${bx-10} ${Y(5.6)} l10 14 l10 -14 z" style="fill:var(--pine)"/>`;
+  s+=`<text x="${bx-8}" y="${Y(2.4)}" class="sm" text-anchor="end" style="fill:var(--ink)" transform="rotate(-90 ${bx-8} ${Y(2.4)})">ручной бур: до мокрого слоя</text>`;
+  s+=`<line x1="${bx+14}" y1="${Y(5.7)}" x2="${bx+14}" y2="${Y(7.4)}" style="stroke:var(--brick);stroke-width:2;stroke-dasharray:4 3"/><text x="${bx+20}" y="${Y(6.7)}" class="sm" style="fill:var(--brick)">добить бабой</text>`;
+  // шкала глубин
+  for(let d=0;d<=9;d++)s+=`<line x1="14" y1="${Y(d)}" x2="20" y2="${Y(d)}" style="stroke:var(--muted)"/><text x="10" y="${Y(d)+4}" text-anchor="end" class="hd">${d}</text>`;
+  s+=`<text x="10" y="${top-16}" text-anchor="end" class="hd">м</text>`;
+  s+=`<text x="${W-20}" y="${Y(9.2)+22}" text-anchor="end" class="sm">пример: вода с 5,6 м, гранит с 8 м. На нашем участке глубины надо проверить</text>`;
+  s+='</svg>';
+  document.getElementById('scheme').innerHTML=s;
+})();
+</script>
+</body>
+</html>
