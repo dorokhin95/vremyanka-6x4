@@ -263,9 +263,32 @@ html{scroll-behavior:smooth}
 </header>
 
 <nav class="toc" aria-label="Разделы">
-  <a href="#model">3D</a><a href="#plan">Чертежи</a><a href="#layers">Слои</a><a href="#estimate">Смета</a><a href="#tips">Советы по этапам</a>
+  <a href="#site">Участок</a><a href="#model">3D</a><a href="#plan">Чертежи</a><a href="#layers">Слои</a><a href="#estimate">Смета</a><a href="#tips">Советы по этапам</a>
   <div class="fsw" role="group" aria-label="Объект"><span>Объект</span><button type="button" data-o="house" aria-pressed="true">дом</button><button type="button" data-o="bath" aria-pressed="false">баня</button><button type="button" data-o="aframe" aria-pressed="false">А-фрейм</button></div><div class="fsw" data-v="bath" hidden role="group" aria-label="Вариант бани"><span>Вариант</span><button type="button" data-bv="std" aria-pressed="true">6×4</button><button type="button" data-bv="eco" aria-pressed="false">4,5×4 эконом</button></div><div class="fsw" data-v="house" role="group" aria-label="Размер дома"><span>Размер</span><button type="button" data-s="4" aria-pressed="false">4×4</button><button type="button" data-s="6" aria-pressed="true">6×4</button><button type="button" data-s="8" aria-pressed="false">8,1×4</button></div><div class="fsw" data-v="house s4" hidden role="group" aria-label="Модули"><span>Модули</span><button type="button" data-m="1" aria-pressed="true">1</button><button type="button" data-m="2" aria-pressed="false">2</button><button type="button" data-m="3" aria-pressed="false">3 · Г</button><button type="button" data-m="4" aria-pressed="false">4 · 8×8</button></div><div class="fsw" data-v="xA" role="group" aria-label="Вариант фундамента"><span>Фундамент</span><button type="button" data-f="tires" aria-pressed="true">шины</button><button type="button" data-f="piles" aria-pressed="false">сваи</button></div><div class="fsw" data-v="house" role="group" aria-label="Вход"><span>Вход</span><button type="button" data-e="porch" aria-pressed="true">крыльцо</button><button type="button" data-e="terrace" aria-pressed="false">терраса</button></div>
 </nav>
+
+<section class="sec" id="site">
+  <h2>Участок</h2>
+  <div class="sheets">
+    <figure class="sheet wide">
+      <div class="paper" id="svgSite"></div>
+      <div class="stamp"><div class="no">Лист 0</div><div>Схема участка 66:22:1805001:81 · дом и баня меняются вместе с переключателями</div><div class="sc">М 1:500</div></div>
+    </figure>
+    <div class="card">
+      <h3>Что известно по документам</h3>
+      <ul>
+        <li>Режевской р-н, СОТ «Русь», участок 71. 1272 м², почти прямоугольник 26 × 48 м, граница с координатами в ЕГРН.</li>
+        <li>Земли сельхозназначения, «для ведения садоводства», частная собственность. Кадастровая стоимость 46 670 ₽, налог порядка 140 ₽ в год.</li>
+        <li>По карте ПЗЗ Режевского округа (прил. 31.1) — зона СХ-2, ведение садоводства: садовый и жилой дом, баня, хозпостройки. Отступ от границ 3 м, до 2 этажей, застройка до 60%.</li>
+        <li>До соседа: дом 3 м, сарай для птицы 4 м, прочие постройки 1 м, высокие деревья 4 м, средние 2 м, кусты 1 м. Между постройками на своём участке: уборная от дома 12 м, баня от дома 8 м, скважина от уборной 8 м.</li>
+        <li>Охранных зон, подтопления и ООПТ нет. Через дорогу лес гослесфонда, от построек до него держим 30 м по противопожарным нормам: западная полоса около 12 м — под огород и стоянку.</li>
+        <li>Высота 254–261 м, уклон к юго-востоку: уборная и компост ниже по склону, скважина выше.</li>
+        <li>Расстояния на схеме: баня — А-фрейм 12 м, А-фрейм — дом 12 м, уборная — дом около 32 м, скважина — уборная около 40 м, от построек до леса 31 м.</li>
+        <li>Соседи: север — уч. 46, восток — уч. 73, дальше уч. 75 с зарегистрированным жилым домом 2019 года. Въезд с дороги СОТ на западе, с юга общий проезд.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
 <section class="sec" id="model">
   <h2>3D-модель</h2>
@@ -1255,6 +1278,60 @@ function renderAframe(){
   document.getElementById('svgComms').innerHTML=afPalletsSVG();
 }
 
+/* ===================== Участок 66:22:1805001:81 ===================== */
+// u поперёк участка от западной границы (дорога) на восток, v вдоль от южной границы на север. Ось v смотрит на азимут 15,6°.
+const SITE={poly:[[0,47.59],[0,0],[26.42,-1.44],[26.07,47.6]],forestU:-18.5,fireU:11.5,gate:[11.5,15],az:15.6};
+function siteSVG(){
+  const S=SITE,k=12,u0=-24,v1=54,X=u=>(u-u0)*k,Y=v=>(v1-v)*k;let s='';
+  const RR=(a,b,c,d,cl,ex='')=>R(X(Math.min(a,b)),Y(Math.max(c,d)),Math.abs(b-a)*k,Math.abs(d-c)*k,cl,ex);
+  const lbl=(u,v,t,c='sm',a='middle',ex='')=>T(X(u),Y(v),t,c,a,ex);
+  // лес гослесфонда, дорога СОТ, проезд
+  s+=RR(u0,S.forestU,-8,v1,'thin','style="fill:var(--ok);fill-opacity:.16;stroke:none"');
+  for(let i=0;i<34;i++){const u=u0+1.2+((i*7)%11)*0.46,v=-6+((i*13)%60);s+=`<circle cx="${X(u)}" cy="${Y(v)}" r="${7+(i%3)*2}" style="fill:var(--ok);fill-opacity:.25"/>`;}
+  s+=lbl(-21,40,'лес гослесфонда','lbl','middle',`transform="rotate(-90 ${X(-21)} ${Y(40)})"`)+lbl(-21,14,'Режевское лесничество','sm','middle',`transform="rotate(-90 ${X(-21)} ${Y(14)})"`);
+  s+=L(X(S.forestU),Y(-8),X(S.forestU),Y(v1),'dash');
+  s+=RR(-6.5,-0.4,-8,v1,'grav')+lbl(-3.4,30,'дорога СОТ «Русь»','sm','middle',`transform="rotate(-90 ${X(-3.4)} ${Y(30)})"`);
+  s+=RR(-0.4,32,-7.5,-2.2,'grav')+lbl(15,-5.4,'проезд СОТ (общая земля)','sm');
+  // соседи
+  s+=lbl(6,50.6,'уч. 46','sm')+lbl(28.6,34,'уч. 73','sm','middle',`transform="rotate(-90 ${X(28.6)} ${Y(34)})"`)+lbl(28.6,14,'дальше уч. 75, дом 2019','sm','middle',`transform="rotate(-90 ${X(28.6)} ${Y(14)})"`);
+  // граница 30 м от леса и полоса без построек
+  s+=RR(0,S.fireU,0,47.6,'thin','style="fill:var(--ok);fill-opacity:.07;stroke:none"');
+  s+=`<line x1="${X(S.fireU)}" y1="${Y(-1)}" x2="${X(S.fireU)}" y2="${Y(48.5)}" style="stroke:var(--brick);stroke-width:1.6;stroke-dasharray:8 5"/>`;
+  s+=lbl(S.fireU+0.4,49.4,'30 м от леса','sm','start')+lbl(5.6,46,'без построек:','sm')+lbl(5.6,44.6,'огород, стоянка','sm');
+  // отступ 3 м и зона застройки
+  s+=RR(Math.max(3,S.fireU),23.1,3,44.6,'thin','style="fill:var(--chip);fill-opacity:.5;stroke:var(--muted);stroke-dasharray:4 3"');
+  // участок
+  s+=`<polygon points="${S.poly.map(([u,v])=>X(u)+','+Y(v)).join(' ')}" style="fill:none;stroke:var(--ink);stroke-width:2.6"/>`;
+  // заезд
+  const [g0,g1]=S.gate;s+=RR(-0.5,0.5,g0,g1,'cut')+`<path d="M${X(-5)} ${Y((g0+g1)/2)} L${X(2.2)} ${Y((g0+g1)/2)}" style="stroke:var(--brick);stroke-width:2.4;fill:none" marker-end="url(#arr)"/>`;
+  s+=lbl(-3.2,g1+1.6,'заезд','lbl')+RR(1,8.5,9.5,17,'furn')+lbl(4.7,13.1,'стоянка','sm');
+  // постройки
+  const box=(a,b,c,d,cl,t,t2)=>RR(a,b,c,d,cl)+(t?lbl((a+b)/2,(c+d)/2-0.4,t,'lbl'):'')+(t2?lbl((a+b)/2,c-1.4,t2,'sm'):'');
+  const hL=(typeof LY!=='undefined'&&LY.modular)?(+MOD>=2?8:4):LEN,hD=(typeof LY!=='undefined'&&LY.modular&&+MOD>=3)?8:4;
+  const hu=12.6,hv=40.4-hD;
+  if(LY&&LY.modular&&+MOD===3)s+=RR(hu,hu+8,hv+4,hv+8,'wood')+RR(hu,hu+4,hv,hv+4,'wood')+lbl(hu+4,hv+5.8,'дом','lbl')+lbl(hu+4,hv+4.5,'3 модуля, буква Г','sm');
+  else s+=box(hu,hu+hL,hv,hv+hD,'wood','дом',f1(hL*10)/10+'×'+hD+' · потом');
+  const af=AF,aL=af.L+2*af.T;s+=box(12.6,12.6+aL,20,24,'wood','А-фрейм','сейчас · дверь на запад');
+  s+=`<path d="M${X(12.6)} ${Y(21.6)} L${X(11.4)} ${Y(21.6)}" style="stroke:var(--ink);stroke-width:1.4"/>`;
+  const bL=BATH.BL;s+=box(12.6,12.6+bL,4,8,'wood','баня',f1(bL*10)/10+'×4 · потом');
+  s+=box(19.6,22.6,20.3,23.3,'furn','')+lbl(21.1,21.5,'дрова','sm');
+  s+=box(20.8,23,3,4.6,'furn','')+lbl(21.9,5.6,'уборная','sm');
+  s+=`<circle cx="${X(20.5)}" cy="${Y(43.4)}" r="9" class="metal"/>`+lbl(20.5,45.2,'скважина','sm');
+  s+=RR(1,11,24,40,'thin','style="fill:var(--ok);fill-opacity:.12;stroke:var(--ok);stroke-dasharray:3 3"')+lbl(6,32,'огород','lbl');
+  // дорожка от заезда
+  s+=`<polyline points="${X(0.5)},${Y(13.2)} ${X(9.5)},${Y(16)} ${X(11.4)},${Y(21.6)}" style="stroke:var(--muted);stroke-width:1.2;fill:none;stroke-dasharray:2 3"/>`;
+  // размеры и расстояния
+  s+=dimH(X(0),X(26.4),Y(-9.5),'26 400',Y(-1.5))+dimV(Y(47.6),Y(0),X(34),'47 600',X(26.5));
+  s+=dimH(X(S.forestU),X(12.6),Y(1.6),f1(12.6-S.forestU)+' м до леса');
+  s+=dimV(Y(20),Y(8),X(24.6),'12 м')+dimV(Y(hv),Y(24),X(24.6),f1(hv-24)+' м');
+  // север, уклон, масштаб
+  const nx=X(30.5),ny=Y(51);s+=`<g transform="rotate(${-S.az} ${nx} ${ny})"><path d="M${nx} ${ny-24} L${nx-8} ${ny+8} L${nx} ${ny+2} L${nx+8} ${ny+8} Z" class="stove"/></g>`+T(nx,ny+24,'С','lbl');
+  s+=`<path d="M${X(-20)} ${Y(-9)} L${X(-14)} ${Y(-11)}" style="stroke:var(--blue);stroke-width:1.6;fill:none" marker-end="url(#arr)"/>`+lbl(-20,-7.4,'уклон к ЮВ ~2–4%','sm','start');
+  s+=L(X(21),Y(-12.2),X(31),Y(-12.2),'ln')+L(X(21),Y(-11.7),X(21),Y(-12.7),'ln')+L(X(31),Y(-11.7),X(31),Y(-12.7),'ln')+lbl(26,-11.4,'10 м','sm');
+  const defs=`<defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--brick)"/></marker></defs>`;
+  return svg(`0 0 ${(38-u0)*k} ${(v1+14)*k}`,defs+s,'Схема участка');
+}
+
 let LY,LEN,OPEN,FR,rafterXs,CH,INNER=0;
 const mz=z=>LY.SF?4.0-z:z;   // в 4×4 печь у фасада: зеркалим её по глубине
 function applyLayout(){
@@ -1669,6 +1746,7 @@ function pileDetailSVG(){
 }
 function renderAllSVG(){
   renderLayers();
+  {const e=document.getElementById('svgSite');if(e)e.innerHTML=siteSVG();}
   if(OBJ==='aframe'){renderAframe();return;}
   if(OBJ==='bath'){renderBath();return;}
   document.getElementById('svgPlan').innerHTML=planSVG();
