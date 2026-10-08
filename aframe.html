@@ -1,0 +1,1276 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Пошаговая сборка А-фрейма 5×4 из поддонов: опоры, лежни, фермы с запилами, пол-кассеты, скаты, кровля с продухом, фронтоны с картой раскроя, засыпка опилом, печь и труба. 3D по шагам.">
+<title>Сборка А-фрейма</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF0EE; --surface:#F9FBFA; --ink:#1C2528; --muted:#5D6A6C; --line:#CBD3D1;
+  --pine:#B5722F; --pine-soft:#ECD7BC; --blue:#2B5C8A; --wool:#A0844F; --scene:#D9E1DE;
+  --brick:#A9573B; --fire:#C4521C; --grid:rgba(43,92,138,.07); --ok:#3B7A4C; --warn:#A8601C; --bad:#A33A2E; --chip:#E2E8E6;
+  --f-display:'Unbounded','Arial Black',system-ui,sans-serif;
+  --f-body:'Golos Text',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#111618; --surface:#182023; --ink:#E3E9E7; --muted:#97A4A6; --line:#2C383B;
+  --pine:#DFA062; --pine-soft:#3B2F22; --blue:#82B3E0; --wool:#C4A46A; --scene:#1A2326;
+  --brick:#D27A5C; --fire:#F08A4B; --grid:rgba(130,179,224,.06); --ok:#7CC48F; --warn:#E3A260; --bad:#E57B6E; --chip:#222C2F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111618; --surface:#182023; --ink:#E3E9E7; --muted:#97A4A6; --line:#2C383B;
+  --pine:#DFA062; --pine-soft:#3B2F22; --blue:#82B3E0; --wool:#C4A46A; --scene:#1A2326;
+  --brick:#D27A5C; --fire:#F08A4B; --grid:rgba(130,179,224,.06); --ok:#7CC48F; --warn:#E3A260; --bad:#E57B6E; --chip:#222C2F; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--f-body);margin:0}
+a{color:var(--blue)}
+.wrap{max-width:1440px;margin:0 auto;padding:24px 20px 64px}
+@media (max-width:520px){.wrap{padding-inline:16px}}
+.back{font:13px var(--f-mono);text-decoration:none;color:var(--muted)}
+.back:hover{color:var(--blue)}
+.eyebrow{font:600 12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--pine);margin-top:16px}
+h1{font:700 clamp(28px,4.6vw,46px)/1.08 var(--f-display);margin:8px 0 12px;letter-spacing:-.01em;text-wrap:balance}
+h2{font:600 clamp(19px,2.4vw,24px)/1.22 var(--f-display);margin:0;text-wrap:balance}
+h3{font:600 16px/1.3 var(--f-body);margin:0 0 6px}
+p{margin:0 0 10px;max-width:70ch}
+.lead{font-size:17px;max-width:72ch}
+.muted{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none}
+.chip{font:13px var(--f-mono);background:var(--chip);border-radius:6px;padding:4px 9px;font-variant-numeric:tabular-nums}
+nav.toc{position:sticky;top:0;z-index:6;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);margin:18px -20px 0;padding:10px 20px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav.toc a{flex:none;text-decoration:none;color:var(--ink);font-size:14px;padding:5px 11px;border-radius:999px;background:var(--chip)}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--pine);color:#fff;outline:none}
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;margin-top:22px;align-items:start}
+.flow{display:grid;gap:44px;min-width:0}
+.stage{display:grid;gap:10px;min-width:0}
+@media (min-width:1180px){
+  .layout{grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr)}
+  .stage{position:sticky;top:58px;order:2}
+  .flow{order:1}
+  .viewer{height:calc(100vh - 230px)!important;min-height:420px}
+}
+.viewer{position:relative;height:min(62vh,560px);min-height:340px;border-radius:12px;overflow:hidden;background:var(--scene);border:1px solid var(--line)}
+.viewer canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+.viewer canvas:active{cursor:grabbing}
+.vfoot{position:absolute;left:10px;bottom:10px;right:10px;display:flex;justify-content:space-between;gap:8px;pointer-events:none}
+.hint{font:12px var(--f-mono);color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px 8px}
+.vfail{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted)}
+.ctrl{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+.ctrl button,.navb{font:600 18px var(--f-body);width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.ctrl button:hover{border-color:var(--ink)}
+.ctrl button:focus-visible,.stepchips button:focus-visible,.seg button:focus-visible,.go3d:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.cap{min-width:0}
+.cap b{font:600 13px var(--f-mono);color:var(--pine);letter-spacing:.06em;text-transform:uppercase;display:block}
+.cap span{font-weight:600;font-size:17px}
+.cap small{display:block;color:var(--muted);font-size:13px}
+.stepchips{display:flex;flex-wrap:wrap;gap:5px}
+.stepchips button{font:600 13px var(--f-mono);min-width:34px;height:32px;padding:0 8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.stepchips button[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:#fff}
+.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;align-items:center;font-size:13px}
+.seg span{color:var(--muted);padding:0 6px 0 9px}
+.seg button{border:0;background:transparent;color:var(--ink);font:500 14px var(--f-body);padding:5px 12px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.seg[hidden]{display:none}
+.step{display:grid;gap:14px;scroll-margin-top:64px;min-width:0}
+.st-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.st-n{font:600 13px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--pine)}
+.go3d{margin-left:auto;font:500 13px var(--f-body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.go3d:hover{border-color:var(--pine);color:var(--pine)}
+@media (min-width:1180px){.go3d{display:none}}
+.need{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--pine);border-radius:10px;padding:10px 14px;font-size:15px}
+.need b{font:600 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--pine);margin-right:6px}
+ol.do{margin:0;padding:0;list-style:none;counter-reset:d;display:grid;gap:8px}
+ol.do>li{counter-increment:d;position:relative;padding-left:38px;font-size:15.5px}
+ol.do>li::before{content:counter(d);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--ink);font:600 13px/23px var(--f-mono);text-align:center}
+.warn{background:color-mix(in srgb,var(--bad) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--bad) 30%,var(--line));border-radius:10px;padding:10px 14px;font-size:15px}
+.warn b,.why b{display:block;font:600 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.warn b{color:var(--bad)}
+.why{background:color-mix(in srgb,var(--blue) 7%,var(--surface));border:1px solid color-mix(in srgb,var(--blue) 30%,var(--line));border-radius:10px;padding:10px 14px;font-size:15px}
+.why b{color:var(--blue)}
+.warn ul,.why ul,.card ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.card li::marker{color:var(--pine)}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:0;min-width:0}
+.paper{background-color:var(--surface);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:20px 20px;overflow-x:auto;padding:12px}
+.paper svg{display:block;width:100%;height:auto;min-width:560px}
+.sheet figcaption{border-top:1.5px solid var(--ink);padding:8px 12px;font-size:13px;color:var(--muted)}
+.sheet figcaption b{font:600 13px var(--f-mono);color:var(--ink);margin-right:8px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px var(--f-mono);text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+td.num{font-family:var(--f-mono);white-space:nowrap;color:var(--pine);font-weight:600}
+table.fx{min-width:560px}
+.sv text{font-family:var(--f-mono);font-size:13px;fill:var(--ink)}
+.sv .lbl{font-family:var(--f-body);font-size:14px}
+.sv .sm{font-size:11px;fill:var(--muted)}
+.sv .hd2{font:600 13px var(--f-mono);fill:var(--ink)}
+.sv .ln{stroke:var(--ink);stroke-width:1.2;fill:none}
+.sv .thin{stroke:var(--muted);stroke-width:.8;fill:none}
+.sv .dash{stroke:var(--muted);stroke-width:.9;fill:none;stroke-dasharray:6 4}
+.sv .dim{stroke:var(--blue);stroke-width:.9;fill:none}
+.sv .dimt{fill:var(--blue)}
+.sv .wall{fill:url(#hatch);stroke:var(--ink);stroke-width:1.4}
+.sv .part{fill:var(--chip);stroke:var(--ink);stroke-width:1.1}
+.sv .cut{fill:var(--surface)}
+.sv .wood{fill:var(--pine-soft);stroke:var(--pine);stroke-width:1}
+.sv .wood2{fill:var(--pine);stroke:var(--ink);stroke-width:.6}
+.sv .ins{fill:url(#wool);stroke:var(--wool);stroke-width:.6}
+.sv .furn{fill:var(--bg);stroke:var(--muted);stroke-width:1}
+.sv .glass{stroke:var(--blue);stroke-width:1.4}
+.sv .metal{fill:var(--muted);stroke:var(--ink);stroke-width:.6}
+.sv .stove{fill:var(--ink);stroke:var(--ink)}
+.sv .brick{fill:url(#bricks);stroke:var(--brick);stroke-width:1}
+.sv .grav{fill:url(#gravel);stroke:var(--muted);stroke-width:.6}
+.sv .conc{fill:var(--line);stroke:var(--ink);stroke-width:.7}
+.sv .roof{stroke:var(--ink);stroke-width:4;fill:none;stroke-linecap:round}
+.sv .ground{stroke:var(--ink);stroke-width:1.8}
+.sv .lead{stroke:var(--ink);stroke-width:.7;fill:none}
+.sv .dot{fill:var(--ink)}
+.sv .plate{fill:var(--muted);stroke:var(--ink);stroke-width:.6;opacity:.9}
+.sv .nail{stroke:var(--ink);stroke-width:1.6}
+.sv .nailh{fill:var(--ink)}
+.sv .numc{fill:var(--surface);stroke:var(--pine);stroke-width:1.6}
+.sv .numt{font:600 12px var(--f-mono);fill:var(--pine)}
+.sv .waste{fill:var(--bad);fill-opacity:.22;stroke:none}
+.sv .cutl{stroke:var(--bad);stroke-width:2.2;fill:none}
+.sv .brk{stroke:var(--muted);stroke-width:1;fill:none}
+.sv .blk{fill:var(--pine);fill-opacity:.55;stroke:var(--ink);stroke-width:.5}
+.sv .tmp{fill:var(--warn);fill-opacity:.55;stroke:var(--warn)}
+.sv .tmpl{stroke:var(--warn);stroke-width:5;stroke-linecap:round}
+.sv .stk{fill:var(--ink)}
+.sv .memb{fill:var(--blue);fill-opacity:.55;stroke:none}
+.sv .mesh{fill:var(--ink);opacity:.6}
+.sv .run{stroke:var(--blue);stroke-width:3;opacity:.75}
+.sv .raf{fill:var(--pine);stroke:var(--ink);stroke-width:.6}
+.sv .rub{fill:var(--ink)}
+.sv .rubl{stroke:var(--ink);stroke-width:3;fill:none}
+.sv .membl{stroke:var(--blue);stroke-width:2}
+.sv .vapl{stroke:var(--blue);stroke-width:1.4;stroke-dasharray:4 2}
+.sv .vap{fill:var(--blue);fill-opacity:.35}
+.sv .air{fill:none;stroke:var(--blue);stroke-width:1.2;stroke-dasharray:2 2}
+.sv .arrow{stroke:var(--blue);stroke-width:1.6;fill:none}
+.sv .pole{stroke:var(--pine);stroke-width:6;stroke-linecap:round}
+.sv .basalt{fill:var(--line);stroke:var(--muted);stroke-width:.6}
+.sv .steel{fill:var(--muted);stroke:var(--ink);stroke-width:.4}
+.hl{stroke:var(--ink);stroke-width:1;opacity:.5}
+.wl{stroke:var(--wool);stroke-width:1.1;fill:none}
+.el{stroke:var(--muted);stroke-width:.8;opacity:.6}
+.gr{fill:var(--muted);opacity:.7}
+.bl{stroke:var(--brick);stroke-width:.8;fill:none}
+footer{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="7" class="hl"/></pattern>
+    <pattern id="wool" width="14" height="10" patternUnits="userSpaceOnUse"><path d="M0 5 Q3.5 0 7 5 T14 5" class="wl"/></pattern>
+    <pattern id="earth" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="10" class="el"/></pattern>
+    <pattern id="gravel" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2" class="gr"/><circle cx="9" cy="8" r="2.4" class="gr"/><circle cx="2" cy="10" r="1.2" class="gr"/></pattern>
+    <pattern id="bricks" width="20" height="10" patternUnits="userSpaceOnUse"><path d="M0 0H20M0 5H20M5 0V5M15 5V10" class="bl"/></pattern>
+  </defs>
+</svg>
+<div class="wrap">
+  <a class="back" href="./">← к проекту: дом, баня, А-фрейм, участок, смета</a>
+  <div class="eyebrow">А-фрейм 5×4 из поддонов · сборка своими руками</div>
+  <h1>Как собрать А-фрейм из поддонов</h1>
+  <p class="lead">По шагам, от разметки до первой топки. На каждом шаге: что нужно, что делать, чем крепить и где ошибаются. В 3D подсвечено то, что добавляется на этом шаге. Размеры те же, что в проекте.</p>
+  <ul class="chips">
+    <li class="chip">5,0 × 4,0 м по фермам, скаты 60°</li><li class="chip">5 ферм через 1240</li><li class="chip">~90 поддонов</li><li class="chip">~10 м³ опила</li>
+    <li class="chip">15 досок 40×150×6 м</li><li class="chip">5 брусьев 100×150×6 м</li><li class="chip">вдвоём 15–20 дней</li>
+  </ul>
+  <nav class="toc" aria-label="Шаги">
+    <a href="#what">Что строим</a><a href="#s0">Поддоны</a><a href="#s1">1 Опоры</a><a href="#s2">2 Лежни</a><a href="#s3">3 Фермы</a><a href="#s4">4 Установка</a>
+    <a href="#s5">5 Пол</a><a href="#s6">6 Скаты</a><a href="#s7">7 Кровля</a><a href="#s8">8 Фронтоны</a><a href="#s9">9 Окна и дверь</a>
+    <a href="#s10">10 Утепление</a><a href="#s11">11 Печь</a><a href="#s12">12 Обустройство</a><a href="#fx">Крепёж</a>
+  </nav>
+
+  <div class="layout">
+    <aside class="stage" aria-label="3D по шагам">
+      <div class="viewer" id="viewer"><div class="vfoot"><span class="hint" id="vhint">мышь — вращать · колесо — масштаб</span></div></div>
+      <div class="ctrl">
+        <button type="button" id="prev" aria-label="Предыдущий шаг">←</button>
+        <div class="cap" aria-live="polite"><b id="capN">Шаг</b><span id="capT"></span><small id="capD"></small></div>
+        <button type="button" id="next" aria-label="Следующий шаг">→</button>
+      </div>
+      <div class="stepchips" id="chips"></div>
+      <div class="seg" id="roofSeg" hidden><span>кровля</span><button type="button" data-roof="r" aria-pressed="true">рубероид</button><button type="button" data-roof="p" aria-pressed="false">профнастил б/у</button></div>
+    </aside>
+
+    <main class="flow">
+      <section class="step" id="what" data-step="9">
+        <div class="st-head"><h2>Что строим</h2><button class="go3d" data-step="9" type="button">показать в 3D</button></div>
+        <p>А-фрейм 5,0 × 4,0 м: пять ферм из доски 40×150, между ними поддоны 1200×800 с опилом внутри. Пол, скаты и фронтоны — из поддонов. Шаг ферм 1240 мм: ровно поддон 1200 плюс доска 40. Дом стоит на 16 опорах и пяти лежнях, без бетона. В коньке 3,16 м от пола, в рост — полоса 1,8 м по всей длине.</p>
+        <p><b>Лево и право</b> здесь везде — если стоять лицом к двери: печь слева, закуток справа. Так же на плане и в 3D.</p>
+        <div class="two">
+          <figure class="sheet"><div class="paper" data-fig="afPlanSVG"></div><figcaption><b>План</b>фермы через 1240, печь в углу у входа</figcaption></figure>
+          <figure class="sheet"><div class="paper" data-fig="afSectionSVG"></div><figcaption><b>Разрез 1–1</b>через печь, смотрим на вход</figcaption></figure>
+        </div>
+        <div class="why"><b>Что уточнено в проекте, пока писал инструкцию</b>
+          <ul>
+            <li>Лежней 5, а не 3: под каждым рядом поддонов пола свой. Иначе 2-й и 4-й ряд держались бы только на гвоздях.</li>
+            <li>Скат — 4 ряда целых поддонов, выше до конька доски. Пятый ряд целым поддоном к коньку не встаёт.</li>
+            <li>Под кровлей зазор на контррейках с мембраной. Без него опил оказывается между рубероидом и плёнкой и отсыреет.</li>
+            <li>Окно заднего фронтона — по центру над кроватью, между поддонами, без распила.</li>
+            <li>У печи кирпичный экран вдоль ската и короб проходки трубы вместо двух поддонов. Печь сдвинута на 7 см от ската.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="step" id="s0" data-step="0">
+        <div class="st-head"><span class="st-n">Перед началом</span><h2>Поддоны и инструмент</h2><button class="go3d" data-step="0" type="button">показать в 3D</button></div>
+        <figure class="sheet"><div class="paper" data-fig="figPallet"></div><figcaption><b>Поддон 1200×800×144</b>верх — 5 досок, низ — 3 доски, между ними 9 шашек и 3 поперечные доски</figcaption></figure>
+        <ol class="do">
+          <li>Нужны европоддоны 1200×800×144 (EPAL, EUR): 5 досок сверху, 9 шашек. Финские 1200×1000 и тонкие одноразовые не подходят — не встанут между фермами.</li>
+          <li>Клеймо <b>HT</b> — термообработка, можно. <b>MB</b> — бромметан, нельзя ни в дом, ни в печь. Без клейма, в масле, краске, химии — только на улицу.</li>
+          <li>На скаты — самые ровные и одинаковые по длине, 1200 ± 5 мм: иначе между фермами будут щели или поддон не влезет. Похуже — на пол и фронтоны, ломаные — на доски.</li>
+          <li>Главное правило стороны: <b>в скатах и фронтонах верх (5 досок) наружу, в полу — вверх.</b> Открытая сторона (3 доски) смотрит в комнату или в землю: через неё засыпаем опил, на неё шьём плёнку и доску.</li>
+          <li>Сторона 1200 всегда идёт между фермами — там просвет ровно 1200.</li>
+          <li>Ломаные поддоны разбирать, а не пилить: на контррейки, настил и обшивку нужны доски целиком, по 1200. Гвозди между доской и шашкой подрезать ножовкой по металлу или сабельной пилой — доска не треснет. Досок нужно много, около 100 м².</li>
+          <li>Опил — сухой: сжимаешь в кулаке и он рассыпается. Мокрый в стены нельзя, сгниёт. Известь-пушонка: пол-литровая банка на ведро опила, перемешать в корыте или в бочке.</li>
+        </ol>
+        <div class="card"><h3>Инструмент</h3><ul>
+          <li>Ручная дисковая пила или хорошая ножовка — запилы ферм, роспуск поддонов. Болгаркой с диском по дереву не пилить: отдача.</li>
+          <li>Ножовка по металлу или сабельная пила — гвозди при разборке поддонов. Гвоздодёр, монтировка, молоток.</li>
+          <li>Шуруповёрт, биты, сверло 4 мм — наживлять длинные саморезы, чтобы не колоть шашки.</li>
+          <li>Уровень 2 м, шнур, рулетка 10 м, угольник, карандаш. Шаблоны 60° и 30° из фанеры (шаг 3).</li>
+          <li>Строительный степлер, скобы 10–12 мм. Две стремянки 2,5 м, приставная лестница 4 м, козлы.</li>
+          <li>Трамбовка, лопата, вёдра, корыто. Респиратор, очки и перчатки: известь едкая, опил пылит.</li>
+        </ul></div>
+      </section>
+
+      <section class="step" id="s1" data-step="1">
+        <div class="st-head"><span class="st-n">Шаг 1</span><h2>Разметка и опоры</h2><button class="go3d" data-step="1" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>16 кусков бордюра по 400 мм или блоков, ~0,6 м³ боя кирпича, ~30 кирпичей на добор, рубероид, колышки, шнур</div>
+        <ol class="do">
+          <li>Место — по схеме участка: в 12 м от бани и от дома, вход к заезду, до леса больше 30 м. Снять дёрн и чернозём на площадке 6 × 5 м, бугры срезать.</li>
+          <li>Разбить прямоугольник по центрам крайних опор <b>4400 × 3300</b>. Обе диагонали должны быть <b>5500</b>: если разные, сдвигать колышки, пока не сравняются.</li>
+          <li>Вдоль дома опоры на 300, 2500 и 4700 от линии переднего фронтона. Поперёк — 5 линий лежней: 350, 1200, 2000, 2800 и 3650 от края со стороны закутка.</li>
+          <li>Под каждую опору яма 500 × 500 до плотного грунта, около 25 см. Бой кирпича слоями по 8–10 см, каждый трамбовать, до уровня земли.</li>
+          <li>Сверху кусок бордюра плашмя или блок. Натянуть шнур по уровню от самой высокой точки: верх всех опор в одной плоскости, 15–20 см над землёй. Где ниже — добрать кирпичом плашмя, до 3 рядов, лучше на растворе 1:4.</li>
+          <li>16-я опора — под печь: 1000 от передней линии, на линии 2800.</li>
+        </ol>
+        <div class="two">
+          <figure class="sheet"><div class="paper" data-fig="afSupportsSVG"></div><figcaption><b>Опоры и лежни</b>вид сверху</figcaption></figure>
+          <figure class="sheet"><div class="paper" data-fig="afNodeSVG"></div><figcaption><b>Опора</b>в разрезе, М 1:10</figcaption></figure>
+        </div>
+        <div class="warn"><b>Частые ошибки</b><ul><li>Опора на дёрне или рыхлом грунте — весной уйдёт, и поддоны в скатах разойдутся.</li><li>Не проверили диагонали — фермы встанут ромбом, поддон между ними не войдёт.</li></ul></div>
+      </section>
+
+      <section class="step" id="s2" data-step="2">
+        <div class="st-head"><span class="st-n">Шаг 2</span><h2>Лежни</h2><button class="go3d" data-step="2" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>5 брусьев 100×150×6 м (или лаги с разбора не тоньше 100×150), рубероид, антисептик или отработка</div>
+        <ol class="do">
+          <li>Отпилить брусья по 5400. Низ и торцы пропитать.</li>
+          <li>На каждую опору рубероид в 2 слоя, сверху лежень на ребро — 150 по высоте.</li>
+          <li>Концы выпустить на 200 за крайние фермы: на них встанут фронтоны.</li>
+          <li>Выставить: верх всех пяти лежней в одной плоскости, ±5 мм. Проверять уровнем на длинном правиле поперёк. Подкладывать под лежень плитку или рубероид, не деревянные клинья — сгниют.</li>
+          <li>К опорам не крепим: с опилом и кирпичом дом весит около 4 т и стоит сам. Если место ветреное, рядом с угловыми опорами забить арматуру и притянуть лежни проволокой.</li>
+        </ol>
+        <div class="why"><b>Почему пять</b>Поддоны пола лежат пятью рядами по 800. Под каждым рядом свой лежень — тогда пол не прогибается и не висит на гвоздях. Средний и крайние лежни заодно держат фермы.</div>
+      </section>
+
+      <section class="step" id="s3" data-step="3">
+        <div class="st-head"><span class="st-n">Шаг 3</span><h2>Фермы: запилы и сборка на земле</h2><button class="go3d" data-step="3" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>15 досок 40×150×6 м, сухих, 2–4 сорт · 50 пластин 60×200 · гвозди ершёные 4×40 ~2 кг · гвозди 120 · фанера на шаблоны</div>
+        <figure class="sheet"><div class="paper" data-fig="figTruss"></div><figcaption><b>Ферма</b>5 одинаковых, все размеры в мм</figcaption></figure>
+        <ol class="do">
+          <li>Раскрой: из каждой доски 6 м — деталь 4000 и обрезок 2000. Пять досок на затяжки, десять на стропила. Из обрезков — 5 ригелей, обвязка фронтонов, стойки двери, перемычки.</li>
+          <li><b>Затяжка</b> — 4000, торцы под прямым углом.</li>
+          <li><b>Стропило</b> — 4000 по верхней кромке. Оба реза срезают нижний угол: у пяты отмерить 87 по нижней кромке и провести линию к верхнему углу, у конька — 260. Нижняя кромка выйдет 3653.</li>
+          <li><b>Ригель</b> — по нижней кромке 1281. С каждого конца срезать верхний угол: 87 по верхней кромке. Верх выйдет 1107.</li>
+          <li>Шаблоны: вырезать из фанеры два прямоугольных треугольника — 150 × 87 (пята и ригель) и 150 × 260 (конёк). Прикладывать к кромке и чертить. Тогда все 10 стропил одинаковые.</li>
+          <li>Первую ферму собрать на ровной площадке, хоть на поддонах. Стропила пятой на концы затяжки: наружный угол пяты — на торец затяжки, пята лежит всей длиной 173. Вершины сходятся торцами вплотную.</li>
+          <li>Проверить: от верха затяжки до конька по центру 3464, обе стороны по 4000. Ригель — низом на 2055 от верха затяжки, это 2,05 м от пола.</li>
+          <li>Пластины 60×200 на все узлы <b>с двух сторон</b>, по 6 гвоздей 4×40 в каждую деталь. На пяте ещё 2 гвоздя 120 наискось. Всего 10 пластин на ферму.</li>
+          <li>Вокруг первой фермы забить колышки по контуру — это шаблон. Остальные четыре собирать в нём.</li>
+        </ol>
+        <figure class="sheet"><div class="paper" data-fig="figCuts"></div><figcaption><b>Запилы</b>красное — в отход</figcaption></figure>
+        <figure class="sheet"><div class="paper" data-fig="figJoints"></div><figcaption><b>Узлы фермы</b>пластины ставятся с обеих сторон, поддоны потом встают вплотную к ним</figcaption></figure>
+        <div class="warn"><b>Частые ошибки</b><ul><li>Пилить «на глаз» — фермы выйдут разные, поддоны скатов не встанут.</li><li>Только гвозди без пластин — пята со временем разъедется под весом поддонов и опила.</li><li>Пластины с одной стороны — ферму перекосит из плоскости.</li></ul></div>
+      </section>
+
+      <section class="step" id="s4" data-step="4">
+        <div class="st-head"><span class="st-n">Шаг 4</span><h2>Установка ферм</h2><button class="go3d" data-step="4" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>25 уголков 70×70 · гвозди 120 · обрезки досок на 4 укосины и 4 временные связи · колышки · поддон-проставка</div>
+        <ol class="do">
+          <li>Начать с задней фермы, у кровати. Её наружная грань — 5000 от передней линии. Поставить на лежни вдвоём (ферма около 40 кг), отвес по боковой грани стропила, сразу две укосины к колышкам.</li>
+          <li>Каждую следующую — через 1240 по осям. Проверять просветом: между фермами должен входить поддон 1200, без щели и без молотка. Удобно ставить с поддоном-проставкой у пяты и у ригеля.</li>
+          <li>Сразу прибить временные доски поперёк стропил с обеих сторон: на высоте ригеля и у конька. Они держат шаг и отвес, пока нет поддонов.</li>
+          <li>Затяжку к каждому лежню — уголок 70×70 с одной стороны и 2 гвоздя 120 наискось. 5 ферм × 5 лежней = 25 узлов.</li>
+          <li>Проверить по шнуру: все вершины в одну линию, диагонали по верху крайних ферм равны.</li>
+        </ol>
+        <figure class="sheet"><div class="paper" data-fig="figErect"></div><figcaption><b>Вид сбоку</b>фермы с временными связями</figcaption></figure>
+        <div class="warn"><b>Частые ошибки</b><ul><li>Оставить фермы на ночь без укосин: ветер положит их домино.</li><li>Ставить по рулетке, а не по поддону: у поддонов разброс ±5 мм, лучше подогнать шаг под свои.</li></ul></div>
+      </section>
+
+      <section class="step" id="s5" data-step="5">
+        <div class="st-head"><span class="st-n">Шаг 5</span><h2>Пол из кассет</h2><button class="go3d" data-step="5" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>20 поддонов · ~2 м³ опила и 2 мешка пушонки · ветрозащита ~20 м² · сетка от мышей ~22 м² · скобы · мешок базальтовой крошки · гвозди 120</div>
+        <ol class="do">
+          <li>Кассета: поддон перевернуть верхом вниз на ровное место — ячейки смотрят вверх. Засыпать опил с известью доверху и утрамбовать руками или обрезком доски.</li>
+          <li>Застелить ветрозащиту, поверх — сетку от мышей. Прибить скобами к доскам низа, с запасом 5 см на соседнюю кассету.</li>
+          <li>Перевернуть вдвоём (около 40 кг) и положить на лежни между затяжками: 5 рядов по 800, сторона 1200 — между фермами.</li>
+          <li>Под печью — 1-й пролёт от входа, 4-й ряд со стороны печи — вместо опила базальтовая крошка.</li>
+          <li>Каждую кассету прибить к затяжкам: по 2 гвоздя 120 наискось с каждого торца.</li>
+          <li>Плёнку и ДВП пока не стелить, это шаг 10. Сейчас пол — стройплощадка: на ночь и в дождь накрывать тентом.</li>
+        </ol>
+        <figure class="sheet"><div class="paper" data-fig="figCassette"></div><figcaption><b>Кассета пола</b>разрез поперёк поддона, по ячейке</figcaption></figure>
+      </section>
+
+      <section class="step" id="s6" data-step="6">
+        <div class="st-head"><span class="st-n">Шаг 6</span><h2>Скаты из поддонов</h2><button class="go3d" data-step="6" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>30 ровных поддонов · саморезы 6×120 ~200 шт или гвозди 120 · 2 обрезка 40×150 на перемычки · доски от поддонов на верх до конька</div>
+        <ol class="do">
+          <li>Ряды снизу вверх, по очереди с двух сторон, чтобы фермы не повело.</li>
+          <li>Поддон <b>верхом наружу</b>, 1200 между стропилами, 800 вдоль ската. Нижний ряд встаёт внутренним краем на пол: по наружной плоскости его низ на 90 мм выше пяты стропила.</li>
+          <li>Поддоны в пролёте ставить шашками друг над другом. Внутри получаются сквозные каналы по 380 мм от пола до верха — через них потом засыпается опил.</li>
+          <li>Крепить через крайние шашки в стропило наискось: 3 самореза 6×120 с каждой стороны. Ряды между собой — 2 гвоздя 120 через шашки.</li>
+          <li>Со стороны печи в 1-м пролёте от входа 3-й и 4-й ряды не ставить: там будет короб трубы 1200 × 1600. Снизу и сверху короба — перемычки 40×150 между стропилами.</li>
+          <li>Над 4-м рядом до конька остаётся около 710 мм. Снаружи закрыть досками от поддонов: они как раз 1200 и входят между стропилами, заподлицо с поддонами, гвоздями наискось. Изнутри такие же доски — на шаге 10, после засыпки.</li>
+          <li>Укосины и временные доски снимать, только когда встали все 4 ряда с обеих сторон.</li>
+        </ol>
+        <figure class="sheet"><div class="paper" data-fig="figSlope"></div><figcaption><b>Скат печи снаружи</b>скат закутка такой же, но без короба: 16 поддонов</figcaption></figure>
+        <figure class="sheet"><div class="paper" data-fig="figPalNode"></div><figcaption><b>Узел у стропила</b>поперёк, после кровли и обшивки</figcaption></figure>
+      </section>
+
+      <section class="step" id="s7" data-step="7">
+        <div class="st-head"><span class="st-n">Шаг 7</span><h2>Кровля с продухом</h2><button class="go3d" data-step="7" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>ветрозащита ~50 м² · доски поддонов: ~70 м на контррейки и ~45 м² на настил · рубероид 6 рулонов · гвозди 70, 50 и толевые · сетка ~2 м²</div>
+        <ol class="do">
+          <li><b>Мембрана</b> по поддонам горизонтальными полосами снизу вверх, нахлёст 15 см, верхняя полоса поверх нижней, скобами. Через конёк одним куском, на фронтоны с запасом 10 см.</li>
+          <li><b>Контррейки</b> — доски поддонов 22×145 вдоль ската: над каждым стропилом и по середине каждого поддона, через 620. Гвозди 70 через 30 см — в стропила и в шашки. Ещё по одной над фронтонами.</li>
+          <li><b>Настил</b> — доски поперёк контрреек, щели до 1 см, по 2 гвоздя 50 на каждую контррейку, стыки вразбежку. Свес за фронтоны 250. У конька не доводить на 40 мм с каждой стороны: это выход воздуха.</li>
+          <li>Внизу ската зазор под настилом открыт — закрыть полосой сетки от мышей и ос.</li>
+          <li><b>Рубероид</b> полосами от конька вниз, нахлёст 10 см, внизу завести на торец настила. По нахлёстам прижимные рейки, гвозди через 20 см.</li>
+          <li><b>Конёк-продух</b>: на шашках от поддонов через 600 две доски уголком, сверху полоса рубероида. Щель под ними закрыть сеткой.</li>
+          <li><b>Вариант с профнастилом б/у</b>: вместо сплошного настила — доски через 400. Лист МП20 волной вдоль ската, кровельные саморезы с шайбой в нижнюю волну через волну, на каждую доску. Конёк на тех же шашках. Досок уходит втрое меньше. Переключатель в 3D.</li>
+        </ol>
+        <div class="why"><b>Зачем зазор</b>Рубероид не пропускает пар снаружи, плёнка — изнутри. Если опил зажать между ними, влага от дыхания, плитки и печки останется в нём. Воздух в зазоре идёт от низа ската к коньку и выдувает её. С профнастилом то же самое.</div>
+        <figure class="sheet"><div class="paper" data-fig="figEave"></div><figcaption><b>Низ ската</b>воздух входит в зазор под настилом</figcaption></figure>
+        <figure class="sheet"><div class="paper" data-fig="figRidge"></div><figcaption><b>Конёк</b>воздух выходит под коньком-продухом</figcaption></figure>
+      </section>
+
+      <section class="step" id="s8" data-step="8">
+        <div class="st-head"><span class="st-n">Шаг 8</span><h2>Фронтоны: раскрой поддонов</h2><button class="go3d" data-step="8" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>~16 поддонов · 4 обрезка 40×150 по 2 м на обвязку и ~10 м обрезков на стойки и перемычки · гвозди 120 · саморезы 6×100</div>
+        <ol class="do">
+          <li><b>Обвязка</b>: обрезки 40×150 плашмя на концы лежней, по 2 на фронтон, стык на среднем лежне. Снаружи заподлицо с торцами лежней.</li>
+          <li><b>Передний</b>: сначала 2 стойки двери 40×150 от обвязки до ската. Проём 650 в свету — подогнать по своей двери: ширина коробки плюс 20 мм. Над дверью перемычка, выше рамка окна 450 × 500.</li>
+          <li>Поддоны стоймя: 800 по ширине, 1200 по высоте, <b>верхом наружу</b>, 3 ряда от обвязки. Номера и резы — по карте ниже. Красные линии — резы по скату под 60° к горизонту. Поддон положить верхом вверх, как он будет стоять снаружи, отметить две точки из таблицы, соединить и пилить.</li>
+          <li>После реза ячейки поддона открыты — зашить их доской по линии реза.</li>
+          <li>Крепёж: к обвязке — 2 гвоздя 120 наискось через нижние шашки; к соседнему поддону — 3 гвоздя 120 через шашки; изнутри к крайней ферме — саморезы 6×100 через стропила, ригель и затяжку, через 400.</li>
+          <li><b>Задний</b>: окно 800 × 600 над кроватью — просто промежуток между поддонами. Внизу целый поддон, над окном перемычка 40×150, на ней куски 6 и 7.</li>
+          <li>Серое на карте (без номера) — добор: доски с двух сторон, между ними опил.</li>
+        </ol>
+        <figure class="sheet"><div class="paper" data-fig="figGable:front"></div><figcaption><b>Передний фронтон</b>вид снаружи, стоим лицом к двери</figcaption></figure>
+        <div class="tablebox" data-tbl="front"></div>
+        <figure class="sheet"><div class="paper" data-fig="figGable:back"></div><figcaption><b>Задний фронтон</b>вид снаружи, со стороны кровати</figcaption></figure>
+        <div class="tablebox" data-tbl="back"></div>
+      </section>
+
+      <section class="step" id="s9" data-step="9">
+        <div class="st-head"><span class="st-n">Шаг 9</span><h2>Окна, дверь, обшивка фронтонов</h2><button class="go3d" data-step="9" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>2 окна б/у в коробке, дверь б/у с коробкой, пена 2 баллона, ветрозащита, доски поддонов ~15 м², гвозди 50, обрезок жести</div>
+        <ol class="do">
+          <li>Окна в коробке: в проём с зазором 10–15 мм по кругу, на клиньях, саморезы через коробку в стойки, потом пена. Сверху капельник из полосы жести.</li>
+          <li>Дверь открывается наружу, петли со стороны закутка — справа, если стоять лицом к двери. Порог — обрезки 40×150 в 3 слоя.</li>
+          <li>Фронтоны снаружи: ветрозащита по поддонам, сверху доска внахлёст 30 мм, снизу вверх, гвозди 50 в доски верха поддонов. Первая доска закрывает обвязку и торцы лежней.</li>
+          <li>Крыльцо: поддон на двух кусках бордюра, перед ним ступень — поддон на земле.</li>
+        </ol>
+        <div class="warn"><b>Частые ошибки</b><ul><li>Окно в проём без зазора — от пены коробку поведёт, створка не откроется.</li><li>Доски обшивки внахлёст наоборот, нижняя поверх верхней — вода пойдёт внутрь.</li></ul></div>
+      </section>
+
+      <section class="step" id="s10" data-step="10">
+        <div class="st-head"><span class="st-n">Шаг 10</span><h2>Утепление и обшивка изнутри</h2><button class="go3d" data-step="10" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>~8 м³ опила и 6 мешков пушонки · плёнка 200 мкм, рулон · скотч · доски поддонов ~50 м² · базальтовая крошка 2 мешка · шест 3,5 м · ДВП 4 листа</div>
+        <ol class="do">
+          <li><b>Скаты</b>: плёнка горизонтальными полосами снизу вверх, нахлёст 10 см, швы на скотч, скобами к стропилам и доскам низа поддонов. Нижний край завести на пол на 10 см.</li>
+          <li>Обшивка — доски вдоль ската, от пола до верха 4-го ряда, по 2 гвоздя 50 в каждую доску низа поддона. У ригеля доску подрезать вокруг пластин.</li>
+          <li><b>Засыпка сверху</b>: со стремянки через верх 4-го ряда — в каждом пролёте 2 канала по 380 мм. Опил с известью вёдрами, через каждые 2–3 ведра трамбовать шестом и простукивать обшивку киянкой.</li>
+          <li>Над печью — 1-й пролёт со стороны печи, ряды 1–2 — засыпать базальтовую крошку, не опил.</li>
+          <li><b>Верх до конька</b>: доски изнутри по одной снизу вверх, за каждую досыпать опил. Последние 20 см под коньком — опил в мешке или обрезки ваты.</li>
+          <li><b>Фронтоны</b>: плёнка, обшивка горизонтально снизу вверх; после каждых 2–3 досок засыпать и утрамбовать.</li>
+          <li><b>Пол</b>: плёнка внахлёст на плёнку скатов, швы на скотч, сверху ДВП и линолеум.</li>
+          <li>Через месяц снять 1–2 верхние доски у конька (держать их на саморезах) и досыпать: опил садится на 10–15 %, пустота сверху — это холод.</li>
+        </ol>
+        <figure class="sheet"><div class="paper" data-fig="figFill"></div><figcaption><b>Засыпка ската</b>разрез по каналу между шашками</figcaption></figure>
+      </section>
+
+      <section class="step" id="s11" data-step="11">
+        <div class="st-head"><span class="st-n">Шаг 11</span><h2>Печной угол и труба</h2><button class="go3d" data-step="11" type="button">показать в 3D</button></div>
+        <div class="need"><b>Нужно</b>буржуйка из баллона · ~130 кирпичей · базальтовый картон · 2 листа оцинковки, лист перед дверцей · труба 115 одностенная 1 м · сэндвич 115/200 3 м · хомут, проволока, искрогаситель · датчики угарного газа и дыма, огнетушитель</div>
+        <ol class="do">
+          <li>На пол под печь — базальтовый картон, на нём основание 900 × 700 из кирпича в 2 ряда плашмя.</li>
+          <li>Экран на фронтоне за печью: кирпич в полкирпича 700 × 1200 на базальтовом картоне, от обшивки 20–30 мм воздуха.</li>
+          <li>Экран вдоль ската: кирпич на ребро по краю основания, высота 900, от бока печи 155.</li>
+          <li>На скат у печи — базальтовый картон и лист оцинковки 1100 × 1500.</li>
+          <li><b>Короб проходки</b>: всё дерево внутри обернуть картоном, внутри базальтовая вата. Изнутри лист с отверстием, снаружи лист с отверстием-эллипсом 200 × 400 (труба вертикальная, скат 60°). От сэндвича до любого дерева не меньше 130 мм.</li>
+          <li>Труба: от печи одностенная до 1,2 м, дальше сэндвич 3 м через короб. Верх на 550 выше конька. На крыше хомут и 3 растяжки из проволоки, сверху искрогаситель.</li>
+          <li>Снаружи вокруг трубы фартук из оцинковки: верх под рубероид, низ поверх. Резиновый мастер-флеш на скат 60° обычно не натягивается.</li>
+          <li>Перед дверцей лист 700 × 600. Датчик угарного газа — на высоте кровати, дымовой — под коньком, огнетушитель у двери.</li>
+          <li>Первая топка — небольшая и с открытой дверью. Через час потрогать дерево у экранов и короба: тёплое — норма, горячее — экран увеличить.</li>
+        </ol>
+        <div class="two">
+          <figure class="sheet"><div class="paper" data-fig="afStoveSVG"></div><figcaption><b>Печной угол</b>вид сверху, отступы в мм</figcaption></figure>
+          <figure class="sheet"><div class="paper" data-fig="figPass"></div><figcaption><b>Проходка трубы</b>разрез через скат печи</figcaption></figure>
+        </div>
+        <div class="warn"><b>Не экономить</b>Печь стоит близко к скату. Без кирпичных экранов, листов по базальту и короба проходки так ставить нельзя.</div>
+      </section>
+
+      <section class="step" id="s12" data-step="12">
+        <div class="st-head"><span class="st-n">Шаг 12</span><h2>Обустройство</h2><button class="go3d" data-step="12" type="button">показать в 3D</button></div>
+        <ol class="do">
+          <li>Кровать 1600 × 2000 из 8 поддонов в 2 яруса, изголовьем к заднему фронтону, под окном. Матрас б/у.</li>
+          <li>Закуток у входа справа: перегородка из поддона высотой 2 м, шторка, биотуалет, наливной рукомойник с ведром.</li>
+          <li>Кухня за закутком: столешница на поддонах, походная плитка, канистры с водой под ней.</li>
+          <li>Вдоль скатов у кровати полки из поддонов — там, где низко.</li>
+          <li>Дрова: поленница снаружи у двери под свесом. В доме — запас на вечер, в метре от печи.</li>
+        </ol>
+      </section>
+
+      <section class="step" id="fx" data-step="12">
+        <div class="st-head"><h2>Крепёж и проверка перед ночёвкой</h2></div>
+        <div class="tablebox"><table class="fx">
+          <thead><tr><th>Узел</th><th>Чем</th><th>Сколько</th></tr></thead>
+          <tbody>
+            <tr><td>Ферма: пята, конёк, ригель</td><td>пластина 60×200 с двух сторон, по 6 гвоздей 4×40 в деталь</td><td>50 пластин, ~2 кг гвоздей</td></tr>
+            <tr><td>Пята дополнительно</td><td>гвоздь 120 наискось, 2 на пяту</td><td>20</td></tr>
+            <tr><td>Затяжка к лежню</td><td>уголок 70×70 и 2 гвоздя 120</td><td>25 уголков, 50 гвоздей</td></tr>
+            <tr><td>Кассета пола к затяжкам</td><td>гвоздь 120 наискось, по 2 с торца</td><td>80</td></tr>
+            <tr><td>Поддон ската к стропилам</td><td>саморез 6×120 наискось, 3 с каждой стороны</td><td>~180</td></tr>
+            <tr><td>Ряды ската между собой</td><td>гвоздь 120 через шашки</td><td>~60</td></tr>
+            <tr><td>Фронтоны</td><td>гвоздь 120 к обвязке и соседям, саморез 6×100 к ферме</td><td>~150 и ~60</td></tr>
+            <tr><td>Мембрана, плёнка, сетка</td><td>скобы 10–12 мм</td><td>2–3 тыс.</td></tr>
+            <tr><td>Контррейки</td><td>гвоздь 70 через 30 см</td><td>~300</td></tr>
+            <tr><td>Настил, обшивка, доборы</td><td>гвоздь 50, по 2 на опору</td><td>~3000, около 6 кг</td></tr>
+            <tr><td>Рубероид</td><td>толевые гвозди, прижимные рейки</td><td>1 кг</td></tr>
+          </tbody></table></div>
+        <div class="card"><h3>Перед первой ночёвкой</h3><ul>
+          <li>Датчик угарного газа работает, дымовой — под коньком, огнетушитель у двери.</li>
+          <li>От трубы до дерева везде не меньше 130 мм, экраны стоят, перед дверцей лист.</li>
+          <li>Нигде не дует: щели у пола, окон и фронтонов запенены.</li>
+          <li>Опил досыпан: постучать по верхним доскам — пустота звенит.</li>
+          <li>Дрова на вечер — в метре от печи, не ближе.</li>
+        </ul></div>
+        <p class="muted">Цены и ссылки на объявления — в <a href="./#estimate">смете проекта</a>. Схема участка и где ставить — <a href="./#site">там же</a>.</p>
+      </section>
+    </main>
+  </div>
+  <footer>Инструкция к проекту А-фрейма 5×4 из поддонов. Размеры в миллиметрах, если не сказано иное. Это DIY-проект, не рабочая документация: перед стройкой сверьтесь со своими материалами.</footer>
+</div>
+<script src="three.min.js"></script>
+<script>
+/* ===================== А-фрейм из поддонов 5×4 ===================== */
+/* <AF-GEOM> */
+// x вдоль конька (0..5 по фермам, вход с x=0), w поперёк (0..4), высоты от земли. Фермы через 1,24 м, поддоны 1200×800 встают между ними.
+// Как на плане и в 3D: если стоять лицом к двери, печь слева (w > 2), закуток справа (w < 2).
+const AF=(()=>{
+  const r3=Math.sqrt(3);
+  const A={L:5.0,B:4.0,FL:0.505,T:0.145,RD:0.15,COL:2.05,xs:[0.02,1.26,2.50,3.74,4.98],
+    runW:[0.35,1.2,2.0,2.8,3.65],runX:[-0.2,5.2],sill:0.39,s0:0.09,PW:0.8,rows:4};
+  A.ridge=A.FL+2*r3;                                  // верх ската по коньку, ≈ +3,97
+  A.hin=w=>(w<=2?r3*w:r3*(4-w))-0.305;                // высота внутренней поверхности ската над полом
+  A.win=h=>(h+0.305)/r3;                              // где скат на высоте h (со стороны закутка, со стороны печи 4 − …)
+  A.roofY=w=>0.5+r3*Math.min(w,4-w);                  // наружная плоскость стропил
+  A.floorW=4-2*A.win(0);A.standW=4-2*A.win(1.6);
+  A.inner=A.floorW*A.L;A.stand=A.standW*A.L;A.out=A.B*(A.L+2*A.T);
+  // точка ската: s вдоль наружной плоскости от пяты стропила, o внутрь от неё; side −1 — скат закутка, +1 — скат печи
+  A.sp=(side,s,o=0)=>{const w=0.5*s+(r3/2)*o,y=0.5+(r3/2)*s-0.5*o;return [side<0?w:4-w,y];};
+  A.sTop=A.s0+A.rows*A.PW;                            // верх 4-го ряда поддонов, дальше до конька полоса из досок
+  A.sInTop=(2-(r3/2)*A.RD)/0.5;                       // где сходятся внутренние кромки стропил
+  // стропило: по верхней кромке 4000, запил пяты по горизонтали, у конька по вертикали
+  A.raf={out:4.0,foot:A.RD/r3,ridge:A.RD*r3};A.raf.inn=A.raf.out-A.raf.foot-A.raf.ridge;
+  const wIn=y=>(r3/2)*A.RD+(y-(0.5-A.RD/2))/r3;
+  A.col={y0:A.FL+A.COL,y1:A.FL+A.COL+0.15};A.col.w0=wIn(A.col.y0);A.col.w1=wIn(A.col.y1);A.col.Lb=4-2*A.col.w0;A.col.Lt=4-2*A.col.w1;
+  // печь у входа со стороны печного ската, дверцей вглубь дома; экраны на фронтоне и вдоль ската
+  // лежачий баллон ∅300×600 на ножках 150: верх на 0,58 м, поэтому печь можно прижать к скату
+  A.stove={x:0.75,w:2.78,r:0.15,len:0.6,top:0.58,pipeX:0.6,base:[0.3,1.2,2.45,3.15],sheet:[1.2,1.9,2.48,3.08],screen:[0.0,0.12,2.45,3.15],side:[0.3,1.2,3.085,3.15,0.9]};
+  A.pass={bay:0,s0:A.s0+2*A.PW,s1:A.sTop};            // короб проходки трубы вместо 3-го и 4-го рядов в 1-м пролёте
+  A.door={w0:1.55,w1:2.2,h:1.85};A.winF={w0:1.65,w1:2.1,h0:2.1,h1:2.6};A.winB={w0:1.6,w1:2.4,h0:1.085,h1:1.685};
+  A.sup=[];for(const x of [0.3,2.5,4.7])for(const w of A.runW)A.sup.push([x,w]);A.sup.push([1.0,2.8]);
+  A.chim=A.ridge+0.55;
+  // мебель: [x0,x1,w0,w1,подпись,класс,вид,высота]
+  A.furn=[[0.25,0.65,0.75,1.15,'туалет','furn','wc',0.4],[0.9,1.2,1.15,1.40,'','furn','sink',1.0],
+    [1.5,2.65,0.95,1.55,'кухня','furn','counter',0.85],[1.6,2.2,0.6,0.92,'вода','furn','water',0.3],[2.0,2.6,2.95,3.4,'дрова','furn','logs',0.35],
+    [2.98,4.98,1.2,2.8,'кровать 1600×2000','wood','bed',0.48],[2.35,2.9,2.2,2.7,'стол','furn','table',0.72],
+    [3.1,4.9,0.45,1.1,'полка','furn','shelf',0.3],[3.1,4.9,2.9,3.55,'полка','furn','shelf',0.3]];
+  // фронтоны: поддоны стоймя 800×1200 от обвязки +0,39, верх срезан по скату; каркас проёмов из обрезков 40×150
+  A.gable={
+    front:{cells:[[0,0.8,0.39,1.59],[0,0.8,1.59,2.79],[0.8,1.51,0.39,1.59],[0.8,1.51,1.59,2.79],[0.8,1.51,2.79,3.99],
+        [2.24,3.04,0.39,1.59],[2.24,3.04,1.59,2.79],[2.24,3.04,2.79,3.99],[3.04,3.84,0.39,1.59],[3.04,3.84,1.59,2.79],[3.84,4.0,0.39,1.59]],
+      frame:[[1.51,1.55,0.39,4,'стойка'],[2.2,2.24,0.39,4,'стойка'],[1.55,2.2,0.39,0.505,'порог'],[1.55,2.2,2.355,2.395,'перемычка'],
+        [1.55,2.2,2.565,2.605,'низ окна'],[1.55,2.2,3.105,3.145,'верх окна'],[1.61,1.65,2.605,3.105,''],[2.1,2.14,2.605,3.105,'']],
+      fill:[[1.55,2.2,2.395,2.565],[1.55,1.61,2.605,3.105],[2.14,2.2,2.605,3.105],[1.55,2.2,3.145,4]],
+      open:[[1.55,2.2,0.505,2.355,'door'],[1.65,2.1,2.605,3.105,'win']]},
+    back:{cells:[[0,0.8,0.39,1.59],[0,0.8,1.59,2.79],[0.8,1.6,0.39,1.59],[0.8,1.6,1.59,2.79],[0.8,1.6,2.79,3.99],
+        [1.6,2.4,0.39,1.59],[1.6,2.4,2.23,3.43],[1.6,2.4,3.43,4.0],[2.4,3.2,0.39,1.59],[2.4,3.2,1.59,2.79],[2.4,3.2,2.79,3.99],[3.2,4.0,0.39,1.59],[3.2,4.0,1.59,2.79]],
+      frame:[[1.6,2.4,2.19,2.23,'перемычка']],fill:[],open:[[1.6,2.4,1.59,2.19,'win']]}};
+  const clip=(P,a,b,c)=>{const o=[];for(let i=0;i<P.length;i++){const p=P[i],q=P[(i+1)%P.length],dp=a*p[0]+b*p[1]-c,dq=a*q[0]+b*q[1]-c;
+    if(dp<=1e-9)o.push(p);if((dp<-1e-9&&dq>1e-9)||(dp>1e-9&&dq<-1e-9)){const t=dp/(dp-dq);o.push([p[0]+t*(q[0]-p[0]),p[1]+t*(q[1]-p[1])]);}}return o;};
+  A.clipRoof=P=>clip(clip(P,-r3,1,0.5),r3,1,0.5+4*r3);
+  A.rectP=([w0,w1,y0,y1])=>[[w0,y0],[w1,y0],[w1,y1],[w0,y1]];
+  A.area=P=>{let s=0;for(let i=0;i<P.length;i++){const p=P[i],q=P[(i+1)%P.length];s+=p[0]*q[1]-q[0]*p[1];}return Math.abs(s)/2;};
+  // куски поддонов фронтона: pal — кусок поддона, иначе добор из досок
+  A.pieces=k=>A.gable[k].cells.map(c=>{const P=A.clipRoof(A.rectP(c));if(P.length<3)return null;
+    const ws=P.map(p=>p[0]),ys=P.map(p=>p[1]),bw=Math.max(...ws)-Math.min(...ws),bh=Math.max(...ys)-Math.min(...ys),ar=A.area(P);
+    return {c,P,ar,cut:Math.abs(ar-(c[1]-c[0])*(c[3]-c[2]))>1e-6,pal:ar>=0.06&&Math.min(bw,bh)>=0.2};}).filter(Boolean);
+  return A;})();
+/* </AF-GEOM> */
+
+function afPlanSVG(){
+  const A=AF,k=100,X=x=>x*k,Y=w=>(4-w)*k;let s='';const RF=(x,y,w,h,c,ex)=>R(x,y,w,-h,c,ex);
+  s+=RF(X(-0.4),Y(-0.12),5.8*k,4.24*k,'dash')+T(X(-0.35),Y(-0.2),'край кровли','sm','start');
+  s+=RF(X(-0.95),Y(1.4),0.8*k,1.2*k,'wood')+T(X(-0.55),Y(2.0)+4,'крыльцо','sm','middle',`transform="rotate(-90 ${X(-0.55)} ${Y(2.0)})"`);
+  s+=RF(X(0),Y(0),A.L*k,0.17*k,'wall')+RF(X(0),Y(3.83),A.L*k,0.17*k,'wall');
+  const d=A.door,wb=A.winB;
+  s+=RF(X(-A.T),Y(0),A.T*k,d.w0*k,'wall')+RF(X(-A.T),Y(d.w1),A.T*k,(4-d.w1)*k,'wall');
+  s+=L(X(-A.T),Y(d.w0),X(-A.T-(d.w1-d.w0)),Y(d.w0),'ln')+`<path d="M${X(-A.T-0.68)} ${Y(d.w0)} A${(d.w1-d.w0)*k} ${(d.w1-d.w0)*k} 0 0 1 ${X(-A.T)} ${Y(d.w1)}" class="thin"/>`;
+  s+=RF(X(A.L),Y(0),A.T*k,4*k,'wall')+RF(X(A.L)-0.7,Y(wb.w0),A.T*k+1.4,(wb.w1-wb.w0)*k,'cut')+L(X(A.L+0.05),Y(wb.w0),X(A.L+0.05),Y(wb.w1),'glass')+L(X(A.L+0.1),Y(wb.w0),X(A.L+0.1),Y(wb.w1),'glass');
+  for(const x of A.xs)s+=L(X(x),Y(0.17),X(x),Y(3.83),'dash');
+  for(const w of [A.win(1.6),4-A.win(1.6)])s+=L(X(0),Y(w),X(A.L),Y(w),'thin');
+  s+=T(X(2.75),Y(A.win(1.6))+14,'в рост выше 1,6 м','sm');
+  // закуток
+  s+=RF(X(0),Y(1.41),0.55*k,0.14*k,'part')+L(X(0.55),Y(1.48),X(1.24),Y(1.48),'dash')+RF(X(1.24),Y(0.17),0.145*k,1.38*k,'part');
+  s+=T(X(0.62),Y(0.45),'закуток','lbl');
+  for(const [x0,x1,w0,w1,t,c,kind] of A.furn){s+=RF(X(x0),Y(w0),(x1-x0)*k,(w1-w0)*k,c);
+    if(t)s+=T(X((x0+x1)/2),Y((w0+w1)/2)+4,t,'sm');}
+  // печь
+  const S=A.stove,B=(a,cl)=>RF(X(a[0]),Y(a[2]),(a[1]-a[0])*k,(a[3]-a[2])*k,cl);
+  s+=B(S.base,'brick')+B(S.sheet,'thin')+B(S.screen,'brick')+B(S.side,'brick')
+    +R(X(S.x-S.len/2),Y(S.w+S.r),S.len*k,2*S.r*k,'stove','rx="14"')+`<circle cx="${X(S.pipeX)}" cy="${Y(S.w)}" r="6" class="metal"/>`
+    +T(X((S.sheet[0]+S.sheet[1])/2),Y((S.sheet[2]+S.sheet[3])/2)+4,'лист','sm')+T(X(S.x),Y(S.base[2])+14,'печь из баллона, лёжа','sm');
+  s+=T(X(0.7),Y(1.88)+4,'вход','sm');s+=T(X(2.5),Y(-0.95),'вход с левого торца: печь по левую руку, закуток по правую','sm');
+  s+=L(X(S.x),Y(-0.45),X(S.x),Y(-0.2),'ln')+L(X(S.x),Y(4.2),X(S.x),Y(4.45),'ln')+T(X(S.x)+8,Y(-0.3),'1','lbl','start');
+  // размеры
+  s+=dimH(X(-A.T),X(A.L+A.T),Y(-0.62),f1((A.L+2*A.T)*1000),Y(-0.02));
+  for(let i=0;i<A.xs.length-1;i++)s+=dimH(X(A.xs[i]),X(A.xs[i+1]),Y(4.6),'1240');
+  s+=dimV(Y(0),Y(4),X(A.L+0.75),'4000',X(A.L+0.17))+dimV(Y(0.17),Y(3.83),X(A.L+0.45),f1(A.floorW*1000));
+  return svg('-120 -90 760 570',s,'План А-фрейма');
+}
+function afSectionSVG(){ // поперечный разрез 1–1 через печь, смотрим на вход
+  const A=AF,S0=A.stove,r3=Math.sqrt(3),X=w=>w*100,Y=y=>(5.0-y)*100,FL=A.FL;let s='';
+  s+=`<rect x="${X(-1.2)}" y="${Y(0)}" width="${X(5.2)-X(-1.2)}" height="60" fill="url(#earth)"/>`+L(X(-1.2),Y(0),X(5.2),Y(0),'ground');
+  for(const w of A.runW)s+=R(X(w-0.2),Y(0.2),40,20,'conc')+R(X(w-0.05),Y(0.35),10,15,'wood2');
+  s+=R(X(0),Y(0.5),400,15,'wood');
+  s+=R(X(0.17),Y(0.5),X(3.83)-X(0.17),14,'ins')+L(X(0.17),Y(FL),X(3.83),Y(FL),'ln');
+  const o=(w,y)=>`${X(w)},${Y(y)}`,P=(sd,a,b)=>A.sp(sd,a,b),pp=pts=>pts.map(p=>o(p[0],p[1])).join(' ');
+  // скаты: 4 ряда поддонов, выше полоса из досок; со стороны печи в 3–4 рядах короб проходки
+  for(const sd of [-1,1]){s+=`<polygon points="${pp([P(sd,A.s0,0),P(sd,A.sTop,0),P(sd,A.sTop,0.145),P(sd,A.s0,0.145)])}" class="ins"/>`;
+    s+=`<polygon points="${pp([P(sd,A.sTop,0),P(sd,4,0),P(sd,A.sInTop,0.15),P(sd,A.sTop,0.15)])}" class="wood"/>`;
+    for(let j=1;j<A.rows;j++)s+=`<polyline points="${pp([P(sd,A.s0+j*A.PW,0),P(sd,A.s0+j*A.PW,0.145)])}" class="thin"/>`;}
+  {const p=A.pass;s+=`<polygon points="${pp([P(1,p.s0,0),P(1,p.s1,0),P(1,p.s1,0.15),P(1,p.s0,0.15)])}" class="conc"/>`;}
+  s+=`<polyline points="${pp([P(-1,-0.08,-0.05),P(-1,4.03,-0.05)])} ${pp([P(1,4.03,-0.05),P(1,-0.08,-0.05)])}" class="roof"/>`;
+  // передний фронтон за разрезом: дверь, окно над ней, экран у печи; перегородка и туалет закутка
+  s+=`<polyline points="${o(0.17,FL)} ${o(2,FL+A.hin(2))} ${o(3.83,FL)}" class="thin"/>`;
+  {const d=A.door,wf=A.winF;s+=R(X(d.w0),Y(FL+d.h),(d.w1-d.w0)*100,d.h*100,'cut')+R(X(d.w0),Y(FL+d.h),(d.w1-d.w0)*100,d.h*100,'thin')+T(X((d.w0+d.w1)/2),Y(FL+1.0),'дверь','sm');
+   s+=R(X(wf.w0),Y(FL+wf.h1),(wf.w1-wf.w0)*100,(wf.h1-wf.h0)*100,'cut')+R(X(wf.w0),Y(FL+wf.h1),(wf.w1-wf.w0)*100,(wf.h1-wf.h0)*100,'thin');}
+  s+=R(X(S0.screen[2]),Y(FL+1.2),(S0.screen[3]-S0.screen[2])*100,120,'brick');
+  s+=R(X(1.41),Y(FL+2.0),14,200,'part')+R(X(0.75),Y(FL+0.4),40,40,'furn')+T(X(0.95),Y(FL+0.5),'туалет','sm');
+  s+=R(X(A.col.w0),Y(A.col.y1),(A.col.Lb)*100,15,'wood2')+T(X(2.0),Y(A.col.y1)-6,'ригель фермы','sm');
+  // печь лёжа, экран вдоль ската, труба через короб проходки
+  const S=A.stove;
+  s+=R(X(S.base[2]),Y(FL+0.13),(S.base[3]-S.base[2])*100,13,'brick')+R(X(S.side[2]),Y(FL+S.side[4]),(S.side[3]-S.side[2])*100,(S.side[4]-0.13)*100,'brick')+`<circle cx="${X(S.w)}" cy="${Y(FL+S.top-S.r)}" r="${S.r*100}" class="stove"/>`;
+  s+=L(X(S.w-0.1),Y(FL+0.13),X(S.w-0.1),Y(FL+0.28),'ln')+L(X(S.w+0.1),Y(FL+0.13),X(S.w+0.1),Y(FL+0.28),'ln');
+  s+=R(X(S.w-0.06),Y(FL+1.2),12,(1.2-S.top)*100,'stove')+R(X(S.w-0.1),Y(A.chim),20,(A.chim-FL-1.2)*100,'metal');
+  {const s0=A.s0+0.1,s1=A.pass.s0;s+=`<polyline points="${pp([P(1,s0,0.17),P(1,s1,0.17)])}" class="metal" style="stroke:var(--ink);stroke-width:3"/>`;}
+  const fm=v=>(v>=0?'+':'')+v.toFixed(3).replace('.',',');
+  const lvl=(y,t)=>{const x=X(-0.75);return `<path d="M${x-7} ${Y(y)-10} L${x+7} ${Y(y)-10} L${x} ${Y(y)} Z" class="dot"/>`+L(x-60,Y(y),x+12,Y(y),'ln')+T(x-12,Y(y)-5,t,'','end')};
+  s+=lvl(0,'±0,000')+lvl(FL,fm(FL))+lvl(FL+A.COL,fm(FL+A.COL))+lvl(A.ridge,fm(A.ridge))+lvl(A.chim,fm(A.chim));
+  s+=L(X(A.win(1.6)),Y(FL+1.6),X(4-A.win(1.6)),Y(FL+1.6),'dash')+T(X(1.55),Y(FL+1.6)-5,'в рост '+f1(A.standW*1000),'sm');
+  s+=dimV(Y(FL+A.hin(2)),Y(FL),X(2.35),f1(A.hin(2)*1000));
+  const ld=leadF(X,Y,X(4.65));
+  s+=ld(0.9,1.6,4.2,['Скат: поддоны верхом наружу с опилом, снаружи','мембрана, зазор на контррейках, настил, рубероид']);
+  s+=ld(S0.w,FL+0.43,3.2,['Печь из баллона лёжа, верх на 0,58 м от пола,','вдоль ската кирпичный экран и лист по базальту']);
+  s+=ld(3.2,3.0,2.45,['Проходка трубы: короб из листа с базальтом','вместо 3-го и 4-го рядов поддонов']);
+  s+=ld(2.6,0.45,1.3,['Пол: ДВП, плёнка, поддон с опилом,','ветрозащита и сетка от мышей снизу']);
+  s+=ld(3.65,0.27,0.4,['Опоры: бордюр или блок на бое кирпича,','5 лежней 100×150 вдоль дома']);
+  return svg('-190 -10 1180 560',s,'Разрез А-фрейма');
+}
+function afSupportsSVG(){
+  const A=AF,X=x=>x*100,Y=w=>(4-w)*100;let s='';const RF=(x,y,w,h,c,ex)=>R(x,y,w,-h,c,ex);
+  for(const w of A.runW)s+=RF(X(A.runX[0]),Y(w-0.05),(A.runX[1]-A.runX[0])*100,10,'wood2');
+  for(const x of A.xs)s+=RF(X(x-0.02),Y(0),4,400,'wood');
+  for(const [x,w] of A.sup)s+=RF(X(x-0.2),Y(w-0.2),40,40,'conc');
+  {const p=A.sup[A.sup.length-1];s+=T(X(p[0])+24,Y(p[1])+4,'под печь','sm','start');}
+  s+=L(X(0.3),Y(0.35),X(4.7),Y(3.65),'dash')+T(X(2.5)+10,Y(2.0)+26,'диагональ 5500','sm','start');
+  s+=dimH(X(0.3),X(2.5),-30,'2200')+dimH(X(2.5),X(4.7),-30,'2200')+dimH(X(0),X(A.L),-58,f1(A.L*1000));
+  s+=dimV(Y(0),Y(4),-50,'4000');for(let i=0;i<A.runW.length-1;i++)s+=dimV(Y(A.runW[i]),Y(A.runW[i+1]),X(A.L+0.45),f1((A.runW[i+1]-A.runW[i])*1000));
+  s+=T(X(2.5),Y(0)+40,'5 лежней 100×150 × 5,4 м · затяжки ферм 40×150 · 16 опор 400×400','sm');
+  return svg('-90 -80 700 560',s,'Опоры и лежни');
+}
+function afNodeSVG(){ // опора в разрезе, М 1:10
+  const k=400,X=u=>u*k,Y=y=>(0.75-y)*k;let s='';
+  s+=`<rect x="${X(-0.45)}" y="${Y(0)}" width="${0.9*k}" height="${0.3*k}" fill="url(#earth)"/>`+L(X(-0.45),Y(0),X(0.45),Y(0),'ground');
+  s+=R(X(-0.25),Y(0),0.5*k,0.25*k,'grav')+R(X(-0.2),Y(0.2),0.4*k,0.2*k,'conc')+R(X(-0.2),Y(0.205),0.4*k,2,'stove');
+  s+=R(X(-0.05),Y(0.355),0.1*k,0.15*k,'wood2')+R(X(-0.45),Y(0.505),0.9*k,0.15*k,'wood');
+  s+=T(X(0.07),Y(0.28),'лежень 100×150','sm','start')+T(X(0.21),Y(0.42),'затяжка фермы 40×150','sm','start')+T(X(0.21),Y(0.12),'бордюр или блок, добор кирпичом','sm','start')+T(X(0.27),Y(-0.12),'бой кирпича 250, трамбовать слоями','sm','start')+T(X(0.21),Y(0.2)+10,'рубероид в 2 слоя','sm','start');
+  s+=dimV(Y(0.505),Y(0),X(-0.38),'505');
+  return svg('-200 -30 640 470',s,'Опора');
+}
+function afGableSVG(){ // задний фронтон изнутри: куски поддонов, окно над кроватью
+  const A=AF,X=w=>(4-w)*100,Y=y=>(4.1-y)*100,G=A.gable.back;let s='';
+  const poly=(P,c)=>`<polygon points="${P.map(p=>X(p[0])+','+Y(p[1])).join(' ')}" class="${c}"/>`;
+  A.pieces('back').forEach(p=>{s+=poly(p.P,p.pal?'wood':'part');});
+  for(const f of G.frame)s+=poly(A.rectP(f),'wood2');
+  for(const [w0,w1,y0,y1] of G.open)s+=poly(A.rectP([w0,w1,y0,y1]),'cut')+L(X(w0),Y((y0+y1)/2),X(w1),Y((y0+y1)/2),'glass');
+  s+=`<polygon points="${X(0)},${Y(0.39)} ${X(0)},${Y(0.5)} ${X(2)},${Y(A.roofY(2))} ${X(4)},${Y(0.5)} ${X(4)},${Y(0.39)}" class="thin"/>`;
+  s+=L(X(-0.2),Y(A.FL),X(4.2),Y(A.FL),'dash')+T(X(-0.25),Y(A.FL)+4,'пол','sm','start');
+  s+=R(X(2.8),Y(A.FL+0.48),160,48,'furn')+T(X(2.0),Y(A.FL+0.24)+4,'изголовье кровати','sm')+T(X(2.0),Y(1.59)+16,'окно над кроватью','sm');
+  s+=dimH(X(4),X(0),Y(-0.05),'4000')+dimV(Y(A.roofY(2)),Y(0.39),X(-0.3),f1((A.roofY(2)-0.39)*1000));
+  s+=T(X(2),Y(-0.4),'поддоны стоймя 800×1200 верхом наружу, по скату срез под 60°, серое — добор из досок','sm');
+  return svg('-70 -10 560 470',s,'Задний фронтон');
+}
+function afStoveSVG(){ // печной угол, вид сверху М 1:20, ориентация как на плане
+  const A=AF,S=A.stove,d=A.door,k=200,x0=-0.25,X=x=>(x-x0)*k,Y=w=>(3.95-w)*k;let s='';
+  const B=(a,cl)=>R(X(a[0]),Y(a[3]),(a[1]-a[0])*k,(a[3]-a[2])*k,cl);
+  s+=R(X(0),Y(3.83),2.6*k,(3.83-1.4)*k,'thin');
+  s+=R(X(-A.T),Y(d.w0),A.T*k,(d.w0-1.4)*k,'wall')+R(X(-A.T),Y(4),A.T*k,(4-d.w1)*k,'wall')+T(X(-0.07),Y((d.w0+d.w1)/2),'дверь','sm','middle',`transform="rotate(-90 ${X(-0.07)} ${Y((d.w0+d.w1)/2)})"`);
+  s+=R(X(0),Y(1.55),0.55*k,0.14*k,'part')+T(X(0.3),Y(1.41)+14,'закуток','sm');
+  s+=B(S.screen,'brick')+B(S.base,'brick')+B(S.side,'brick')+B(S.sheet,'thin');
+  s+=R(X(S.x-S.len/2),Y(S.w+S.r),S.len*k,2*S.r*k,'stove','rx="28"')+`<circle cx="${X(S.pipeX)}" cy="${Y(S.w)}" r="12" class="metal"/>`+T(X((S.sheet[0]+S.sheet[1])/2),Y(S.sheet[2])+16,'лист 700×600, дверца сюда','sm');
+  const ws=4-A.win(S.top);s+=L(X(0),Y(ws),X(2.35),Y(ws),'dash')+T(X(1.3),Y(ws)-6,'скат на высоте верха печи','sm','start');
+  s+=T(X(0.02),Y(3.33),'экран вдоль ската: кирпич на ребро, h 900','sm','start');
+  s+=R(X(0.25),Y(3.83),1.1*k,0.08*k,'metal')+T(X(0.8),Y(3.83)+30,'лист на скате по базальту','sm');
+  s+=L(X(0),Y(d.w1),X(2.35),Y(d.w1),'dash')+T(X(1.7),Y(d.w1)+14,'край прохода от двери','sm');
+  s+=R(X(2.0),Y(3.4),0.35*k,0.45*k,'furn')+T(X(2.17),Y(3.18)+4,'дрова','sm');
+  const bx0=S.x-S.len/2,bx1=S.x+S.len/2,bw0=S.w-S.r,bw1=S.w+S.r;
+  s+=dimH(X(S.screen[1]),X(bx0),Y(S.w-0.05),f1((bx0-S.screen[1])*1000));
+  s+=dimV(Y(S.side[2]),Y(bw1),X(S.x+0.12),f1((S.side[2]-bw1)*1000));
+  s+=dimV(Y(ws),Y(bw1),X(bx1+0.12),f1((ws-bw1)*1000));
+  s+=dimV(Y(bw0),Y(d.w1),X(S.x-0.1),f1((bw0-d.w1)*1000));
+  s+=dimH(X(bx1),X(2.0),Y(3.25),f1((2.0-bx1)*1000));
+  return svg('-20 -20 560 540',s,'Печной угол');
+}
+function afPalletsSVG(){ // раскладка поддонов
+  let s='';const cell=(x,y,n,m,w,h,lbl,cnt,strip)=>{let r='';for(let i=0;i<n;i++)for(let j=0;j<m;j++)r+=R(x+i*w,y+(strip?h*0.9:0)+j*h,w-2,h-2,'wood');
+    if(strip)r+=R(x,y,n*w-2,h*0.9-2,'part');
+    return r+T(x+n*w/2,y+(m+(strip?0.9:0))*h+18,lbl,'lbl')+T(x+n*w/2,y+(m+(strip?0.9:0))*h+36,cnt,'sm');};
+  s+=cell(10,30,4,5,48,32,'пол','20 шт · 4 пролёта × 5');
+  s+=cell(230,30,4,4,48,32,'скат закутка','16 шт · верх до конька доской',1);
+  s+=cell(450,30,4,4,48,32,'скат печи','14 шт · в 1-м пролёте короб трубы',1);
+  const tri=(x,y,lbl,cnt)=>`<polygon points="${x},${y+150} ${x+80},${y} ${x+160},${y+150}" class="ins"/>`+T(x+80,y+170,lbl,'lbl')+T(x+80,y+188,cnt,'sm');
+  s+=tri(10,260,'передний фронтон','~7 шт, дверь и окно')+tri(230,260,'задний фронтон','~9 шт, окно над кроватью');
+  s+=R(470,300,150,60,'wood')+T(545,385,'кровать, закуток, кухня','lbl')+T(545,403,'~14 шт: кровать 8','sm');
+  s+=T(10,450,'Итого около 90 поддонов 1200×800 с клеймом HT, из них ~10 на доски. Плюс ломаные на доски: контррейки, настил, обшивка.','lbl','start');
+  return svg('0 0 660 470',s,'Раскладка поддонов');
+}
+const AF_LAYERS=[
+  {t:'Скат',d:['улица','комната'],l:[['Рубероид или профнастил б/у','metal',3],['Настил из досок поддонов','board',20],['Зазор на контррейках из досок','gap',22],['Мембрана ветрозащитная','memb',1],['Поддон 145 верхом наружу + опил с известью','wool',145],['Плёнка 200 мкм','vap',1],['Доска от поддонов','board',20]],tot:'≈ 210 мм, опила ~120 мм, зазор проветривается от низа ската к коньку'},
+  {t:'Пол',d:['комната','земля'],l:[['ДВП, линолеум б/у','board',5],['Плёнка 200 мкм','vap',1],['Поддон 145 + опил с известью','wool',145],['Ветрозащита','memb',1],['Сетка от мышей','metal',1]],tot:'≈ 150 мм, под ним проветриваемый зазор'},
+  {t:'Фронтон',d:['улица','комната'],l:[['Доска от поддонов внахлёст','board',20],['Ветрозащита','memb',1],['Поддон 145 + опил, у печи базальт','wool',145],['Плёнка 200 мкм','vap',1],['Доска, у печи кирпичный экран','board',20]],tot:'≈ 190 мм'}];
+function renderAframe(){
+  document.getElementById('svgPlan').innerHTML=afPlanSVG();
+  document.getElementById('svgSection').innerHTML=afSectionSVG();
+  document.getElementById('svgPiles').innerHTML=afSupportsSVG();
+  document.getElementById('svgColumn').innerHTML=afNodeSVG();
+  document.getElementById('svgWall').innerHTML=afGableSVG();
+  document.getElementById('svgStove').innerHTML=afStoveSVG();
+  document.getElementById('svgComms').innerHTML=afPalletsSVG();
+}
+
+/* ===================== SVG: помощники как в проекте ===================== */
+const f1=v=>String(Math.round(v));
+const L=(x1,y1,x2,y2,c)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="${c}"/>`;
+const R=(x,y,w,h,c,ex='')=>`<rect x="${Math.min(x,x+w)}" y="${Math.min(y,y+h)}" width="${Math.abs(w)}" height="${Math.abs(h)}" class="${c}" ${ex}/>`;
+const T=(x,y,t,c='',a='middle',ex='')=>`<text x="${x}" y="${y}" text-anchor="${a}" class="${c}" ${ex}>${t}</text>`;
+const tick=(x,y)=>`<line x1="${x-5}" y1="${y+5}" x2="${x+5}" y2="${y-5}" class="dim" style="stroke-width:1.4"/>`;
+function dimH(x1,x2,y,t,y0){let s='';if(y0!==undefined){const e=y+(y>y0?6:-6);s+=L(x1,y0,x1,e,'dim')+L(x2,y0,x2,e,'dim')}
+  return s+L(x1-6,y,x2+6,y,'dim')+tick(x1,y)+tick(x2,y)+T((x1+x2)/2,y-5,t,'dimt');}
+function dimV(y1,y2,x,t,x0){let s='';if(x0!==undefined){const e=x+(x>x0?6:-6);s+=L(x0,y1,e,y1,'dim')+L(x0,y2,e,y2,'dim')}
+  const my=(y1+y2)/2;return s+L(x,y1-6,x,y2+6,'dim')+tick(x,y1)+tick(x,y2)+T(x-6,my,t,'dimt','middle',`transform="rotate(-90 ${x-6} ${my})"`);}
+const svg=(vb,inner,label)=>`<svg class="sv" viewBox="${vb}" role="img" aria-label="${label}" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+function leadF(X,Y,xl){return (z,y,ly,lines)=>{const x0=X(z),y0=Y(y),yl=Y(ly);
+  let r=`<circle cx="${x0}" cy="${y0}" r="2.5" class="dot"/><polyline points="${x0},${y0} ${xl},${yl} ${xl+12},${yl}" class="lead"/>`;
+  lines.forEach((t,i)=>r+=T(xl+18,yl+4+i*17,t,i?'sm':'lbl','start'));return r};}
+const PG=(P,c,ex='')=>`<polygon points="${P.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')}" class="${c}" ${ex}/>`;
+const PL=(P,c,ex='')=>`<polyline points="${P.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')}" class="${c}" ${ex}/>`;
+// размер вдоль наклонной: p1, p2 в пикселях, off — отступ по нормали (минус — влево от p1→p2)
+function dimA(p1,p2,off,t){const dx=p2[0]-p1[0],dy=p2[1]-p1[1],l=Math.hypot(dx,dy),nx=-dy/l,ny=dx/l,e=Math.sign(off)*6;
+  const a=[p1[0]+nx*off,p1[1]+ny*off],b=[p2[0]+nx*off,p2[1]+ny*off];let ang=Math.atan2(dy,dx)*180/Math.PI;if(ang>90)ang-=180;if(ang<-90)ang+=180;
+  const tm=[(a[0]+b[0])/2+nx*Math.sign(off)*8,(a[1]+b[1])/2+ny*Math.sign(off)*8];
+  return L(p1[0],p1[1],a[0]+nx*e,a[1]+ny*e,'dim')+L(p2[0],p2[1],b[0]+nx*e,b[1]+ny*e,'dim')+L(a[0],a[1],b[0],b[1],'dim')+tick(a[0],a[1])+tick(b[0],b[1])
+    +T(tm[0],tm[1]+4,t,'dimt','middle',`transform="rotate(${ang.toFixed(1)} ${tm[0].toFixed(1)} ${tm[1].toFixed(1)})"`);}
+// пластина 60×200: центр, угол в градусах на экране
+const plate=(cx,cy,deg,len=40,wid=12)=>`<rect x="${cx-len/2}" y="${cy-wid/2}" width="${len}" height="${wid}" class="plate" transform="rotate(${deg} ${cx} ${cy})"/>`;
+const nail=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="nail"/><circle cx="${x1}" cy="${y1}" r="2.6" class="nailh"/>`;
+const num=(x,y,n,c='')=>`<circle cx="${x}" cy="${y}" r="11" class="numc ${c}"/>`+T(x,y+4,n,'numt');
+
+/* ---------- поддон: верх, низ, разрез ---------- */
+const PAL={DB:[[0,145],[186.25,286.25],[327.5,472.5],[513.75,613.75],[655,800]],ST:[[0,145],[527.5,672.5],[1055,1200]],BL:[[0,100],[327.5,472.5],[700,800]]};
+function figPallet(){
+  const k=0.25,oy=44;let s='';
+  {const ox=46;for(const [a,b] of PAL.ST)s+=R(ox+a*k,oy,(b-a)*k,800*k,'wood2','style="opacity:.45"');
+   for(const [a,b] of PAL.DB)s+=R(ox,oy+a*k,1200*k,(b-a)*k,'wood');
+   s+=T(ox+150,oy-14,'ВЕРХ — 5 досок','hd2');s+=dimH(ox,ox+300,oy+222,'1200');s+=dimV(oy,oy+200,ox-10,'800');}
+  {const ox=390;s+=R(ox,oy,300,200,'cut')+R(ox,oy,300,200,'thin');
+   for(const [a,b] of PAL.ST)s+=R(ox+a*k,oy,(b-a)*k,800*k,'wood2');
+   for(const [a,b] of PAL.BL)s+=R(ox,oy+a*k,1200*k,(b-a)*k,'wood');
+   for(const [a,b] of PAL.ST)for(const [c,d] of PAL.BL)s+=R(ox+a*k+2,oy+c*k+2,(b-a)*k-4,(d-c)*k-4,'dash');
+   s+=T(ox+150,oy-14,'НИЗ — 3 доски, шашки','hd2');s+=T(ox+150,oy+222,'между досками низа — открытые ячейки','sm');}
+  {const y0=320,k2=0.38,H=144*k2,o1=46,o2=390;
+   const sec=(ox,blocks)=>{let r='';for(const [a,b] of PAL.DB)r+=R(ox+a*k2,y0,(b-a)*k2,22*k2,'wood');
+     if(blocks){r+=R(ox,y0+22*k2,800*k2,22*k2,'wood2');for(const [a,b] of PAL.BL)r+=R(ox+a*k2,y0+44*k2,(b-a)*k2,78*k2,'blk');}
+     else r+=R(ox,y0+22*k2,800*k2,100*k2,'ins');
+     for(const [a,b] of PAL.BL)r+=R(ox+a*k2,y0+122*k2,(b-a)*k2,22*k2,'wood');return r;};
+   s+=sec(o1,true)+T(o1+152,y0-12,'разрез по шашкам','sm')+sec(o2,false)+T(o2+152,y0-12,'разрез по ячейке: сюда опил, ~120 мм','sm');
+   s+=dimV(y0,y0+H,o1-10,'144');
+   const ld=(x,y,xl,yl,t)=>`<circle cx="${x}" cy="${y}" r="2" class="dot"/><polyline points="${x},${y} ${xl},${yl} ${xl+8},${yl}" class="lead"/>`+T(xl+12,yl+4,t,'sm','start');
+   s+=ld(o1+12,y0+4,o1+12,y0+86,'доски верха 22')+ld(o1+100,y0+12,o1+140,y0+86,'поперечная доска 22')+ld(o1+150,y0+32,o1+150,y0+104,'шашка 78')+ld(o1+285,y0+52,o1+270,y0+104,'доска низа 22');}
+  {const y=470;s+=T(360,y,'Как ставить','hd2');
+   const pal=(cx,cy,deg)=>`<g transform="rotate(${deg} ${cx} ${cy})">${R(cx-60,cy-14,120,6,'wood')}${R(cx-60,cy-8,120,16,'ins')}${R(cx-60,cy+8,20,6,'wood')+R(cx-10,cy+8,20,6,'wood')+R(cx+40,cy+8,20,6,'wood')}</g>`;
+   s+=pal(150,y+80,-60)+T(96,y+44,'улица','sm','end')+T(205,y+122,'комната','sm','start')+T(150,y+160,'скат и фронтон:','lbl')+T(150,y+178,'5 досок НАРУЖУ','hd2');
+   s+=pal(420,y+82,0)+T(420,y+62,'ходим тут','sm')+T(420,y+126,'пол: 5 досок ВВЕРХ','hd2')+T(420,y+143,'снизу ветрозащита и сетка','sm');
+   s+=T(600,y+70,'1200 — всегда','sm')+T(600,y+86,'между фермами,','sm')+T(600,y+102,'просвет 1200','sm')+T(600,y+118,'ровно по поддону','sm');}
+  return svg('0 0 720 660',s,'Поддон: верх, низ, разрез');
+}
+/* ---------- ферма ---------- */
+function figTruss(){
+  const A=AF,k=110,X=w=>60+w*k,Y=y=>24+(4.05-y)*k,r3=Math.sqrt(3);let s='';
+  const P=pts=>pts.map(([w,y])=>[X(w),Y(y)]);const ap=A.roofY(2),ai=ap-A.RD*2;
+  s+=R(X(0),Y(0.5),4*k,0.15*k,'wood');
+  s+=PG(P([[0,0.5],[2,ap],[2,ai],[A.RD*2/r3,0.5]]),'wood')+PG(P([[4,0.5],[2,ap],[2,ai],[4-A.RD*2/r3,0.5]]),'wood');
+  const c=A.col;s+=PG(P([[c.w0,c.y0],[4-c.w0,c.y0],[4-c.w1,c.y1],[c.w1,c.y1]]),'wood2');
+  // пластины
+  const pd=-60;s+=plate(X(0.1),Y(0.52),pd)+plate(X(3.9),Y(0.52),-pd)+plate(X(2),Y(ap-0.17),0,30)+plate(X(c.w0+0.05),Y(c.y0+0.1),pd,34)+plate(X(4-c.w0-0.05),Y(c.y0+0.1),-pd,34);
+  // размеры
+  s+=dimH(X(0),X(4),Y(0.35)+34,'4000',Y(0.35));
+  s+=dimA([X(0),Y(0.5)],[X(2),Y(ap)],-30,'4000 по верхней кромке');
+  s+=dimA([X(4),Y(0.5)],[X(2),Y(ap)],30,'4000');
+  s+=L(X(2.06),Y(ap),X(4.6),Y(ap),'dim')+L(X(4.06),Y(0.5),X(4.6),Y(0.5),'dim')+L(X(4.52),Y(ap)-6,X(4.52),Y(0.5)+6,'dim')+tick(X(4.52),Y(ap))+tick(X(4.52),Y(0.5))
+    +T(X(4.52)-6,(Y(ap)+Y(0.5))/2,'3464 от верха затяжки','dimt','middle',`transform="rotate(-90 ${X(4.52)-6} ${(Y(ap)+Y(0.5))/2})"`);
+  s+=dimV(Y(c.y0),Y(0.5),X(1.78),'2055');
+  s+=dimH(X(c.w0),X(4-c.w0),Y(c.y0)+18,f1(c.Lb*1000))+dimH(X(c.w1),X(4-c.w1),Y(c.y1)-12,f1(c.Lt*1000));
+  s+=T(X(0.62),Y(0.6),'60°','lbl')+T(X(3.38),Y(0.6),'60°','lbl')+T(X(2),Y(ap)+44,'60°','lbl');
+  s+=T(X(2),Y(0.425)+4,'затяжка 40×150 · 4000, потом на ней лежит пол','sm');
+  s+=T(X(2),Y(c.y1)-34,'ригель 40×150','sm');
+  s+=T(X(0.2),Y(3.35),'стропило 40×150','lbl','start')+T(X(0.2),Y(3.35)+17,'внутренняя кромка 3653','sm','start');
+  s+=T(X(4.0),Y(1.6),'пластины 60×200','sm','end')+T(X(4.0),Y(1.6)+15,'с двух сторон','sm','end');
+  return svg('0 0 640 520',s,'Ферма');
+}
+
+/* ---------- запилы ---------- */
+function figCuts(){
+  const k=0.8,h=150*k;let s='';
+  const board=(x0,x1,y)=>R(x0,y,x1-x0,h,'wood');
+  {const x1=260,y=50,c=87*k;s+=board(30,x1,y)+PG([[x1-c,y+h],[x1,y+h],[x1,y]],'waste')+L(x1,y,x1-c,y+h,'cutl');
+   s+=T(145,y-16,'Пята стропила','hd2')+T(36,y+h/2+4,'к коньку ←','sm','start')+dimH(x1-c,x1,y+h+22,'87',y+h)+dimV(y,y+h,x1+20,'150',x1);
+   s+=T(x1-c+14,y+h-8,'60°','sm','start')+T(145,y+h+52,'верхняя кромка длиннее,','sm')+T(145,y+h+67,'стоя рез ляжет горизонтально','sm');}
+  {const x0=380,y=50,c=260*k;s+=board(x0,x0+300,y)+PG([[x0,y],[x0,y+h],[x0+c,y+h]],'waste')+L(x0,y,x0+c,y+h,'cutl');
+   s+=T(x0+150,y-16,'Стропило у конька','hd2')+T(x0+296,y+h/2+4,'→ к пяте','sm','end')+dimH(x0,x0+c,y+h+22,'260',y+h)+dimV(y,y+h,x0-18,'150',x0);
+   s+=T(x0+c-24,y+h-8,'30°','sm','end')+T(x0+150,y+h+52,'рез по отвесу: два стропила','sm')+T(x0+150,y+h+67,'сходятся торцами вплотную','sm');}
+  {const x0=30,y=310,c=87*k,w=250;s+=R(x0,y,w,h,'wood2')+PG([[x0,y],[x0+c,y],[x0,y+h]],'waste')+PG([[x0+w,y],[x0+w-c,y],[x0+w,y+h]],'waste')+L(x0+c,y,x0,y+h,'cutl')+L(x0+w-c,y,x0+w,y+h,'cutl');
+   s+=`<path d="M${x0+w/2-6} ${y-4} l8 ${h/2} l-8 ${h/2+8}" class="brk"/>`;
+   s+=T(x0+w/2,y-28,'Ригель','hd2')+dimH(x0,x0+c,y-8,'87')+T(x0+w/2,y+h+22,'низ 1281, верх 1107, концы ложатся','sm')+T(x0+w/2,y+h+37,'на внутреннюю кромку стропил','sm');}
+  {const y=330,kk=0.05,x0=380;s+=T(x0,y-14,'Доска 6 м: деталь + обрезок','hd2','start');
+   s+=R(x0,y,6000*kk,22,'wood')+L(x0+4000*kk,y-6,x0+4000*kk,y+28,'cutl');
+   s+=T(x0+2000*kk,y+15,'4000','sm')+T(x0+5000*kk,y+15,'2000','sm');
+   s+=T(x0,y+48,'4000 — стропило или затяжка','sm','start')+T(x0,y+64,'2000 — ригели, обвязка фронтонов,','sm','start')+T(x0,y+80,'стойки двери, перемычки','sm','start');}
+  return svg('0 0 720 480',s,'Запилы');
+}
+/* ---------- узлы фермы ---------- */
+function figJoints(){
+  const A=AF,r3=Math.sqrt(3),k=480,th=A.RD*2/r3;let s='';
+  const ld=(x,y,tx,ty,t,a='start')=>`<circle cx="${x}" cy="${y}" r="2.5" class="dot"/><polyline points="${x},${y} ${tx},${ty}" class="lead"/>`+T(tx+(a==='start'?4:-4),ty+4,t,'sm',a);
+  {const X=w=>40+(w+0.05)*k,Y=y=>34+(0.86-y)*k,P=pts=>pts.map(([w,y])=>[X(w),Y(y)]);
+   s+=R(X(0.3),Y(0.35),0.1*k,0.06*k,'wood2','style="opacity:.6"');
+   s+=R(X(0),Y(0.5),0.5*k,0.15*k,'wood')+`<path d="M${X(0.5)} ${Y(0.5)-4} l-6 ${0.075*k} l6 ${0.075*k+8}" class="brk"/>`;
+   const yt=0.86;s+=PG(P([[0,0.5],[(yt-0.5)/r3,yt],[(yt-0.5)/r3+th,yt],[th,0.5]]),'wood');
+   s+=plate(X(0.11),Y(0.53),-60,0.2*k,0.06*k);
+   s+=nail(X(0.25),Y(0.64),X(0.18),Y(0.47))+nail(X(0.32),Y(0.68),X(0.25),Y(0.47));
+   s+=T(X(0.22),22,'Пята','hd2')+dimH(X(0),X(th),Y(0.5)-12,'173');
+   s+=T(X(0.42),Y(0.425)+4,'затяжка','sm')+T(X(0.35),Y(0.35)+42,'лежень','sm');
+   s+=ld(X(0),Y(0.5),X(-0.05),Y(0.2),'наружный угол пяты = торец затяжки')+T(X(-0.05)+4,Y(0.2)+19,'пластина 60×200 с двух сторон,','sm','start')+T(X(-0.05)+4,Y(0.2)+34,'6 гвоздей 4×40 в каждую деталь','sm','start')+T(X(-0.05)+4,Y(0.2)+49,'и 2 гвоздя 120 наискось','sm','start');}
+  {const ap=A.roofY(2),X=w=>400+(w-1.72)*k,Y=y=>34+(ap+0.04-y)*k,P=pts=>pts.map(([w,y])=>[X(w),Y(y)]);
+   const yb=ap-0.5,wb=2-(ap-yb)/r3;
+   s+=PG(P([[wb,yb],[2,ap],[2,ap-0.3],[wb+th,yb]]),'wood')+PG(P([[4-wb,yb],[2,ap],[2,ap-0.3],[4-wb-th,yb]]),'wood');
+   s+=plate(X(2),Y(ap-0.15),0,0.24*k,0.06*k)+T(X(2),22,'Конёк','hd2');
+   s+=T(X(2),Y(yb)+22,'резы по отвесу, торцы вплотную,','sm')+T(X(2),Y(yb)+37,'пластина с двух сторон,','sm')+T(X(2),Y(yb)+52,'по 6 гвоздей 4×40 в каждое стропило','sm');}
+  {const c=A.col,X=w=>40+(w-c.w0+0.3)*k,Y=y=>470+(c.y1+0.22-y)*k,P=pts=>pts.map(([w,y])=>[X(w),Y(y)]);
+   const y0=c.y0-0.16,y1=c.y1+0.22,wo=y=>(y-0.5)/r3;
+   s+=PG(P([[wo(y0),y0],[wo(y1),y1],[wo(y1)+th,y1],[wo(y0)+th,y0]]),'wood');
+   s+=PG(P([[c.w0,c.y0],[c.w0+0.4,c.y0],[c.w0+0.4,c.y1],[c.w1,c.y1]]),'wood2')+`<path d="M${X(c.w0+0.4)} ${Y(c.y1)-4} l-6 ${0.075*k} l6 ${0.075*k+8}" class="brk"/>`;
+   s+=plate(X(c.w0+0.02),Y(c.y0+0.075),-60,0.17*k,0.06*k)+T(X(c.w0),Y(c.y1+0.22)-14,'Ригель','hd2');
+   const tx=X(c.w0+0.48);s+=T(tx,Y(c.y1),'торцом под стропило,','sm','start')+T(tx,Y(c.y1)+15,'пластина с двух сторон на каждом конце,','sm','start')+T(tx,Y(c.y1)+30,'низ на 2055 от верха затяжки','sm','start');}
+  return svg('0 0 720 750',s,'Узлы фермы');
+}
+/* ---------- установка ферм, вид сбоку ---------- */
+function figErect(){
+  const A=AF,k=80,X=x=>60+(x+1.6)*k,Y=y=>24+(4.1-y)*k;let s='';
+  s+=`<rect x="${X(-1.7)}" y="${Y(0)}" width="${7.4*k}" height="30" fill="url(#earth)"/>`+L(X(-1.7),Y(0),X(5.7),Y(0),'ground');
+  for(const x of [0.3,2.5,4.7])s+=R(X(x-0.2),Y(0.2),0.4*k,0.2*k,'conc');
+  s+=R(X(A.runX[0]),Y(0.35),(A.runX[1]-A.runX[0])*k,0.15*k,'wood2');
+  const ap=A.roofY(2);for(const x of A.xs)s+=R(X(x-0.02),Y(ap),0.04*k,(ap-0.35)*k,'wood');
+  s+=R(X(A.xs[0]+0.02)+1,Y(1.5),1.2*k-2,0.8*k,'dash')+T(X(0.64),Y(1.1),'поддон —','sm')+T(X(0.64),Y(1.1)+14,'проставка','sm');
+  s+=dimH(X(A.xs[0]+0.02),X(A.xs[1]-0.02),Y(1.5)-10,'1200');
+  s+=R(X(-0.1),Y(2.62),5.2*k,0.06*k,'tmp')+R(X(-0.1),Y(3.55),5.2*k,0.06*k,'tmp');
+  s+=L(X(4.98),Y(3.0),X(5.6),Y(0),'tmpl')+L(X(0.02),Y(3.0),X(-1.4),Y(0),'tmpl')+R(X(5.6)-3,Y(0)-2,6,14,'stk')+R(X(-1.4)-3,Y(0)-2,6,14,'stk');
+  s+=T(X(2.5),Y(2.62)-8,'временная доска на высоте ригеля','sm')+T(X(2.5),Y(3.55)-8,'и у конька: держат шаг и отвес','sm');
+  s+=T(X(-1.4),Y(0)+26,'укосина','sm')+T(X(5.6),Y(0)+26,'укосина','sm');
+  for(let i=0;i<4;i++)s+=dimH(X(A.xs[i]),X(A.xs[i+1]),Y(ap)-12,'1240');
+  s+=T(X(2.5),Y(0.35)-8,'лежень 100×150, концы на 200 за крайние фермы','sm');
+  s+=T(X(-0.25),Y(ap)+6,'вход','sm','end')+T(X(5.25),Y(ap)+6,'кровать','sm','start');
+  return svg('0 0 700 380',s,'Установка ферм');
+}
+/* ---------- кассета пола ---------- */
+function figCassette(){
+  let s='';const k=0.32,H=144*k;
+  const pal=(ox,oy,up)=>{let r='';const yd=up?oy:oy+122*k,yb=up?oy+122*k:oy;
+    for(const [a,b] of PAL.DB)r+=R(ox+a*k,yd,(b-a)*k,22*k,'wood');for(const [a,b] of PAL.BL)r+=R(ox+a*k,yb,(b-a)*k,22*k,'wood');
+    r+=R(ox,oy+22*k,800*k,100*k,'ins');return r;};
+  const ox=40;
+  s+=T(ox,24,'1. Перевернуть верхом вниз, засыпать опил с известью, утрамбовать','lbl','start');
+  s+=pal(ox,44,false)+R(ox-10,44+H,800*k+20,3,'thin')+T(ox+800*k+16,44+H/2+4,'ячейки открыты сверху','sm','start')+dimH(ox,ox+800*k,44+H+20,'800');
+  s+=T(ox,146,'2. Ветрозащита, сверху сетка от мышей, скобами к доскам низа','lbl','start');
+  s+=pal(ox,166,false)+R(ox-6,163,800*k+12,2.5,'memb')+R(ox-6,160,800*k+12,1.5,'mesh')+T(ox+800*k+16,168,'мембрана и сетка','sm','start');
+  s+=T(ox,262,'3. Перевернуть и положить на лежень между затяжками','lbl','start');
+  s+=pal(ox,282,true)+R(ox-6,282+H,800*k+12,2.5,'memb')+R(ox+400*k-16,282+H+3,32,48,'wood2')+T(ox+400*k+24,282+H+30,'лежень под серединой','sm','start');
+  const px=520,py=70,kk=54;s+=T(px+2.5*kk,py-26,'5 рядов кассет, под каждым','sm')+T(px+2.5*kk,py-12,'свой лежень','sm');
+  for(let i=0;i<4;i++)for(let j=0;j<5;j++)s+=R(px+(AF.xs[i]+0.02)*kk,py+(4-(j+1)*0.8)*kk,1.2*kk,0.8*kk-2,'wood');
+  for(const x of AF.xs)s+=R(px+(x-0.02)*kk,py,0.04*kk,4*kk,'wood2');
+  for(const w of AF.runW)s+=L(px-0.2*kk,py+(4-w)*kk,px+5.2*kk,py+(4-w)*kk,'run');
+  s+=R(px+(AF.xs[0]+0.02)*kk,py+(4-3.2)*kk,1.2*kk,0.8*kk-2,'brick','style="opacity:.55"')+T(px+0.64*kk,py+(4-2.8)*kk+4,'базальт','sm');
+  s+=T(px-6,py+2.0*kk,'вход','sm','end')+T(px+2.5*kk,py+4*kk+18,'синие — лежни, тёмные — затяжки','sm');
+  return svg('0 0 840 380',s,'Кассета пола');
+}
+/* ---------- скат печи: развёртка снаружи ---------- */
+function figSlope(){
+  const A=AF,k=100,X=x=>60+(5.3-x)*k,Y=s=>30+(4.1-s)*k;let s='';
+  for(let i=0;i<4;i++){const x0=A.xs[i]+0.02,x1=A.xs[i+1]-0.02;
+    for(let j=0;j<A.rows;j++){if(i===A.pass.bay&&j>=2)continue;const s0=A.s0+j*A.PW,s1=s0+A.PW;
+      s+=R(X(x1),Y(s1),(x1-x0)*k,A.PW*k-2,'wood');for(const [a,b] of PAL.DB)s+=L(X(x1),Y(s0+a/1000),X(x0),Y(s0+a/1000),'thin');
+      s+=R(X(x0+0.6-0.03),Y(s1),6,A.PW*k-2,'chan','style="opacity:0"');}
+    for(let m=0;m<5;m++){const a=A.sTop+m*0.145,b=Math.min(a+0.14,3.99);if(a<3.99)s+=R(X(x1),Y(b),(x1-x0)*k,(b-a)*k,'wood2','style="opacity:.75"');}}
+  {const x0=A.xs[0]+0.02,x1=A.xs[1]-0.02,p=A.pass;s+=R(X(x1),Y(p.s1),(x1-x0)*k,(p.s1-p.s0)*k,'conc')+R(X(x1),Y(p.s0+0.04),(x1-x0)*k,0.04*k,'wood2')+R(X(x1),Y(p.s1),(x1-x0)*k,0.04*k,'wood2');
+   const cx=X(A.stove.pipeX),cs=2*(4-A.stove.w);s+=`<ellipse cx="${cx}" cy="${Y(cs)}" rx="${0.1*k}" ry="${0.2*k}" class="metal"/>`+`<ellipse cx="${cx}" cy="${Y(cs)}" rx="${0.23*k}" ry="${0.46*k}" class="dash"/>`;
+   s+=T(X(0.64),Y(p.s1)-8+0,'короб трубы','sm');}
+  for(const x of A.xs)s+=R(X(x+0.02),Y(4.0),0.04*k,4.0*k,'raf');
+  s+=R(X(0),Y(4.0),0.145*k,4.0*k,'part')+R(X(A.L+A.T),Y(4.0),0.145*k,4.0*k,'part');
+  s+=dimV(Y(A.s0),Y(0),X(-0.15)+16,'90');for(let j=0;j<A.rows;j++)s+=dimV(Y(A.s0+(j+1)*A.PW),Y(A.s0+j*A.PW),X(-0.15)+16,'800');
+  s+=dimV(Y(4.0),Y(A.sTop),X(-0.15)+16,f1((4-A.sTop)*1000));
+  s+=dimV(Y(A.sTop),Y(0),X(-0.15)+50,f1(A.sTop*1000));
+  s+=T(X(2.5),Y(3.65)+4,'верх до конька: доски поддонов между стропилами','sm');
+  s+=T(X(2.5),Y(-0.08)+12,'низ ската (пята стропил)','sm')+T(X(-0.07),Y(4.0)-8,'вход','sm')+T(X(A.L+0.07),Y(4.0)-8,'кровать','sm');
+  for(let i=0;i<4;i++)s+=dimH(X(A.xs[i]+0.02),X(A.xs[i+1]-0.02),Y(4.0)-14,'1200');
+  return svg('0 0 680 470',s,'Скат печи снаружи');
+}
+
+/* ---------- узел: поддон между стропилами ---------- */
+function figPalNode(){
+  const k=700,x0=0.98,W=0.58,X=x=>30+(x-x0)*k,D=d=>34+(d+0.07)*k;let s='';const rx=AF.xs[1];
+  s+=R(X(x0),D(-0.048),W*k,0.003*k,'rub')+R(X(x0),D(-0.045),W*k,0.022*k,'wood','style="opacity:.85"');
+  for(const cx of [rx,rx-0.62,rx+0.62])if(cx-0.0725>=x0&&cx+0.0725<=x0+W)s+=R(X(cx-0.0725),D(-0.023),0.145*k,0.022*k,'wood2');
+  s+=L(X(x0),D(-0.001),X(x0+W),D(-0.001),'membl');
+  s+=R(X(rx-0.02),D(0),0.04*k,0.15*k,'raf');
+  const pal=(xa,xb,endAt)=>{let r=R(X(xa),D(0),(xb-xa)*k,0.022*k,'wood');
+    const e0=endAt==='r'?xb-0.145:xa,e1=endAt==='r'?xb:xa+0.145;r+=R(X(e0),D(0.022),(e1-e0)*k,0.022*k,'wood2')+R(X(e0),D(0.044),(e1-e0)*k,0.078*k,'blk');
+    const f0=endAt==='r'?xa:e1,f1_=endAt==='r'?e0:xb;r+=R(X(f0),D(0.022),(f1_-f0)*k,0.122*k,'ins')+R(X(xa),D(0.122),(xb-xa)*k,0.022*k,'wood','style="opacity:.5"');return r;};
+  s+=pal(x0,rx-0.02,'r')+pal(rx+0.02,x0+W,'l');
+  s+=nail(X(rx-0.07),D(0.13),X(rx-0.005),D(0.06))+nail(X(rx+0.07),D(0.13),X(rx+0.005),D(0.06))+nail(X(rx),D(-0.03),X(rx),D(0.03));
+  s+=L(X(x0),D(0.1455),X(x0+W),D(0.1455),'vapl')+R(X(x0),D(0.147),W*k,0.022*k,'wood','style="opacity:.85"');
+  const tx=X(x0+W)+24,ld=(x,d,ty,t)=>`<circle cx="${X(x)}" cy="${D(d)}" r="2.5" class="dot"/><polyline points="${X(x)},${D(d)} ${tx-6},${ty} ${tx},${ty}" class="lead"/>`+T(tx+4,ty+4,t,'sm','start');
+  s+=ld(x0+0.5,-0.047,18,'рубероид')+ld(x0+0.52,-0.035,36,'настил 22 из досок поддонов')+ld(rx+0.05,-0.012,54,'контррейка 22×145: зазор для воздуха')
+    +ld(x0+0.5,-0.001,72,'мембрана по поддонам')+ld(x0+0.5,0.011,98,'верх поддона, 5 досок наружу')+ld(rx+0.1,0.08,124,'шашка у края поддона')
+    +ld(rx+0.2,0.08,150,'опил с известью')+ld(rx+0.06,0.12,176,'саморез 6×120 наискось в стропило')+ld(x0+0.5,0.1455,202,'плёнка 200 мкм на скотч')+ld(x0+0.5,0.158,228,'доска изнутри вдоль ската');
+  s+=T(X(rx),D(0.172)+18,'стропило 40×150','sm');
+  s+=dimV(D(0.144),D(0),X(x0)-8,'144');
+  return svg('0 0 740 290',s,'Поддон между стропилами');
+}
+/* ---------- низ ската ---------- */
+function figEave(){
+  const A=AF,k=380,X=w=>40+(w+0.1)*k,Y=y=>30+(1.08-y)*k,P=([w,y])=>[X(w),Y(y)];let s='';
+  const lay=(sd,s0,s1,o0,o1,c,ex='')=>PG([P(A.sp(sd,s0,o0)),P(A.sp(sd,s1,o0)),P(A.sp(sd,s1,o1)),P(A.sp(sd,s0,o1))],c,ex);
+  s+=R(X(0.3),Y(0.35),0.1*k,0.15*k,'wood2')+R(X(-0.02),Y(0.5),0.72*k,0.15*k,'wood','style="opacity:.55"');
+  s+=R(X(0),Y(0.494),0.7*k,0.144*k,'ins');
+  s+=PG([P([0,0.5]),P(A.sp(-1,1.0,0)),P(A.sp(-1,1.0,0.15)),P([0.173,0.5])],'raf','style="opacity:.3"');
+  s+=lay(-1,A.s0,1.0,0,0.144,'ins')+lay(-1,A.s0,1.0,0,0.022,'wood');
+  s+=lay(-1,0,1.0,-0.002,0,'memb')+lay(-1,0,1.0,-0.023,-0.002,'wood2','style="opacity:.6"')+lay(-1,-0.06,1.0,-0.045,-0.023,'wood')+lay(-1,-0.1,1.0,-0.049,-0.045,'rub');
+  s+=PG([P([-0.035,0.35]),P([-0.012,0.35]),P([-0.012,0.56]),P([-0.035,0.54])],'wood2');
+  {const a=P(A.sp(-1,0.0,-0.012));s+=`<circle cx="${a[0]}" cy="${a[1]}" r="8" class="air"/>`;}
+  s+=lay(-1,A.s0+0.03,1.0,0.144,0.146,'vap')+lay(-1,A.s0+0.03,1.0,0.146,0.168,'wood');
+  const tx=360,ld=(p,ty,t)=>{const q=P(p);return `<circle cx="${q[0]}" cy="${q[1]}" r="2.5" class="dot"/><polyline points="${q[0]},${q[1]} ${tx-6},${ty} ${tx},${ty}" class="lead"/>`+T(tx+4,ty+4,t,'sm','start');};
+  s+=ld(A.sp(-1,0.95,-0.047),30,'рубероид, край на капельник')+ld(A.sp(-1,0.92,-0.034),50,'настил')+ld(A.sp(-1,0.6,-0.012),70,'зазор 22: воздух входит снизу')
+    +ld(A.sp(-1,0.98,-0.001),90,'мембрана')+ld(A.sp(-1,0.75,0.07),118,'1-й ряд поддонов: низ на 90 выше пяты')+ld(A.sp(-1,0.9,0.157),146,'плёнка и доска изнутри')
+    +ld(A.sp(-1,0.0,-0.012),236,'сетка от мышей и ос')+ld([0.45,0.45],264,'кассета пола на лежне')+ld([-0.024,0.45],292,'доска закрывает торцы');
+  return svg('0 0 640 360',s,'Низ ската');
+}
+/* ---------- конёк ---------- */
+function figRidge(){
+  const A=AF,k=330,ap=A.roofY(2),X=w=>40+(w-1.45)*k,Y=y=>30+(ap+0.3-y)*k,P=([w,y])=>[X(w),Y(y)];let s='';
+  const lay=(sd,s0,s1,o0,o1,c,ex='')=>PG([P(A.sp(sd,s0,o0)),P(A.sp(sd,s1,o0)),P(A.sp(sd,s1,o1)),P(A.sp(sd,s0,o1))],c,ex);
+  const s0=3.12;
+  for(const sd of [-1,1]){s+=lay(sd,s0,A.sTop,0,0.144,'ins')+lay(sd,s0,A.sTop,0,0.022,'wood');
+    s+=lay(sd,A.sTop,3.99,0,0.022,'wood2')+lay(sd,A.sTop,A.sInTop-0.02,0.128,0.15,'wood2')+lay(sd,A.sTop+0.02,A.sInTop-0.04,0.022,0.128,'ins');
+    s+=lay(sd,s0,4.0,-0.002,0,'memb')+lay(sd,s0,3.96,-0.023,-0.002,'wood2','style="opacity:.6"')+lay(sd,s0,3.9,-0.045,-0.023,'wood')+lay(sd,s0,3.9,-0.049,-0.045,'rub');
+    s+=lay(sd,s0,A.sTop,0.144,0.146,'vap')+lay(sd,s0,A.sTop,0.146,0.168,'wood');
+    s+=lay(sd,3.72,3.82,-0.127,-0.049,'blk')+PG([P(A.sp(sd,3.55,-0.127)),P(A.sp(sd,4.254,-0.127)),P([2,A.roofY(2)+0.298]),P(A.sp(sd,3.55,-0.149))],'wood')+PL([P(A.sp(sd,3.55,-0.152)),P([2,A.roofY(2)+0.304])],'rubl');
+    const a=P(A.sp(sd,3.93,-0.09)),b=P(A.sp(sd,3.6,-0.09));s+=`<path d="M${a[0]} ${a[1]} L${b[0]} ${b[1]}" class="arrow" marker-end="url(#arA)"/>`;}
+  s+=PL([P(A.sp(-1,3.3,-0.035)),P(A.sp(-1,3.86,-0.035))],'arrow','marker-end="url(#arA)"');
+  const tx=450,ld=(p,ty,t)=>{const q=P(p);return `<circle cx="${q[0]}" cy="${q[1]}" r="2.5" class="dot"/><polyline points="${q[0]},${q[1]} ${tx-6},${ty} ${tx},${ty}" class="lead"/>`+T(tx+4,ty+4,t,'sm','start');};
+  s+=ld(A.sp(1,3.7,-0.138),40,'конёк: 2 доски на шашках 78')+ld(A.sp(1,3.6,-0.09),62,'воздух выходит под коньком, сетка')+ld(A.sp(1,3.86,-0.034),84,'настил не доводим 40 мм')
+    +ld(A.sp(1,3.62,0.011),130,'верх ската — доски между стропилами')+ld(A.sp(1,3.55,0.075),152,'опил или вата')+ld(A.sp(1,3.5,0.139),174,'изнутри доски по одной снизу вверх')
+    +ld(A.sp(1,3.2,0.07),210,'4-й ряд поддонов')+ld(A.sp(-1,3.4,-0.035),250,'зазор 22 от низа ската к коньку');
+  return svg('0 0 720 420',`<defs><marker id="arA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--blue)"/></marker></defs>`+s,'Конёк');
+}
+/* ---------- фронтоны: карта раскроя (вид снаружи) ---------- */
+function gableData(key){const A=AF,flip=key==='front',ps=A.pieces(key);let n=0;
+  return ps.map(p=>{const [w0,w1,y0,y1]=p.c,W=w1-w0,H=y1-y0,near=(a,b)=>Math.abs(a-b)<0.002;
+    const vx=w=>flip?w1-w:w-w0,loc=([w,y])=>{const x=vx(w),h=y-y0;
+      if(near(x,0))return 'слева '+f1(h*1000)+' от низа';if(near(x,W))return 'справа '+f1(h*1000)+' от низа';
+      if(near(h,H))return 'сверху '+f1(x*1000)+' от левого края';if(near(h,0))return 'снизу '+f1(x*1000)+' от левого края';return 'вершина: '+f1(x*1000)+' от левого, '+f1(h*1000)+' от низа';};
+    const cuts=[];for(let i=0;i<p.P.length;i++){const a=p.P[i],b=p.P[(i+1)%p.P.length];if(!near(a[0],b[0])&&!near(a[1],b[1]))cuts.push([a,b]);}
+    let cd=[];if(cuts.length===2&&near(cuts[0][1][0],cuts[1][0][0])&&near(cuts[0][1][1],cuts[1][0][1]))cd=['рез: '+loc(cuts[0][0])+' → '+loc(cuts[0][1])+' → '+loc(cuts[1][1])];
+    else cd=cuts.map(([a,b])=>'рез: '+loc(a)+' → '+loc(b));
+    const narrow=W<0.795,id=p.pal?'П'+(++n):'д';
+    return Object.assign(p,{id,W,H,narrow,desc:p.pal?((narrow?'поддон распустить до '+f1(W*1000)+' по ширине':(p.cut?'поддон 800×1200':'целый поддон 800×1200'))+(cd.length?'; '+cd.join('; '):'')):'добор: доски с двух сторон, внутри опил'});});}
+function figGable(key){
+  const A=AF,G=A.gable[key],flip=key==='front',k=112,X=w=>40+(flip?4-w:w)*k,Y=y=>20+(4.1-y)*k;let s='';
+  const poly=(P,c,ex='')=>PG(P.map(([w,y])=>[X(w),Y(y)]),c,ex),near=(a,b)=>Math.abs(a-b)<0.002;
+  s+=R(X(flip?4:0),Y(0.39),4*k,0.04*k,'wood2')+R(X(flip?4:0),Y(0.35),4*k,0.0001,'thin');
+  const D=gableData(key);
+  for(const p of D){s+=poly(p.P,p.pal?'wood':'part');
+    for(let i=0;i<p.P.length;i++){const a=p.P[i],b=p.P[(i+1)%p.P.length];if(!near(a[0],b[0])&&!near(a[1],b[1]))s+=L(X(a[0]),Y(a[1]),X(b[0]),Y(b[1]),'cutl');}
+    if(p.narrow&&p.pal){const xe=X(p.c[1]);s+=L(xe,Y(p.c[2]),xe,Y(Math.min(p.c[3],A.roofY(p.c[1]))),'cutl');}
+    const cx=p.P.reduce((a,q)=>a+q[0],0)/p.P.length,cy=p.P.reduce((a,q)=>a+q[1],0)/p.P.length;if(p.pal)s+=num(X(cx),Y(cy),p.id.slice(1));}
+  for(const f of G.fill)s+=poly(A.clipRoof(A.rectP(f)),'part');
+  for(const f of G.frame){const P=A.clipRoof(A.rectP(f));if(P.length>2)s+=poly(P,'wood2');}
+  for(const [w0,w1,y0,y1,t] of G.open){s+=poly(A.rectP([w0,w1,y0,y1]),'cut')+poly(A.rectP([w0,w1,y0,y1]),'thin');
+    const cx=X((w0+w1)/2),cy=Y((y0+y1)/2);s+=T(cx,cy-4,t==='door'?'дверь':'окно','sm')+T(cx,cy+11,f1((w1-w0)*1000)+'×'+f1((y1-y0)*1000),'sm');}
+  s+=PL([[X(0),Y(0.5)],[X(2),Y(A.roofY(2))],[X(4),Y(0.5)]],'thin');
+  s+=L(X(-0.05),Y(A.FL),X(4.05),Y(A.FL),'dash')+T(flip?X(4.08):X(-0.08),Y(A.FL)+4,'пол','sm','end');
+  // размеры колонок и рядов
+  const cols=[...new Set(G.cells.map(c=>c[0]).concat(G.cells.map(c=>c[1])).concat(G.frame.filter(f=>f[4]==='стойка').flatMap(f=>[f[0],f[1]])))].sort((a,b)=>a-b);
+  for(let i=0;i<cols.length-1;i++){const a=cols[i],b=cols[i+1];if(b-a>0.1)s+=dimH(Math.min(X(a),X(b)),Math.max(X(a),X(b)),Y(0.35)+26,f1((b-a)*1000));}
+  s+=dimH(Math.min(X(0),X(4)),Math.max(X(0),X(4)),Y(0.35)+52,'4000');
+  const xr=Math.max(X(0),X(4))+18;for(const [a,b] of [[0.39,1.59],[1.59,2.79]])s+=dimV(Y(b),Y(a),xr,'1200');
+  s+=dimV(Y(0.39),Y(0.35),xr,'');
+  s+=T(Math.min(X(0),X(4)),Y(4.1)+6,flip?'Передний фронтон, вид снаружи: печь слева':'Задний фронтон, вид снаружи','hd2','start');
+  return svg('0 0 560 560',s,flip?'Передний фронтон':'Задний фронтон');
+}
+function gableTable(key){
+  const D=gableData(key).filter(p=>p.pal);
+  return `<table class="cuts"><thead><tr><th>№</th><th>Кусок</th></tr></thead><tbody>${D.map(p=>`<tr><td class="num">${p.id}</td><td>${p.desc}</td></tr>`).join('')}</tbody></table>`;
+}
+/* ---------- засыпка ската ---------- */
+function figFill(){
+  const A=AF,k=210,X=w=>30+(w-0.72)*k,Y=y=>24+(4.06-y)*k,P=([w,y])=>[X(w),Y(y)];let s='';
+  const lay=(s0,s1,o0,o1,c,ex='')=>PG([P(A.sp(-1,s0,o0)),P(A.sp(-1,s1,o0)),P(A.sp(-1,s1,o1)),P(A.sp(-1,s0,o1))],c,ex);
+  const sA=1.62,fillTo=A.s0+2.55;
+  for(let j=0;j<A.rows;j++){const s0=Math.max(sA,A.s0+j*A.PW),s1=A.s0+(j+1)*A.PW;if(s1<=sA)continue;
+    s+=lay(s0,s1,0,0.022,'wood')+lay(s0,Math.min(s1,fillTo),0.022,0.122,'ins');if(s1>fillTo)s+=lay(Math.max(s0,fillTo),s1,0.022,0.122,'cut');
+    for(const [a,b] of PAL.BL){const q0=A.s0+j*A.PW+a/1000,q1=A.s0+j*A.PW+b/1000;if(q1>sA)s+=lay(Math.max(sA,q0),q1,0.122,0.144,'wood');}
+    if(j)s+=PL([P(A.sp(-1,A.s0+j*A.PW,0)),P(A.sp(-1,A.s0+j*A.PW,0.144))],'thin');}
+  s+=lay(sA,A.sTop,0.144,0.146,'vap')+lay(sA,A.sTop,0.146,0.168,'wood');
+  s+=lay(sA,4.0,-0.002,0,'memb')+lay(sA,3.96,-0.023,-0.002,'wood2','style="opacity:.6"')+lay(sA,3.92,-0.045,-0.023,'wood')+lay(sA,3.92,-0.049,-0.045,'rub');
+  s+=lay(A.sTop,3.98,0,0.022,'wood2');
+  {const a=P(A.sp(-1,A.sTop+0.55,0.07)),b=P(A.sp(-1,2.05,0.07));s+=L(a[0],a[1],b[0],b[1],'pole');
+   const t=P(A.sp(-1,A.sTop+0.02,0.075));s+=`<path d="M${t[0]+90} ${t[1]+6} q -40 -6 -78 2" class="arrow" marker-end="url(#arB)"/>`;
+   s+=T(t[0]+96,t[1]+10,'сюда опил','sm','start');}
+  const tx=380;s+=T(tx,40,'1. Изнутри плёнка и доска до верха 4-го ряда','lbl','start')+T(tx,58,'доска вдоль ската, гвоздями в доски низа поддонов','sm','start');
+  s+=T(tx,92,'2. Опил с известью вёдрами сверху, через верх','lbl','start')+T(tx,110,'4-го ряда: в каждом пролёте 2 канала по 380 мм','sm','start');
+  s+=T(tx,144,'3. Через каждые 2–3 ведра трамбовать шестом','lbl','start')+T(tx,162,'и простукивать обшивку киянкой','sm','start');
+  s+=T(tx,196,'4. Над печью в 1-м пролёте — базальтовая крошка','lbl','start')+T(tx,214,'до верха 2-го ряда, выше короб трубы','sm','start');
+  s+=T(tx,248,'5. Верх до конька: доски изнутри по одной снизу','lbl','start')+T(tx,266,'вверх, за каждую досыпать; под коньком опил в мешке','sm','start');
+  s+=T(tx,300,'6. Через месяц проверить и досыпать: опил садится','lbl','start')+T(tx,318,'на 10–15 %, пустота сверху — это холод','sm','start');
+  s+=T(X(1.0),Y(1.95),'3-й ряд','sm','end')+T(X(1.4),Y(2.65),'4-й ряд','sm','end');
+  return svg('0 0 760 520',`<defs><marker id="arB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--blue)"/></marker></defs>`+s,'Засыпка ската');
+}
+/* ---------- короб проходки трубы ---------- */
+function figPass(){
+  const A=AF,S=A.stove,k=118,X=w=>40+(w-2.0)*k,Y=y=>20+(4.75-y)*k,P=([w,y])=>[X(w),Y(y)];let s='';
+  const lay=(s0,s1,o0,o1,c,ex='')=>PG([P(A.sp(1,s0,o0)),P(A.sp(1,s1,o0)),P(A.sp(1,s1,o1)),P(A.sp(1,s0,o1))],c,ex);
+  const p=A.pass;
+  s+=lay(0.9,p.s0,0,0.144,'brick','style="opacity:.35"')+lay(0.9,p.s0,0,0.022,'wood');
+  s+=lay(p.s0,p.s1,0.004,0.146,'basalt')+lay(p.s0-0.04,p.s0,0,0.15,'wood2')+lay(p.s1,p.s1+0.04,0,0.15,'wood2');
+  s+=lay(p.s1+0.04,3.98,0,0.022,'wood2')+lay(p.s1+0.04,3.7,0.022,0.128,'ins')+lay(p.s1+0.04,3.7,0.128,0.15,'wood2');
+  s+=lay(p.s0,p.s1,0,0.004,'steel')+lay(p.s0,p.s1,0.146,0.15,'steel');
+  s+=lay(0.9,3.92,-0.049,-0.002,'rub','style="opacity:.6"');
+  s+=lay(p.s0-0.15,p.s1+0.1,-0.056,-0.05,'steel');
+  const xw=S.w,y0=A.FL+1.2;s+=R(X(xw-0.1),Y(A.chim),0.2*k,(A.chim-y0)*k,'metal')+R(X(xw-0.0575),Y(y0),0.115*k,(y0-1.7)*k,'stove');
+  s+=L(X(xw-0.23),Y(1.8),X(xw-0.23),Y(3.4),'dash')+L(X(xw+0.23),Y(1.8),X(xw+0.23),Y(3.4),'dash');
+  s+=dimH(X(xw+0.1),X(xw+0.23),Y(2.05),'130');
+  s+=PG([[X(xw-0.17),Y(A.chim+0.05)],[X(xw+0.17),Y(A.chim+0.05)],[X(xw),Y(A.chim+0.17)]],'metal');
+  s+=L(X(2.0),Y(A.roofY(2)),X(xw+0.4),Y(A.roofY(2)),'dim')+dimV(Y(A.chim),Y(A.roofY(2)),X(xw+0.35),'550');
+  const ld=(pp,tx,ty,t)=>{const q=P(pp);return `<circle cx="${q[0]}" cy="${q[1]}" r="2.5" class="dot"/><polyline points="${q[0]},${q[1]} ${tx},${ty}" class="lead"/>`+T(tx+4,ty+4,t,'sm','start');};
+  s+=ld(A.sp(1,(p.s0+p.s1)/2+0.4,0.07),300,120,'короб 1200×1600 вместо 3-го и 4-го рядов,')+T(304,138,'внутри базальтовая вата','sm','start')
+    +ld(A.sp(1,p.s1-0.2,0.002),300,170,'лист оцинковки снаружи, отверстие-эллипс 200×400')
+    +ld(A.sp(1,p.s0+0.25,0.148),300,200,'лист изнутри на базальтовом картоне')
+    +ld(A.sp(1,p.s1+0.02,0.075),300,230,'перемычки 40×150 сверху и снизу, обёрнуты картоном')
+    +ld(A.sp(1,p.s0-0.1,-0.053),300,260,'фартук из оцинковки: верх под рубероид, низ поверх')
+    +ld([xw,y0+0.5],300,290,'сэндвич 115/200 от 1,2 м, до дерева ≥ 130 мм')
+    +ld([xw,A.chim-0.6],300,60,'на крыше хомут и 3 растяжки')+ld([xw,A.chim+0.1],300,30,'искрогаситель')
+    +ld(A.sp(1,1.2,0.07),300,320,'ряды 1–2 над печью: базальт вместо опила');
+  return svg('0 0 760 460',s,'Короб проходки трубы');
+}
+
+// ---------- интерфейс ----------
+const STEPS=[['Поддоны','верх — наружу, 1200 — между фермами'],['Разметка и опоры','16 опор, диагонали 5500'],['Лежни','5 лежней в одной плоскости'],['Фермы','шаблон на земле, пластины с двух сторон'],
+  ['Установка ферм','шаг 1240, укосины, временные доски'],['Пол','кассеты с опилом на лежнях'],['Скаты','4 ряда верхом наружу, выше доски'],['Кровля','мембрана, зазор, настил, рубероид'],
+  ['Фронтоны','поддоны стоймя, срез по скату'],['Окна, дверь, обшивка','готовый дом снаружи'],['Утепление','плёнка, обшивка, засыпка сверху'],['Печь и труба','экраны, короб, сэндвич'],['Обустройство','кровать, закуток, кухня']];
+document.querySelectorAll('[data-fig]').forEach(el=>{const [fn,arg]=el.dataset.fig.split(':');try{el.innerHTML=window[fn](arg);}catch(e){el.textContent='чертёж не построился: '+e.message;}});
+document.querySelectorAll('[data-tbl]').forEach(el=>{el.innerHTML=gableTable(el.dataset.tbl);});
+let CUR=(()=>{const v=parseInt(new URLSearchParams(location.search).get('s'),10);return v>=0&&v<=12?v:9;})();const chips=document.getElementById('chips');
+chips.innerHTML=STEPS.map((s,i)=>`<button type="button" data-k="${i}" title="${s[0]}" aria-label="Шаг ${i}: ${s[0]}">${i}</button>`).join('');
+function show(k,fly){CUR=Math.max(0,Math.min(STEPS.length-1,k));document.getElementById('capN').textContent=CUR?('Шаг '+CUR):'Перед началом';
+  document.getElementById('capT').textContent=STEPS[CUR][0];document.getElementById('capD').textContent=STEPS[CUR][1];
+  chips.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.k===CUR?'true':'false'));
+  document.getElementById('roofSeg').hidden=CUR<7;if(window.__afgStep)window.__afgStep(CUR,fly);}
+chips.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(+b.dataset.k);});
+document.getElementById('prev').onclick=()=>show(CUR-1);document.getElementById('next').onclick=()=>show(CUR+1);
+document.querySelectorAll('#roofSeg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#roofSeg button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));if(window.__afgRoof)window.__afgRoof(b.dataset.roof);});
+const wide=matchMedia('(min-width:1180px)');
+document.querySelectorAll('.go3d').forEach(b=>b.addEventListener('click',()=>{show(+b.dataset.step);if(!wide.matches)document.querySelector('.stage').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});}));
+const io=new IntersectionObserver(es=>{if(!wide.matches)return;for(const e of es)if(e.isIntersecting){const k=+e.target.dataset.step;if(k!==CUR)show(k);}},{rootMargin:'-35% 0px -60% 0px'});
+document.querySelectorAll('section[data-step]').forEach(s=>io.observe(s));
+window.__afgInit=CUR;show(CUR,false);
+</script>
+<script>
+/* ===================== 3D по шагам ===================== */
+(function(){
+  const host=document.getElementById('viewer');
+  const fail=msg=>{const d=document.createElement('div');d.className='vfail';d.textContent=msg;host.appendChild(d);};
+  if(!window.THREE){fail('3D не загрузилась. Текст и чертежи ниже работают.');return;}
+  let renderer;
+  try{renderer=new THREE.WebGLRenderer({antialias:true});}catch(e){fail('Браузер не поддерживает WebGL. Текст и чертежи ниже работают.');return;}
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;host.prepend(renderer.domElement);
+  const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(36,1,0.05,200);
+  const C=h=>new THREE.Color(h).convertSRGBToLinear(),css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  let pending=false;const req=()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;renderer.render(scene,cam);});};
+  const setBg=()=>{scene.background=C(css('--scene')||'#D9E1DE');req();};
+  scene.add(new THREE.HemisphereLight(C('#E6EEF5'),C('#6B5B45'),0.78));
+  const sun=new THREE.DirectionalLight(C('#FFF3DF'),0.9);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
+  Object.assign(sun.shadow.camera,{left:-8,right:8,top:8,bottom:-8,near:1,far:40});sun.shadow.bias=-0.0006;scene.add(sun,sun.target);
+  const M=(c,o={})=>new THREE.MeshStandardMaterial(Object.assign({color:C(c),roughness:0.85},o));
+  const tex=(w,h,draw,rx=1,ry=1)=>{const cv=document.createElement('canvas');cv.width=w;cv.height=h;draw(cv.getContext('2d'),w,h);const t=new THREE.CanvasTexture(cv);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.encoding=THREE.sRGBEncoding;t.repeat.set(rx,ry);return t;};
+  // фронтон снаружи: 5 вертикальных досок на 800 мм
+  const gTex=tex(256,64,(g,w,h)=>{g.fillStyle='#4A3826';g.fillRect(0,0,w,h);const B=[[0,145],[186,286],[327,472],[514,614],[655,800]];
+    B.forEach(([a,b],i)=>{g.fillStyle=['#CDA674','#C29A68','#D3AE7E','#C59E6C','#CBA575'][i];g.fillRect(a/800*w,0,(b-a)/800*w,h);});},1/0.8,1);
+  const pnTex=tex(64,256,(g,w,h)=>{g.fillStyle='#6E7780';g.fillRect(0,0,w,h);for(let i=0;i<4;i++){g.fillStyle='#89929B';g.fillRect(i*16,0,5,h);g.fillStyle='#5C646C';g.fillRect(i*16+9,0,3,h);}},1/0.2,1);
+  const mat={wood:M('#D8B07A'),wood2:M('#B98B55'),board:M('#CFA672'),lining:M('#E2C597'),blk:M('#A07A4C'),palB:M('#CDA674'),palB2:M('#C49B68'),palK:M('#9C774B'),
+    ground:M('#8E9C70',{roughness:1}),gravel:M('#A9A69E',{roughness:1}),rubble:M('#8F6A5A',{roughness:1}),conc:M('#B9B8B2'),rub:M('#2B2D2F',{roughness:0.95}),
+    memb:M('#E9EEF0',{roughness:0.9}),vap:new THREE.MeshStandardMaterial({color:C('#7FB2E0'),transparent:true,opacity:0.32,roughness:0.3,depthWrite:false,side:THREE.DoubleSide}),
+    saw:M('#F3E7C1',{roughness:1}),basalt:M('#9AA0A0',{roughness:1}),steel:M('#B9BEC2',{metalness:0.7,roughness:0.3}),plate:M('#8F969B',{metalness:0.8,roughness:0.35}),
+    brick:M('#A3553A'),stove:M('#232526',{metalness:0.4,roughness:0.5}),glass:M('#7F98AC',{roughness:0.08,metalness:0.3}),door:M('#6E4F33',{roughness:0.7}),dark:M('#2F3336'),
+    white:M('#F4F3EF'),blanket:M('#D9CFC0'),fabric:M('#8C9A93'),floor:M('#B38D5E'),tmp:M('#E0B04A'),stake:M('#6B5B45'),mesh:M('#5E6A70',{roughness:0.6}),
+    gable:new THREE.MeshStandardMaterial({map:gTex,roughness:0.9}),pn:new THREE.MeshStandardMaterial({map:pnTex,roughness:0.5,metalness:0.4}),
+    fire:new THREE.MeshStandardMaterial({color:C('#FF8A3D'),emissive:C('#FF6A1A'),emissiveIntensity:1.2})};
+  const A=AF,FL=A.FL,r3=Math.sqrt(3);
+  const root=new THREE.Group();root.scale.x=-1;scene.add(root);    // как в проекте: вид зеркальный, печь слева от двери
+  const gr=new THREE.Mesh(new THREE.PlaneGeometry(60,60),mat.ground);gr.rotation.x=-Math.PI/2;gr.receiveShadow=true;root.add(gr);
+  // реестр: группа видна на шагах s..u−1, на шаге s подсвечена
+  const parts=[];const G=(s,u=99,o={})=>{const g=new THREE.Group();root.add(g);parts.push(Object.assign({g,s,u,hl:true},o));return g;};
+  const box=(g,x0,x1,y0,y1,z0,z1,m)=>{const b=new THREE.Mesh(new THREE.BoxGeometry(Math.abs(x1-x0)||0.001,Math.abs(y1-y0)||0.001,Math.abs(z1-z0)||0.001),m);
+    b.position.set((x0+x1)/2,(y0+y1)/2,(z0+z1)/2);g.add(b);return b;};
+  const cyl=(g,r,h,x,y,z,m,seg=16)=>{const c=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,seg),m);c.position.set(x,y,z);g.add(c);return c;};
+  const slab=(g,side,x0,x1,s0,s1,off,th,m)=>{const a=side<0?Math.PI/6:-Math.PI/6,u=side<0?[0.5,r3/2]:[-0.5,r3/2],n=side<0?[r3/2,-0.5]:[-r3/2,-0.5],z0=side<0?0:4,sm=(s0+s1)/2,o=off+th/2;
+    const b=new THREE.Mesh(new THREE.BoxGeometry(Math.abs(x1-x0),Math.abs(s1-s0),th),m);b.rotation.x=a;b.position.set((x0+x1)/2,0.5+u[1]*sm+n[1]*o,z0+u[0]*sm+n[0]*o);g.add(b);return b;};
+  const beam=(g,p,q,w,h,m)=>{const a=new THREE.Vector3(...p),b=new THREE.Vector3(...q),l=a.distanceTo(b);const me=new THREE.Mesh(new THREE.BoxGeometry(w,h,l),m);
+    me.position.copy(a.clone().add(b).multiplyScalar(0.5));me.lookAt(b);g.add(me);return me;};
+  const ext=(g,pts,depth,m,place)=>{const sh=new THREE.Shape();sh.moveTo(pts[0][0],pts[0][1]);for(const p of pts.slice(1))sh.lineTo(p[0],p[1]);sh.closePath();
+    const me=new THREE.Mesh(new THREE.ExtrudeGeometry(sh,{depth,bevelEnabled:false}),m);place(me);g.add(me);return me;};
+  // плоская фигура в плоскости фермы (w,y), толщина по x
+  const inPlane=(g,pts,x0,x1,m)=>ext(g,pts,x1-x0,m,me=>{me.rotation.y=-Math.PI/2;me.position.x=x1;});
+  /* ---------- поддон: одна геометрия на все ---------- */
+  const PB={DB:[[0,145],[186.25,286.25],[327.5,472.5],[513.75,613.75],[655,800]],ST:[[0,145],[527.5,672.5],[1055,1200]],BL:[[0,100],[327.5,472.5],[700,800]]};
+  const palBoxes=[];for(const [a,b] of PB.DB)palBoxes.push([0,1.2,0.122,0.144,a/1000,b/1000,0]);for(const [a,b] of PB.ST)palBoxes.push([a/1000,b/1000,0.1,0.122,0,0.8,0]);
+  for(const [a,b] of PB.ST)for(const [c,d] of PB.BL)palBoxes.push([a/1000,b/1000,0.022,0.1,c/1000,d/1000,1]);for(const [c,d] of PB.BL)palBoxes.push([0,1.2,0,0.022,c/1000,d/1000,0]);
+  function merge(list){const pos=[],nor=[],uv=[],idx=[],geo=new THREE.BufferGeometry();let off=0;
+    for(const gi of [0,1]){const st=idx.length;for(const b of list.filter(q=>q[6]===gi)){const [x0,x1,y0,y1,z0,z1]=b,bg=new THREE.BoxGeometry(x1-x0,y1-y0,z1-z0);bg.translate((x0+x1)/2,(y0+y1)/2,(z0+z1)/2);
+      pos.push(...bg.attributes.position.array);nor.push(...bg.attributes.normal.array);uv.push(...bg.attributes.uv.array);for(const i of bg.index.array)idx.push(i+off);off+=bg.attributes.position.count;bg.dispose();}
+      geo.addGroup(st,idx.length-st,gi);}
+    geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));geo.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3));geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geo.setIndex(idx);geo.computeBoundingSphere();return geo;}
+  const palGeo=merge(palBoxes);let palN=0;
+  // поддон в своей системе: X вдоль 1200, Z вдоль 800, Y толщина (0 — низ, 0,144 — верх)
+  const frame=(o,X,Y,Z)=>new THREE.Matrix4().makeBasis(new THREE.Vector3(...X),new THREE.Vector3(...Y),new THREE.Vector3(...Z)).setPosition(...o);
+  const pallet=(g,m4)=>{const me=new THREE.Mesh(palGeo,[(palN++%3)?mat.palB:mat.palB2,mat.palK]);me.applyMatrix4(m4);g.add(me);return me;};
+  const inFrame=(g,m4,x0,x1,y0,y1,z0,z1,m)=>{const me=new THREE.Mesh(new THREE.BoxGeometry(x1-x0,y1-y0,z1-z0),m);me.position.set((x0+x1)/2,(y0+y1)/2,(z0+z1)/2);
+    const w=new THREE.Group();w.add(me);w.applyMatrix4(m4);g.add(w);return me;};
+  const slopeFrame=(sd,x0,x1,s)=>sd<0?frame([x0,0.5+(r3/2)*s-0.072,0.5*s+0.1247],[1,0,0],[0,0.5,-r3/2],[0,r3/2,0.5])
+                                    :frame([x1,0.5+(r3/2)*s-0.072,4-0.5*s-0.1247],[-1,0,0],[0,0.5,r3/2],[0,r3/2,-0.5]);
+  /* ---------- подписи ---------- */
+  const labels=[];
+  function label(s,t,p,o={}){const cv=document.createElement('canvas'),g=cv.getContext('2d'),fs=40,pad=18;g.font=`600 ${fs}px Golos Text, Arial, sans-serif`;
+    const lines=t.split('\n'),w=Math.ceil(Math.max(...lines.map(l=>g.measureText(l).width)))+pad*2,h=lines.length*(fs+8)+pad*1.4;cv.width=w;cv.height=h;
+    g.font=`600 ${fs}px Golos Text, Arial, sans-serif`;g.fillStyle=o.hot?'rgba(181,114,47,0.95)':'rgba(255,255,255,0.93)';const r=16;
+    g.beginPath();g.moveTo(r,0);g.arcTo(w,0,w,h,r);g.arcTo(w,h,0,h,r);g.arcTo(0,h,0,0,r);g.arcTo(0,0,w,0,r);g.fill();
+    g.fillStyle=o.hot?'#fff':'#1C2528';g.textBaseline='top';lines.forEach((l,i)=>g.fillText(l,pad,pad*0.7+i*(fs+8)));
+    const t2=new THREE.CanvasTexture(cv);t2.encoding=THREE.sRGBEncoding;const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:t2,depthTest:false,transparent:true,sizeAttenuation:false}));
+    const k=0.021/(fs+8);sp.scale.set(w*k,h*k,1);sp.position.set(-p[0],p[1],p[2]);sp.renderOrder=10;sp.visible=false;scene.add(sp);labels.push({s,sp});}
+  /* ---------- шаг 0: поддон ---------- */
+  {const g=G(0,1);const ox=-3.4,oz=0.4,dy=[0,0.12,0.24,0.38];
+    const lay=[[b=>b[2]>=0.121,3],[b=>b[2]>=0.099&&b[2]<0.121,2],[b=>b[6]===1,1],[b=>b[3]<=0.023,0]];
+    for(const [f,i] of lay)for(const b of palBoxes.filter(f))box(g,ox+b[0],ox+b[1],0.25+b[2]+dy[i],0.25+b[3]+dy[i],oz+b[4],oz+b[5],b[6]?mat.palK:mat.palB);
+    const m4=frame([ox,0,oz+1.3],[1,0,0],[0,1,0],[0,0,1]);pallet(g,m4);
+    label(0,'верх: 5 досок',[ox+0.6,0.95,oz+0.4]);label(0,'поперечные доски',[ox-0.05,0.72,oz+0.05]);label(0,'9 шашек',[ox+1.25,0.55,oz+0.4]);label(0,'низ: 3 доски',[ox+0.6,0.17,oz-0.1]);
+    label(0,'1200 — между фермами',[ox+0.6,0.32,oz+2.25]);label(0,'клеймо HT — можно, MB — нельзя',[ox+0.6,1.15,oz+1.7],{hot:true});}
+  /* ---------- шаг 1: разметка, опоры ---------- */
+  {const g=G(1);for(const [x,w] of A.sup){box(g,x-0.25,x+0.25,0,0.014,w-0.25,w+0.25,mat.rubble);box(g,x-0.2,x+0.2,0.014,0.2,w-0.2,w+0.2,mat.conc);}
+   const pad=new THREE.Mesh(new THREE.PlaneGeometry(6.2,5.4),mat.gravel);pad.rotation.x=-Math.PI/2;pad.position.set(2.5,0.004,2);G(1,99,{hl:false}).add(pad);
+   const s=G(1,2);const line=(p,q)=>beam(s,[p[0],0.22,p[1]],[q[0],0.22,q[1]],0.006,0.006,mat.tmp);
+   for(const w of A.runW)line([-0.6,w],[5.6,w]);line([0.3,0.35],[4.7,3.65]);line([0.3,3.65],[4.7,0.35]);for(const x of [0.3,2.5,4.7])line([x,-0.4],[x,4.4]);
+   for(const [x,w] of [[-0.6,0.35],[5.6,0.35],[-0.6,3.65],[5.6,3.65]])box(s,x-0.02,x+0.02,0,0.45,w-0.02,w+0.02,mat.stake);
+   label(1,'диагонали 5500 — обе равны',[2.5,0.6,2.0],{hot:true});label(1,'16 опор: бой кирпича + бордюр',[0.3,0.55,-0.4]);label(1,'опора под печь',[1.0,0.5,2.8]);label(1,'вход',[-0.7,0.6,2.0]);}
+  /* ---------- шаг 2: лежни ---------- */
+  {const g=G(2);for(const w of A.runW){box(g,A.runX[0],A.runX[1],0.2,0.35,w-0.05,w+0.05,mat.wood2);for(const [x,ww] of A.sup)if(ww===w)box(g,x-0.12,x+0.12,0.2,0.204,w-0.07,w+0.07,mat.rub);}
+   label(2,'5 лежней 100×150 × 5,4 м',[2.5,0.7,-0.3]);label(2,'на рубероиде в 2 слоя',[0.3,0.5,0.35]);label(2,'верх в одну плоскость ±5 мм',[4.7,0.7,4.3],{hot:true});}
+  /* ---------- фермы ---------- */
+  const ap=A.roofY(2),ai=ap-A.RD*2,fw=A.RD*2/r3,c=A.col;
+  function truss(g,x,plates=true){box(g,x-0.02,x+0.02,0.35,0.5,0,4,mat.wood);
+    inPlane(g,[[0,0.5],[2,ap],[2,ai],[fw,0.5]],x-0.02,x+0.02,mat.wood);inPlane(g,[[4,0.5],[4-fw,0.5],[2,ai],[2,ap]],x-0.02,x+0.02,mat.wood);
+    inPlane(g,[[c.w0,c.y0],[4-c.w0,c.y0],[4-c.w1,c.y1],[c.w1,c.y1]],x-0.02,x+0.02,mat.wood2);
+    if(plates)for(const sx of [-1,1]){const pl=(w,y,ang,len=0.2,wid=0.06)=>{const b=new THREE.Mesh(new THREE.BoxGeometry(0.002,wid,len),mat.plate);b.rotation.x=-ang;b.position.set(x+sx*0.021,y,w);g.add(b);};
+      pl(0.1,0.52,Math.PI/3);pl(3.9,0.52,-Math.PI/3);pl(2,ap-0.16,0,0.24);pl(c.w0+0.05,c.y0+0.1,Math.PI/3,0.17);pl(4-c.w0-0.05,c.y0+0.1,-Math.PI/3,0.17);}}
+  /* шаг 3: первая ферма на земле — шаблон */
+  {const g=G(3,4);const t=new THREE.Group();truss(t,0);t.rotation.z=Math.PI/2;t.position.set(-0.75,0.1,0);g.add(t);
+   for(const [x,w] of [[-0.8,-0.08],[-0.8,4.08],[-4.3,1.85],[-4.3,2.15],[-2.2,0.6],[-2.2,3.4]])box(g,x-0.03,x+0.03,0,0.16,w-0.03,w+0.03,mat.stake);
+   label(3,'затяжка 4000',[-0.75,0.4,2.0]);label(3,'стропило: 4000 по верхней кромке',[-2.6,0.4,1.15]);label(3,'ригель 1281 / 1107',[-3.3,0.4,2.0]);
+   label(3,'пластины 60×200 с двух сторон',[-4.25,0.5,2.6],{hot:true});label(3,'колышки по контуру — шаблон для остальных',[-1.6,0.5,3.2]);}
+  /* шаг 4: фермы на лежнях */
+  {const g=G(4);for(const x of A.xs)truss(g,x);
+   const t=G(4,6);for(const sd of [-1,1])for(const s of [2.3,3.5])slab(t,sd,-0.15,5.15,s,s+0.1,-0.025,0.025,mat.tmp);
+   beam(t,[4.98,2.9,0.9],[6.3,0.05,0.9],0.04,0.1,mat.tmp);beam(t,[4.98,2.9,3.1],[6.3,0.05,3.1],0.04,0.1,mat.tmp);beam(t,[0.02,2.9,0.9],[-1.3,0.05,0.9],0.04,0.1,mat.tmp);beam(t,[0.02,2.9,3.1],[-1.3,0.05,3.1],0.04,0.1,mat.tmp);
+   for(const xs of [[6.3,0.9],[6.3,3.1],[-1.3,0.9],[-1.3,3.1]])box(t,xs[0]-0.03,xs[0]+0.03,0,0.35,xs[1]-0.03,xs[1]+0.03,mat.stake);
+   label(4,'шаг 1240, в свету 1200 — по поддону',[1.9,1.0,-0.2],{hot:true});label(4,'временные доски держат шаг',[2.5,3.3,-0.1]);label(4,'укосины до обшивки скатов',[6.0,1.2,0.9]);label(4,'уголок + 2 гвоздя 120 на каждом лежне',[3.74,0.75,4.4]);}
+  /* ---------- шаг 5: пол ---------- */
+  {const g=G(5);for(let i=0;i<4;i++)for(let j=0;j<5;j++)pallet(g,frame([A.xs[i]+0.02,0.35,j*0.8],[1,0,0],[0,1,0],[0,0,1]));
+   const d=G(5,6);const m4=frame([-2.6,0.6,1.6],[1,0,0],[0,-1,0],[0,0,-1]);pallet(d,m4);inFrame(d,m4,0.01,1.19,0.022,0.122,0.01,0.79,mat.saw);
+   const sh=(y,m)=>box(d,-2.62,-1.38,y,y+0.004,0.78,1.62,m);sh(0.78,mat.memb);sh(0.86,mat.mesh);
+   label(5,'1 — перевернуть, засыпать опил',[-2.0,0.95,0.6]);label(5,'2 — ветрозащита и сетка',[-2.0,1.05,2.0]);label(5,'3 — перевернуть, на лежни',[1.9,0.9,-0.2],{hot:true});
+   label(5,'под печью — базальт',[0.64,0.75,2.8]);}
+  /* ---------- шаг 6: скаты ---------- */
+  {const g=G(6);for(let i=0;i<4;i++)for(const sd of [-1,1]){const x0=A.xs[i]+0.02,x1=A.xs[i+1]-0.02;
+      for(let j=0;j<A.rows;j++){if(sd>0&&i===A.pass.bay&&j>=2)continue;pallet(g,slopeFrame(sd,x0,x1,A.s0+j*A.PW));}
+      for(let m=0;m<5;m++){const a=A.sTop+m*0.145,b=Math.min(a+0.14,3.97);if(a<3.95)slab(g,sd,x0,x1,a,b,0,0.022,mat.board);}}
+   {const x0=A.xs[0]+0.02,x1=A.xs[1]-0.02;slab(g,1,x0,x1,A.pass.s0,A.pass.s0+0.04,0,0.15,mat.wood2);slab(g,1,x0,x1,A.pass.s1-0.04,A.pass.s1,0,0.15,mat.wood2);}
+   label(6,'верх поддона — наружу',[3.1,1.6,0.3],{hot:true});label(6,'4 ряда снизу вверх',[4.36,2.4,0.9]);label(6,'до конька — доски',[1.88,3.75,1.3]);label(6,'окно под короб трубы',[0.64,2.5,3.2]);}
+  /* ---------- шаг 7: кровля ---------- */
+  const xr0=-A.T-0.25,xr1=A.L+A.T+0.25,cr=[-0.0725,...A.xs.flatMap((x,i)=>i<4?[x,x+0.62]:[x]),A.L+0.0725];
+  function roof(g,v,from){const f=k=>Math.max(xr0,from[k]);
+    for(const sd of [-1,1]){slab(g,sd,f(0),xr1,0,3.99,-0.002,0.002,mat.memb);
+      for(const x of cr)if(x-0.0725>=from[1]-0.08)slab(g,sd,x-0.0725,x+0.0725,0,3.95,-0.023,0.021,mat.wood2);
+      if(v==='r'){for(let s=-0.05;s<3.9;s+=0.155)slab(g,sd,f(2),xr1,s,Math.min(s+0.145,3.92),-0.045,0.022,mat.board);
+        slab(g,sd,f(3),xr1,-0.1,3.93,-0.049,0.004,mat.rub);for(let x=xr1-0.05;x>=f(3);x-=0.9)slab(g,sd,x-0.025,x+0.025,-0.08,3.9,-0.071,0.022,mat.wood2);}
+      else{for(let s=0.05;s<3.9;s+=0.4)slab(g,sd,f(2),xr1,s,s+0.1,-0.045,0.022,mat.board);slab(g,sd,f(3),xr1,-0.1,3.93,-0.065,0.02,mat.pn);}}
+    if(from[3]<1){for(let x=xr0+0.1;x<=xr1;x+=0.6)box(g,x-0.05,x+0.05,ap+0.02,ap+0.1,1.93,2.07,mat.blk);
+      const m=v==='r'?mat.rub:mat.pn;for(const sd of [-1,1]){const b=new THREE.Mesh(new THREE.BoxGeometry(xr1-xr0,0.008,0.34),m);b.rotation.x=sd*Math.PI/6;b.position.set((xr0+xr1)/2,ap+0.06,2+sd*0.145);g.add(b);}}}
+  for(const v of ['r','p']){roof(G(7,8,{v}),v,[xr0,0.62,1.26,2.5]);roof(G(8,99,{v,hl:false}),v,[xr0,xr0,xr0,xr0]);}
+  label(7,'мембрана',[0.3,1.5,0.4]);label(7,'контррейки — зазор 22',[0.95,2.0,0.75]);label(7,'настил или обрешётка',[1.9,2.5,1.05]);label(7,'рубероид или профнастил',[3.3,2.9,1.2],{hot:true});label(7,'конёк-продух на шашках',[3.0,4.25,2.0]);
+  /* ---------- шаг 8: фронтоны ---------- */
+  {const g=G(8);box(g,-0.15,0,0.35,A.sill,0,4,mat.wood2);box(g,A.L,A.L+0.15,0.35,A.sill,0,4,mat.wood2);
+   for(const key of ['front','back']){const xo=key==='front'?[-A.T,0]:[A.L,A.L+A.T],Gd=A.gable[key];
+     for(const p of A.pieces(key)){const [w0,,y0]=p.c,pts=p.P.map(([w,y])=>[w-w0+0.003,y-y0+0.003]);
+       const me=ext(g,pts.map(([a,b])=>[a,b]),A.T-0.006,p.pal?mat.gable:mat.board,me=>{me.rotation.y=-Math.PI/2;me.position.set(xo[1]-0.003,y0,w0);});me.scale.set(1,0.995,0.995);}
+     for(const f of Gd.frame){const P=A.clipRoof(A.rectP(f));if(P.length>2)inPlane(g,P,xo[0],xo[1]+0.005,mat.wood2);}
+     for(const f of Gd.fill){const P=A.clipRoof(A.rectP(f));if(P.length>2)inPlane(g,P,xo[0],xo[1],mat.board);}}
+   label(8,'поддоны стоймя, срез по скату 60°',[-0.2,1.9,0.55],{hot:true});label(8,'стойки двери 40×150',[-0.2,1.3,1.53]);label(8,'обвязка на концах лежней',[-0.2,0.45,3.6]);label(8,'окно над кроватью',[5.2,2.0,2.0]);}
+  /* ---------- шаг 9: окна, дверь, обшивка ---------- */
+  {const g=G(9),d=A.door,wf=A.winF,wb=A.winB;
+   box(g,-0.06,-0.02,FL,FL+d.h,d.w0+0.02,d.w1-0.02,mat.door);box(g,-0.1,-0.06,FL+0.95,FL+0.99,d.w1-0.12,d.w1-0.06,mat.dark);
+   box(g,-0.09,-0.05,FL+wf.h0,FL+wf.h1,wf.w0,wf.w1,mat.glass);box(g,A.L+0.05,A.L+0.09,FL+wb.h0,FL+wb.h1,wb.w0,wb.w1,mat.glass);
+   for(const x of [-0.95,-0.15])box(g,x-0.1,x+0.1,0,0.2,1.95,2.05,mat.conc);
+   pallet(g,frame([-A.T-0.8,0.2,2.6],[0,0,-1],[0,1,0],[1,0,0]));pallet(g,frame([-A.T-1.25-0.35,0,2.6],[0,0,-1],[0,1,0],[1,0,0]));
+   for(const key of ['front','back']){const xb=key==='front'?[-A.T-0.022,-A.T]:[A.L+A.T,A.L+A.T+0.022],Gd=A.gable[key];
+     const holes=Gd.open.map(o=>key==='front'&&o[4]==='door'?[o[0]-0.04,o[1]+0.04,0.35,o[3]+0.04]:[o[0]-0.04,o[1]+0.04,o[2]-0.04,o[3]+0.04]);
+     for(let y=0.36;y<3.9;y+=0.125){const y1=y+0.145,wl=Math.max(0,(y1-0.5)/r3),wr=4-wl;if(wr-wl<0.05)continue;
+       let segs=[[wl,wr]];for(const h of holes)if(y<h[3]&&y1>h[2])segs=segs.flatMap(([a,b])=>[[a,Math.min(b,h[0])],[Math.max(a,h[1]),b]]).filter(([a,b])=>b-a>0.03);
+       for(const [a,b] of segs)box(g,xb[0],xb[1],y,y1,a,b,mat.board);}}
+   label(9,'дверь наружу, петли со стороны закутка',[-0.3,1.4,1.85],{hot:true});label(9,'обшивка внахлёст по ветрозащите',[-0.3,0.9,3.1]);label(9,'крыльцо: поддон на 2 опорах',[-0.9,0.5,2.0]);}
+  /* ---------- шаг 10: утепление изнутри ---------- */
+  {const g=G(10),full=G(11,99,{hl:false});
+   for(let i=0;i<4;i++)for(const sd of [-1,1]){const x0=A.xs[i]+0.02,x1=A.xs[i+1]-0.02,demo=sd<0&&i>=2,hasL=!(sd<0&&i>=2),hasV=!(sd<0&&i===3);
+     const skip=sd>0&&i===A.pass.bay,sa=A.s0,sb=A.sTop;
+     if(hasV)slab(g,sd,x0-0.02,x1+0.02,sa,sb,0.15,0.002,mat.vap);
+     if(hasL)slab(g,sd,x0-0.02,x1+0.02,sa,skip?A.pass.s0:sb,0.152,0.02,mat.lining);
+     if(!hasL)slab(full,sd,x0-0.02,x1+0.02,sa,sb,0.152,0.02,mat.lining);
+     if(sd<0&&i===3)slab(full,sd,x0-0.02,x1+0.02,sa,sb,0.15,0.002,mat.vap);
+     if(demo)for(let j=0;j<A.rows;j++){const m4=slopeFrame(sd,x0,x1,A.s0+j*A.PW),top=i===2?0.8:Math.max(0,Math.min(0.8,2.5-(A.s0+j*A.PW)));
+       if(top>0)for(const [a,b] of [[0.145,0.5275],[0.6725,1.055]])inFrame(g,m4,a,b,0.022,0.122,0,top,mat.saw);}
+     slab(g,sd,x0,x1,A.sTop,A.sInTop-0.03,0.128,0.022,mat.board);}
+   box(g,0,A.L,0.494,0.497,0.12,3.88,mat.vap);box(g,0,A.L,0.497,FL,0.17,3.83,mat.floor);
+   const pole=G(10,11);{const a=A.sp(-1,A.sTop+0.35,0.07),b=A.sp(-1,1.6,0.07);beam(pole,[4.36-0.25,a[1],a[0]],[4.36-0.25,b[1],b[0]],0.03,0.03,mat.wood2);}
+   label(10,'плёнка и доска до верха 4-го ряда',[1.26,1.3,1.2]);label(10,'опил сверху, трамбовать шестом',[4.36,2.75,1.35],{hot:true});label(10,'видно опил в каналах',[3.1,1.6,1.0]);label(10,'пол: плёнка, ДВП',[2.5,0.7,2.4]);}
+  /* ---------- шаг 11: печь и труба ---------- */
+  {const g=G(11),S=A.stove;
+   box(g,S.base[0],S.base[1],FL,FL+0.13,S.base[2],S.base[3],mat.brick);box(g,S.sheet[0],S.sheet[1],FL,FL+0.006,S.sheet[2],S.sheet[3],mat.steel);
+   box(g,S.screen[0],S.screen[1],FL,FL+1.2,S.screen[2],S.screen[3],mat.brick);box(g,S.side[0],S.side[1],FL+0.13,FL+S.side[4],S.side[2],S.side[3],mat.brick);
+   {const yc=FL+S.top-S.r,b=new THREE.Mesh(new THREE.CylinderGeometry(S.r,S.r,S.len,24),mat.stove);b.rotation.z=Math.PI/2;b.position.set(S.x,yc,S.w);g.add(b);
+    box(g,S.x+S.len/2,S.x+S.len/2+0.008,yc-0.08,yc+0.08,S.w-0.09,S.w+0.09,mat.fire);for(const [dx,dz] of [[-0.22,-0.1],[0.22,-0.1],[-0.22,0.1],[0.22,0.1]])cyl(g,0.015,0.15,S.x+dx,FL+0.13+0.075,S.w+dz,mat.stove);}
+   slab(g,1,0.25,1.35,0.25,A.pass.s0,0.172,0.008,mat.steel);
+   const x0=A.xs[0]+0.02,x1=A.xs[1]-0.02;slab(g,1,x0,x1,A.pass.s0+0.04,A.pass.s1-0.04,0.005,0.14,mat.basalt);slab(g,1,x0,x1,A.pass.s0,A.pass.s1,0.15,0.004,mat.steel);
+   const y1=FL+S.top,y2=FL+1.2;cyl(g,0.058,y2-y1,S.pipeX,(y1+y2)/2,S.w,mat.stove);cyl(g,0.1,A.chim-y2,S.pipeX,(A.chim+y2)/2,S.w,mat.steel);
+   const cone=new THREE.Mesh(new THREE.ConeGeometry(0.16,0.12,16),mat.steel);cone.position.set(S.pipeX,A.chim+0.12,S.w);g.add(cone);
+   slab(g,1,0.15,1.15,A.pass.s0-0.1,A.pass.s1+0.05,-0.08,0.006,mat.steel);
+   {const p=[S.pipeX,A.chim-0.45,S.w];for(const q of [[S.pipeX,ap+0.1,2.0],[S.pipeX+1.0,A.roofY(3.35)+0.08,3.35],[S.pipeX-0.9,A.roofY(3.35)+0.08,3.35]])beam(g,p,q,0.006,0.006,mat.dark);}
+   label(11,'экраны из кирпича: фронтон и вдоль ската',[0.4,1.55,3.1],{hot:true});label(11,'лист перед дверцей',[1.55,0.7,2.8]);label(11,'короб проходки: лист и базальт',[0.64,2.75,2.75]);label(11,'сэндвич, растяжки, искрогаситель',[0.6,4.7,2.78]);}
+  /* ---------- шаг 12: обустройство ---------- */
+  {const g=G(12);const F=(x0,x1,h0,h1,z0,z1,m)=>box(g,x0,x1,FL+h0,FL+h1,z0,z1,m);
+   F(0,0.55,0,2.0,1.41,1.55,mat.board);F(0.55,1.24,0.1,1.9,1.47,1.49,mat.fabric);
+   inPlane(g,[[0.17,FL],[1.55,FL],[1.55,FL+2.0],[A.win(2.0),FL+2.0]],1.24,1.385,mat.board);
+   for(const [x0,x1,w0,w1,,,kind,h] of A.furn){
+     if(kind==='wc'){F(x0,x1,0,h,w0,w1,mat.white);F(x0+0.02,x1-0.02,h,h+0.03,w0+0.02,w1-0.02,mat.dark);}
+     else if(kind==='sink'){F(x0,x1,0.8,1.0,w0,w1,mat.white);cyl(g,0.13,0.3,(x0+x1)/2,FL+0.15,(w0+w1)/2,mat.steel);}
+     else if(kind==='counter'){F(x0,x1,0,h-0.04,w0,w1,mat.board);F(x0,x1,h-0.04,h,w0-0.02,w1,mat.wood);F(x0+0.2,x0+0.6,h,h+0.1,w0+0.1,w0+0.45,mat.dark);}
+     else if(kind==='water'){for(const x of [x0+0.15,x0+0.5])F(x-0.13,x+0.13,0,h,w0,w1,mat.white);}
+     else if(kind==='shelf')F(x0,x1,0,h,w0,w1,mat.board);
+     else if(kind==='bed'){F(x0,x1,0,0.145,w0,w1,mat.board);F(x0,x1,0.145,0.29,w0,w1,mat.wood);F(x0+0.02,x1-0.02,0.29,h,w0+0.02,w1-0.02,mat.blanket);}
+     else if(kind==='table'){F(x0,x1,h-0.03,h,w0,w1,mat.wood);F((x0+x1)/2-0.04,(x0+x1)/2+0.04,0,h-0.03,(w0+w1)/2-0.04,(w0+w1)/2+0.04,mat.dark);}
+     else if(kind==='logs'){for(let i=0;i<9;i++){const cc=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,0.4,8),mat.wood2);cc.rotation.x=Math.PI/2;cc.position.set(x0+0.1+(i%4)*0.13,FL+0.07+Math.floor(i/4)*0.11,(w0+w1)/2);g.add(cc);}}}
+   label(12,'кровать из 8 поддонов',[3.98,1.3,2.0],{hot:true});label(12,'закуток',[0.6,2.1,0.8]);label(12,'кухня',[2.1,1.6,1.25]);label(12,'печь',[0.75,1.4,2.78]);}
+  root.traverse(o=>{if(o.isMesh){o.castShadow=true;o.receiveShadow=true;}});gr.castShadow=false;
+  labels.forEach(l=>{l.sp.castShadow=false;});
+  /* ---------- подсветка ---------- */
+  const hlCache=new Map();const hl=m=>{if(Array.isArray(m))return m.map(hl);if(m.transparent)return m;let h=hlCache.get(m);
+    if(!h){h=m.clone();h.emissive=C('#FF7A1A');h.emissiveIntensity=0.22;if(m.map)h.map=m.map;hlCache.set(m,h);}return h;};
+  parts.forEach(p=>p.g.traverse(o=>{if(o.isMesh){o.userData.m0=o.material;o.userData.m1=hl(o.material);}}));
+  /* ---------- камера ---------- */
+  // цель в своих координатах дома, th/ph — как в проекте
+  const CAM=[{t:[-2.8,0.5,1.45],r:4.6,th:-0.35,ph:1.0},{t:[2.4,0.2,2],r:11.5,th:-0.9,ph:0.8},{t:[2.5,0.3,2],r:10,th:-0.85,ph:0.95},
+    {t:[-2.6,0,2.0],r:7.6,th:3.14,ph:0.4},{t:[2.5,1.8,2],r:11,th:-0.75,ph:1.15},{t:[0.3,0.4,1.6],r:10,th:-0.6,ph:0.85},
+    {t:[2.5,1.8,2],r:10.5,th:-0.95,ph:1.1},{t:[2.0,2.0,2],r:9.5,th:-0.6,ph:1.05},{t:[0,1.8,2],r:9.4,th:-0.2,ph:1.2},
+    {t:[0,1.6,2],r:9.5,th:-0.45,ph:1.2},{t:[2.5,1.9,1.2],r:7.5,th:1.3,ph:1.3},{t:[0.8,1.9,2.7],r:7.0,th:-1.9,ph:1.2},{t:[2.5,0.6,2],r:8.5,th:-1.2,ph:0.3}];
+  const CLIP={10:new THREE.Plane(new THREE.Vector3(0,0,-1),2.35),11:new THREE.Plane(new THREE.Vector3(0,0,1),-1.55),12:new THREE.Plane(new THREE.Vector3(0,-1,0),FL+1.75)};
+  const target=new THREE.Vector3(),tw={};let r=10,th=-0.8,ph=1.1,anim=null;
+  function upd(){cam.position.set(target.x+r*Math.sin(ph)*Math.cos(th),target.y+r*Math.cos(ph),target.z+r*Math.sin(ph)*Math.sin(th));cam.lookAt(target);req();}
+  function fly(k){const c=CAM[k],to={x:-c.t[0],y:c.t[1],z:c.t[2],r:c.r,th:c.th,ph:c.ph},fr={x:target.x,y:target.y,z:target.z,r,th,ph};let dth=to.th-fr.th;
+    const t0=performance.now(),D=matchMedia('(prefers-reduced-motion:reduce)').matches?0:650;cancelAnimationFrame(anim);
+    const stepF=now=>{const q=D?Math.min(1,(now-t0)/D):1,e=q<0.5?2*q*q:1-Math.pow(-2*q+2,2)/2;
+      target.set(fr.x+(to.x-fr.x)*e,fr.y+(to.y-fr.y)*e,fr.z+(to.z-fr.z)*e);r=fr.r+(to.r-fr.r)*e;th=fr.th+dth*e;ph=fr.ph+(to.ph-fr.ph)*e;upd();if(q<1)anim=requestAnimationFrame(stepF);};anim=requestAnimationFrame(stepF);}
+  let STEP=-1,ROOF='r';
+  function apply(){for(const p of parts){const vis=STEP>=p.s&&STEP<p.u&&(!p.v||p.v===ROOF);p.g.visible=vis;
+      if(vis){const h=p.hl&&STEP===p.s;p.g.traverse(o=>{if(o.isMesh&&o.userData.m0)o.material=h?o.userData.m1:o.userData.m0;});}}
+    labels.forEach(l=>l.sp.visible=l.s===STEP);renderer.clippingPlanes=CLIP[STEP]?[CLIP[STEP]]:[];
+    sun.target.position.set(-2.5,0,2);sun.position.set(-2.5+8,11,2-9);req();}
+  window.__afgStep=(k,fly3)=>{k=Math.max(0,Math.min(CAM.length-1,k));if(k===STEP)return;STEP=k;apply();if(fly3!==false)fly(k);};
+  window.__afgRoof=v=>{ROOF=v;apply();};
+  // мышь и пальцы
+  const pts=new Map();let pinch0=0,r0=r;const cv=renderer.domElement;
+  cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);pts.set(e.pointerId,{x:e.clientX,y:e.clientY});cancelAnimationFrame(anim);
+    if(pts.size===2){const [a,b]=[...pts.values()];pinch0=Math.hypot(a.x-b.x,a.y-b.y);r0=r;}});
+  cv.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId))return;const p=pts.get(e.pointerId);
+    if(pts.size===1){th+=(e.clientX-p.x)*0.008;ph=Math.min(1.52,Math.max(0.12,ph-(e.clientY-p.y)*0.006));}
+    pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+    if(pts.size===2){const [a,b]=[...pts.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);if(pinch0>0)r=Math.min(24,Math.max(2,r0*pinch0/d));}upd();});
+  const up=e=>{pts.delete(e.pointerId);pinch0=0;};cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+  cv.addEventListener('wheel',e=>{e.preventDefault();cancelAnimationFrame(anim);r=Math.min(24,Math.max(2,r*(1+e.deltaY*0.0012)));upd();},{passive:false});
+  if(matchMedia('(pointer:coarse)').matches){const h=document.getElementById('vhint');if(h)h.textContent='палец — вращать · два пальца — масштаб';}
+  function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();req();}
+  new ResizeObserver(resize).observe(host);
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',setBg);
+  new MutationObserver(setBg).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  setBg();resize();{const k0=window.__afgInit||0;window.__afgStep(k0,false);const c=CAM[k0];target.set(-c.t[0],c.t[1],c.t[2]);r=c.r;th=c.th;ph=c.ph;upd();}
+  window.dispatchEvent(new Event('afg3d'));
+})();
+
+</script>
+</body>
+</html>
